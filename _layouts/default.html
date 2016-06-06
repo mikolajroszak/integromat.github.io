@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:600,400,300|Open+Sans+Condensed:300&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	{% if page.title %}<title>{{page.title}}</title>{% else %}<title>Integromat Developers</title>{% endif %}
+	<link rel="stylesheet" href="//static.integromat.com/css/bootstrap.light.min.css">
+	<link rel="stylesheet" href="//static.integromat.com/css/font-awesome.min.css">
+	<link rel="stylesheet" href="//static.integromat.com/css/public.light.css">
+	<link rel="stylesheet" href="/css/theme.css">
+</head>
+<body>
+	<header class="navbar navbar-static-top">
+		<div class="navbar-header">
+			<div id="headerlogo">
+				<a href="/" class="navbar-brand"><img src="//static.integromat.com/img/logo-dark.svg" width="30" height="30" class="logo"></a>
+			</div>
+		</div>
+	</header>
+	<div class="container content content-kb">
+		<ul class="breadcrumb">
+			<li>Integromat SDK</li>
+		</ul>
+		<h1>Integromat Developers</h1>
+		{{content}}
+	</div>
+	<footer>
+		<div class="copyright">
+			<div class="container">
+				© 2016 Integromat. All rights reserved.
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
