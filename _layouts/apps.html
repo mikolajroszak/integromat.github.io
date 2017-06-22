@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="cs">
 <head>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:600,400,300|Open+Sans+Condensed:300&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	{% if page.title %}<title>{{page.title}}</title>{% else %}<title>Integromat Developers</title>{% endif %}
+	{% if page.title %}<title>{{page.title}}</title>{% else %}<title>Integromat Apps</title>{% endif %}
 	<link rel="stylesheet" href="//static.integromat.com/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//static.integromat.com/css/font-awesome.min.css">
 	<link rel="stylesheet" href="//static.integromat.com/css/public.css">
+	<link rel="stylesheet" href="/css/github.css">
 	<link rel="stylesheet" href="/css/theme.css">
 </head>
 <body>
@@ -20,10 +21,23 @@
 	</header>
 	<div class="container content content-kb">
 		<ul class="breadcrumb">
-			<li>Integromat SDK</li>
+			<li><a href="/">Integromat SDK</a></li>
 		</ul>
-		<h1>Integromat Developers</h1>
-		{{content}}
+		<h1>Apps Development <small>(beta)</small></h1>
+		
+		<div class="row">
+			<div class="col-sm-3 hidden-xs">
+				<div class="index">
+					{% include menu.html %}
+				</div>
+			</div>
+			<div class="col-sm-9 col-xs-12">
+				<div class="page clearfix">
+					<h1>{{page.title}}</h1>
+					{{content}}
+				</div>
+			</div>
+		</div>
 	</div>
 	<footer>
 		<div class="copyright">
