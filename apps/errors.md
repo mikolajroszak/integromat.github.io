@@ -35,6 +35,27 @@ But you are able to customize the message, shown to the user with the `error` or
 Some APIs signal about an error with a 200 status code and a flag in the body. For this scenario, there is a `valid` directive,
 which tells that the response is valid or not.
 
+## Custom error handling based on status codes
+
+You are also able to further customize what error message will be shown to the user based on the status code. To do that,
+just add your status code to the `error` directive and fill it in as one:
+
+```json
+{
+    "response": {
+        "error": {
+            "message": "Generic error message",
+            "400": {
+                "message": "Your request was invalid"
+            },
+            "500": {
+                "message": "The server was not able to handle your request"
+            }
+        }
+    }
+}
+```
+
 ## Examples
 
 Simple error message:

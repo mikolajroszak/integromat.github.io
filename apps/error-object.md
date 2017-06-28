@@ -11,6 +11,7 @@ Key | Type | Description
 --- | --- | ---
 **value** | [IML](iml.html) | An expression that parses an error message from response body.
 **type** | [IML](iml.html) | An expression that parses an error type from response body.
+**{{status code}}** | [Error Object](error-object.html) | An object that customizes the error message and type based on the status code.
 
 ## Available Error Types
 
@@ -32,6 +33,28 @@ Key | Type | Description
         "error": {
             "type": "DataError",
             "message": "{{body.message}}"
+        }
+    }
+}
+```
+
+
+## Error Object Example with Status Code customization
+
+```json
+{
+    "response": {
+        "error": {
+            "type": "RuntimeError",
+            "message": "Generic error message",
+            "400": {
+                "type": "DataError",
+                "message": "Your request was invalid"
+            },
+            "500": {
+                "type": "ConnectionError",
+                "message": "The server was not able to handle your request"
+            }
         }
     }
 }
