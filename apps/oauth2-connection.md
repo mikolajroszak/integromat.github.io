@@ -173,7 +173,7 @@ A collection to store non-user-specific sensitive values like salts or secrets. 
 
 ## Add-ons
 
-If you need to execute a request before authorization (to fetch a token, for example), we got you covered. You can specify a `preauthorize` section, that is a [Request Object](request-object.html), and it will be called just before the `authorize` directive:
+If you need to execute a request before authorization (to fetch a token, for example), we got you covered. You can specify a `preauthorize` section, that is a [Request Object](request-object.html) or an array of [Request Objects](request-object.html), and it will be called just before the `authorize` directive:
 
 ```json
 {
@@ -188,6 +188,33 @@ If you need to execute a request before authorization (to fetch a token, for exa
             }
         }
     }
+}
+```
+
+```json
+{
+    "preauthorize": [{
+        "url": "https://www.example.com/api/key",
+        "qs": {
+            "client_id": "{{ifempty(parameters.clientId, common.clientId)}}"
+        },
+        "response": {
+            "temp": {
+                "key": "{{body.key}}"
+            }
+        }
+    }, {
+        "url": "https://www.example.com/api/hash",
+        "qs": {
+            "client_id": "{{ifempty(parameters.clientId, common.clientId)}}",
+            "key": "{{temp.key}}"
+        },
+        "response": {
+            "data": {
+                "hash": "{{body.hash}}"
+            }
+        }
+    }]
 }
 ```
 
