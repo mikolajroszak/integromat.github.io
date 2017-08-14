@@ -241,7 +241,7 @@ something like this
 
 #### `wrapper`
 
-{% include_relative directives/output.md %}
+{% include_relative directives/wrapper.md %}
 
 ## Pagination
 
