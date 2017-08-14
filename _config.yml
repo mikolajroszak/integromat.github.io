@@ -5,3 +5,5 @@ markdown: kramdown
 highlighter: rouge
 kramdown:
   input: GFM
+plugins:
+  - jekyll-relative-links

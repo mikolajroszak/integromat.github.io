@@ -1,0 +1,1 @@
+A variable, which you can access in other directives. It is not persistent and the data will be discarded once the execution is completed.
