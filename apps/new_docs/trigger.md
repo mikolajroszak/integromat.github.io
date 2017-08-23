@@ -1,11 +1,9 @@
 ---
-title: Actions
+title: Trigger Module - Reference Documentation
 layout: apps
 ---
 
-# Trigger Module - Reference Documentation
-
-## Index
+# Index
 
 - [Making requests](#making-requests)
   - [`url`](#url)
@@ -33,7 +31,7 @@ layout: apps
   - [`qs`](#pagination-qs)
   - [`body`](#pagination-body)
 
-## Making requests
+# Making requests
 
 In order to make the simplest request, the only thing you have to
 specify is a URL in the `url` directive. You can then specify the
@@ -56,41 +54,41 @@ All Available request-related directives are shown in the table below:
 | [**response**](#handling-responses) | Response Specification                                           | Collection of directives controlling processing of the response.                 |
 | [**pagination**](#pagination)       | Pagination Specification                                         | Collection of directives controlling pagination logic.                           |
 
-### Detailed request directive description
+## Detailed request directive description
 
-#### `url`
+### `url`
 
 {% include_relative directives/url.md %}
 
-#### `method`
+### `method`
 
 {% include_relative directives/method.md %}
 
-#### `headers`
+### `headers`
 
 {% include_relative directives/headers.md %}
 
-#### `qs`
+### `qs`
 
 {% include_relative directives/qs.md %}
 
-#### `body`
+### `body`
 
 {% include_relative directives/body.md %}
 
-#### `type` {#request-type}
+### `type` {#request-type}
 
 {% include_relative directives/request.type.md %}
 
-#### `temp` {#request-temp}
+### `temp` {#request-temp}
 
 {% include_relative directives/request.temp.md %}
 
-#### `condition`
+### `condition`
 
 {% include_relative directives/condition.md %}
 
-## Handling responses
+# Handling responses
 
 By default the module will output whatever it got from the remote
 server.
@@ -109,9 +107,9 @@ response. All of them must be placed inside the `response` collection.
 | [**temp**](#response-temp) | [IML Object](types.md#iml-object)                              | Creates/updates variable `temp` which you can access in subsequent requests.    |
 | [**output**](#output)      | Any [IML Type](types.md#iml-types)                             | Describes structure of the output bundle.                                       |
 
-### Detailed response directive description
+## Detailed response directive description
 
-#### `trigger`
+### `trigger`
 
 The trigger collection specifies directives that will control how the
 trigger will work and how your data will be processed
@@ -123,7 +121,7 @@ trigger will work and how your data will be processed
 | [**id**](#trigger-id)       | [IML String](types.md#iml-string) | Must return current item's Id                                 |
 | [**date**](#trigger-date)   | [IML String](types.md#iml-string) | When used, must return current item's create/update timestamp |
 
-#### `trigger.type` {#trigger-type}
+### `trigger.type` {#trigger-type}
 
 **Required**: yes  
 **Default**: empty  
@@ -141,7 +139,7 @@ If the processed item does not have a create/update timestamp, but only
 an id, then `id` should be used as a value, and a correct getter should
 be specified in `trigger.id` directive.
 
-#### `trigger.order` {#trigger-order}
+### `trigger.order` {#trigger-order}
 
 **Required**: yes  
 **Default**: empty  
@@ -158,7 +156,7 @@ So if the API is returning items in ascending order (low to high), then
 (high to low), then `desc` should be used. If the API is returning items
 in no appernt order, then `unordered` should be used.
 
-#### `trigger.id` {#trigger-id}
+### `trigger.id` {#trigger-id}
 
 **Required**: yes  
 **Default**: empty
@@ -188,7 +186,7 @@ Then you should specify your `trigger.id` directive like this:
 ```
 {% endraw %}
 
-#### `trigger.date` {#trigger-date}
+### `trigger.date` {#trigger-date}
 
 **Required**: yes  
 **Default**: empty
@@ -225,34 +223,34 @@ something like this
 ```
 {% endraw %}
 
-#### `type` {#response-type}
+### `type` {#response-type}
 
 {% include_relative directives/response.type.md %}
 
-#### `valid`
+### `valid`
 
 {% include_relative directives/valid.md %}
 
-#### `limit`
+### `limit`
 
 {% include_relative directives/limit.md module="trigger" %}
 
-#### `error`
+### `error`
 
 {% include_relative directives/error.md %}
 
-#### `iterate`
+### `iterate`
 
 {% include_relative directives/iterate.md module="trigger" %}
 
-#### `temp` {#response-temp}
+### `temp` {#response-temp}
 
 {% include_relative directives/response.temp.md %}
 
-#### `output`
+### `output`
 
 {% include_relative directives/output.md %}
 
-## Pagination
+# Pagination
 
 {% include_relative directives/pagination.md %}

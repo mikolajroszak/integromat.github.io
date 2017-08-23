@@ -15,9 +15,9 @@ override or merge with original request directives, if
 | [**body**](#pagination-body)            | Any [IML Type](types.md#iml-types)                               | Specifies a request body.                                                        |
 | [**condition**](#pagination-condition)  | [IML String](types.md#iml-string) or [Boolean](types.md#boolean) | Determines if to execute current request or never.                               |
 
-### Detailed pagination directive description
+## Detailed pagination directive description
 
-#### `mergeWithParent` {#merge-with-parent}
+### `mergeWithParent` {#merge-with-parent}
 
 This directive specifies if to merge pagination parameters with the
 original request parameters, or not. Default value is `true`, which
@@ -27,40 +27,40 @@ the original request parameters.
 If the value is set to `false`, then no parameters will be merged, but
 directly used to make a pagination request.
 
-#### `url` {#pagination-url}
+### `url` {#pagination-url}
 
 This directive specifies the URL that will be called when the pagination
 request is executed. It will override the original request URL no matter
 the value of `margeWithParent`.
 
-#### `method` {#pagination-method}
+### `method` {#pagination-method}
 
 This directive specifies the HTTP method to be used when executing the
 pagination request. It will override the original request method no
 matter the value of `margeWithParent`.
 
-#### `headers` {#pagination-headers}
+### `headers` {#pagination-headers}
 
 This directive specifies the request headers to be used when executing
 the pagination request. It will merge with headers of the original
 request, overriding headers with the same name, when `mergeWithParent`
 is set to `true` (default).
 
-#### `qs` {#pagination-qs}
+### `qs` {#pagination-qs}
 
 This directive specifies the request query string parameters to be used
 when executing the pagination request. It will merge with query string
 parameters of the original request, overriding ones with the same name,
 when `mergeWithParent` is set to `true` (default).
 
-#### `body` {#pagination-body}
+### `body` {#pagination-body}
 
 This directive specifies the request body when the request method is
 anything but `GET` to be used when executing the pagination request. It
 will override the original request body no matter the value of
 `margeWithParent`.
 
-#### `condition` {#pagination-condition}
+### `condition` {#pagination-condition}
 
 This directive specifies whether to execute the pagination request or
 not. It has all context variables available to it as `response`
