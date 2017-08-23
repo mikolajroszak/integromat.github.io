@@ -113,20 +113,20 @@ Key | Type | Description
 
 ## Parameters
 
-Describes structure of input parameters. All parameters are stored to connection's data collection and accessible via `{{connection.variable}}` later.  For OAuth1 connections it is possible to allow users to input their own application id and secret. Parameters must be named `clientId` and `clientSecret`. Marking those parameters as advanced is a good practice.
+Describes structure of input parameters. All parameters are stored to connection's data collection and accessible via `{{connection.variable}}` later.  For OAuth1 connections it is possible to allow users to input their own application id and secret. Parameters must be named `consumerKey` and `consumerSecret`. Marking those parameters as advanced is a good practice.
 
 ```json
 [
     {
-        "name": "clientId",
+        "name": "consumerKey",
         "type": "text",
-        "label": "Client ID",
+        "label": "Consumer Key",
         "advanced": true
     },
     {
-        "name": "clientSecret",
+        "name": "consumerSecret",
         "type": "text",
-        "label": "Client Secret",
+        "label": "Consumer Secret",
         "advanced": true
     }
 ]
