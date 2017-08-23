@@ -1,3 +1,4 @@
+**Required**: no  
 **Default**: `body`, when `iterate` is not set; `item` otherwise
 
 With the `output` directive you can specify how you want your module

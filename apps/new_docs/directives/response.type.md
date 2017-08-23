@@ -1,8 +1,9 @@
 {% raw %}
 
-**Default**: `automatic` (based on `Content-Type` header)
+**Required**: no  
+**Default**: `automatic` (based on `Content-Type` header)  
+**Values**: `automatic`, `json`, `urlencoded`, `text` (or `string` or `raw`), `binary` and `xml`.
 
-Available values are `automatic`, `json`, `urlencoded`, `text` (or `string` or `raw`), `binary` and `xml`.
 When `automatic` is used for the response type, Integromat tries to parse the response based on it's `Content-Type` header. Currently, Integromat recognizes only `text/plain`, `application/json`, `application/x-www-form-urlencoded` and `application/xml`(or `text/xml`). When specifying other types, Integromat ignores the `Content-Type` header and tries to parse the response in the format that you have specified.
 
 Simple example:

@@ -1,3 +1,4 @@
+**Required**: no  
 **Default**: `output`
 
 You are able to post process module output, before returning it to the

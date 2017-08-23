@@ -1,3 +1,4 @@
+**Required**: no  
 **Default**: empty
 
 This directive specifies headers that will be sent with the request.

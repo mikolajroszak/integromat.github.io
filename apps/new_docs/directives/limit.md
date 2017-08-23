@@ -5,6 +5,7 @@
     {% assign amount = "unlimited" %}
 {% endcase %}
 
+**Required**: no  
 **Default**: {{amount}}
 
 This directive specifies the maximum items that will be returned by the

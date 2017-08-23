@@ -1,3 +1,4 @@
+**Required**: no  
 **Default**: empty
 
 This directive specifies the request body when the `method` directive is
@@ -18,7 +19,7 @@ Example:
 ```
 {% endraw %}
 
-**NOTE**: If you want to specify XML request body, you can specify it as
+**Note**: If you want to specify XML request body, you can specify it as
 a string that will use IML expressions to pass values to XML nodes.
 Example:
 {% raw %}

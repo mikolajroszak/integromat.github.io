@@ -1,3 +1,4 @@
+**Required**: no  
 **Default**: empty
 
 A variable, which you can access in other directives. It is not

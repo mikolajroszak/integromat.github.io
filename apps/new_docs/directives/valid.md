@@ -1,3 +1,4 @@
+**Required**: no  
 **Default**: `true`
 
 If not present, the response is considered always valid when the status

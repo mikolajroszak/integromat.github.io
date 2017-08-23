@@ -1,3 +1,4 @@
+**Required**: no  
 **Default**: empty
 
 The `error` directive specifies the error type and the error message to

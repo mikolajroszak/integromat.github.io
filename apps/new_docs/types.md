@@ -3,6 +3,7 @@ title: Object Types
 layout: apps
 ---
 
+{% raw %}
 
 # Integromat Data Types
 
@@ -150,3 +151,4 @@ Example:
 ]
 ```
 
+{% endraw %}
