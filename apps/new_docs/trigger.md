@@ -32,6 +32,7 @@ layout: apps
   - [`body`](#pagination-body)
 
 # Making requests
+---
 
 In order to make the simplest request, the only thing you have to
 specify is a URL in the `url` directive. You can then specify the
@@ -57,38 +58,47 @@ All Available request-related directives are shown in the table below:
 ## Detailed request directive description
 
 ### `url`
+---
 
 {% include_relative directives/url.md %}
 
 ### `method`
+---
 
 {% include_relative directives/method.md %}
 
 ### `headers`
+---
 
 {% include_relative directives/headers.md %}
 
 ### `qs`
+---
 
 {% include_relative directives/qs.md %}
 
 ### `body`
+---
 
 {% include_relative directives/body.md %}
 
 ### `type` {#request-type}
+---
 
 {% include_relative directives/request.type.md %}
 
 ### `temp` {#request-temp}
+---
 
 {% include_relative directives/request.temp.md %}
 
 ### `condition`
+---
 
 {% include_relative directives/condition.md %}
 
 # Handling responses
+---
 
 By default the module will output whatever it got from the remote
 server.
