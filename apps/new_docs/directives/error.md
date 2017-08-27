@@ -22,14 +22,31 @@ code >= 400 will be received.
 You are also able to to specify different error messages based on
 different status codes. The error object has the following attributes:
 {% raw %}
-| Key                 | Type                              | Description                                                                    |
-| ------------------- | --------------------------------- | ------------------------------------------------------------------------------ |
-| **value**           | [IML String](types.md#iml-string) | An expression that parses an error message from response body.                 |
-| **type**            | [IML String](types.md#iml-string) | An expression that specifies the error type.                                   |
-| **{{status code}}** | Error Specification               | An object that customizes the error message and type based on the status code. |
+| Key                                      | Type                              | Description                                                                    |
+| ---                                      | ---                               | ---                                                                            |
+| [**message**](#error-message)            | [IML String](types.md#iml-string) | An expression that parses an error message from response body.                 |
+| [**type**](#error-type)                  | [IML String](types.md#iml-string) | An expression that specifies the error type.                                   |
+| [**\<status code>**](#error-status-code) | Error Specification               | An object that customizes the error message and type based on the status code. |
 {% endraw %}
 
-##### Available Error Types
+### `error.message` {#error-message}
+**Required**: yes  
+**Default**: empty
+
+The `error.message` directive specifies the message that the error will
+contain. It can be a statically specified string, or it can point to a
+message in, for example, response body or headers.
+
+### `error.type` {#error-type}
+**Required**: no  
+**Default**: RuntimeError
+
+The `error.type` directive specifies a type of the error message.
+Different error types are handled differently by Integromat. The default
+error type is `RuntimeError`. You can read about all available error
+types in the list below.
+
+**Available Error Types**
 
 - **`RuntimeError`** - Primary error type. Execution is interrupted and
   rolled back.
@@ -50,6 +67,17 @@ different status codes. The error object has the following attributes:
   interrupt execution. If incomplete executions are enabled, execution
   is interrupted and the state is stored. User is able to repair the
   data and resume execution.
+
+### `error.\<status-code> {#error-status-code}
+
+**Required**: no  
+**Default**: empty
+
+You are able to specify custom errors for different status codes by
+specifying the status code as the key in the `error` directive object,
+and using the same error specification as a value. See examples below.
+
+**Examples**:
 
 Here is a simple example of an error message with type
 {% raw %}

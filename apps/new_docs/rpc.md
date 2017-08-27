@@ -1,17 +1,17 @@
 ---
-title: Trigger Module - Reference Documentation
+title: RPC Module - Reference Documentation
 layout: apps
 ---
 
-The Trigger Module is a special module that saves the information about
-what was the last item processed and continues the execution from that
-item, if there are some. It can also be configured to:
-- Process all available and wait for new ones, without repeated processing of old item
-- Process items starting from a specific date and time
-- Process items starting with a specific item
+The RPC Module is a module that is used to fetch additional data for
+other modules. The user cannot select it or invoke it from other
+modules.
 
-Use this module when you need to process items sequentially in order
-they were created/updated.
+Use this module when you need to fetch additional data for other
+modules.
+
+**Note**: RPCs have special output specifications, so look at
+[RPC Types](#rpc-types) to output correct data from your RPCs.
 
 # Index
 
@@ -25,11 +25,6 @@ they were created/updated.
   - [`temp`](#request-temp)
   - [`condition`](#condition)
 - [Handling responses](#handling-responses)
-  - [`trigger`](#trigger)
-    - [`type`](#trigger-type)
-    - [`order`](#trigger-order)
-    - [`id`](#trigger-id)
-    - [`date`](#trigger-date)
   - [`type`](#response-type)
   - [`valid`](#valid)
   - [`limit`](#limit)
@@ -49,14 +44,19 @@ they were created/updated.
   - [`headers`](#pagination-headers)
   - [`qs`](#pagination-qs)
   - [`body`](#pagination-body)
-- [Epoch panel](#epoch-panel)
+- [Request-less/Static mode](#static-mode)
+- [RPC Types](#rpc-types)
+  - [Options RPC](#options-rpc)
+  - [Fields RPC](#fields-rpc)
+  - [Samples RPC](#samples-rpc)
+  - [Epoch RPC](#epoch-rpc)
 
 # Making requests
 
 In order to make the simplest request, the only thing you have to
 specify is a URL in the `url` directive. You can then specify the
 request method via the `method` directive, add query string parameters
-in the `qs` directive and headers in `headers` directive
+in the `qs` directive and headers in `headers` directive.
 
 All Available request-related directives are shown in the table below:
 
@@ -82,7 +82,7 @@ All Available request-related directives are shown in the table below:
 
 ### `url`
 
-{% include_relative directives/url.md module="trigger" %}
+{% include_relative directives/url.md module="rpc" %}
 
 ### `method`
 
@@ -122,7 +122,6 @@ response. All of them must be placed inside the `response` collection.
 
 | Key                          | Type                                                                       | Description                                                                     |
 | :--------------------------- | :---------------------------------------------------------------           | :------------------------------------------------------------------------------ |
-| [**trigger**](#trigger)      | Trigger Specification                                                      | Collection of directives controlling trigger logic                              |
 | [**type**](#response-type)   | [String](other/types.md#string) or Type Specification                      | Specifies how data are parsed from body.                                        |
 | [**valid**](#valid)          | [IML String](other/types.md#iml-string)                                    | An expression that parses whether the response is valid or not.                 |
 | [**limit**](#limit)          | [IML String](other/types.md#iml-string) or [Number](other/types.md#number) | Controls the maximum number of returned items by the module.                    |
@@ -132,120 +131,6 @@ response. All of them must be placed inside the `response` collection.
 | [**output**](#output)        | Any [IML Type](other/types.md#iml-types)                                   | Describes structure of the output bundle.                                       |
 
 ## Detailed response directive description
-
-### `trigger`
-
-The trigger collection specifies directives that will control how the
-trigger will work and how your data will be processed
-
-| Key                           | Type                                    | Description                                                   |
-| :---------------------------- | :----------------------------------     | :------------------------------------------------------------ |
-| [**type**](#trigger-type)     | `date` or `id`                          | Specifies how the trigger will behave and sort items          |
-| [**order**](#trigger-order)   | `asc` or `desc`                         | Specifies in what order the remote API returns items          |
-| [**id**](#trigger-id)         | [IML String](other/types.md#iml-string) | Must return current item's Id                                 |
-| [**date**](#trigger-date)     | [IML String](other/types.md#iml-string) | When used, must return current item's create/update timestamp |
-
-### `trigger.type` {#trigger-type}
-
-**Required**: yes  
-**Default**: empty  
-**Values**: `id` or `date`
-
-The `trigger.type` directive specifies how the trigger will sort and
-iterate through items.
-
-If the processed item has a create/update timestamp, then `date` should
-be used as a value, and a correct getter should be specified in
-`trigger.date` directive. The trigger will then sort all items by their
-date and id fields and return only unprocessed items.
-
-If the processed item does not have a create/update timestamp, but only
-an id, then `id` should be used as a value, and a correct getter should
-be specified in `trigger.id` directive.
-
-### `trigger.order` {#trigger-order}
-
-**Required**: yes  
-**Default**: empty  
-**Values**: `asc`, `desc` or `unordered`
-
-The `trigger.order` directive specifies in what order the remote API is
-returning items - descending, ascending or unordered. This information
-is needed to correctly determine if there are more pages to be fetched
-or no. It is also needed to correctly sort the incoming items and
-display them to the user in ascending order.
-
-So if the API is returning items in ascending order (low to high), then
-`asc` should be used. If the API is returning items in descending order
-(high to low), then `desc` should be used. If the API is returning items
-in no appernt order, then `unordered` should be used.
-
-### `trigger.id` {#trigger-id}
-
-**Required**: yes  
-**Default**: empty
-
-This directive specifies the item's id. It must always be present. For
-example, if your item looks like this
-
-```json
-{
-    "id": 24,
-    "name": "Fred",
-    "friend_count": 5
-}
-```
-{% raw %}
-Then you should specify your `trigger.id` directive like this:
-`{{item.id}}`
-
-```json
-{
-    "response": {
-        "trigger": {
-            "id": "{{item.id}}"
-        }
-    }
-}
-```
-{% endraw %}
-
-### `trigger.date` {#trigger-date}
-
-**Required**: yes  
-**Default**: empty
-
-This directive specifies the item's date. It must be specified when the
-`trigger.type` is set to `date`. Note that `trigger.id` must always be
-specified.
-
-For example, if your item looks like this
-
-```json
-{
-    "id": 24,
-    "name": "Fred",
-    "friend_count": 5,
-    "created_date": "2017-07-05T13:05"
-}
-```
-
-{% raw %}
-Then you should specify your `trigger.date` directive like this:
-`{{item.created_date}}`, and your trigger collection might look
-something like this
-
-```json
-{
-    "response": {
-        "trigger": {
-            "id": "{{item.id}}",
-            "date": "{{item.created_date}}"
-        }
-    }
-}
-```
-{% endraw %}
 
 ### `type` {#response-type}
 
@@ -257,7 +142,7 @@ something like this
 
 ### `limit`
 
-{% include_relative directives/limit.md module="trigger" %}
+{% include_relative directives/limit.md module="rpc" %}
 
 ### `error`
 
@@ -265,7 +150,7 @@ something like this
 
 ### `iterate`
 
-{% include_relative directives/iterate.md module="trigger" %}
+{% include_relative directives/iterate.md module="rpc" %}
 
 ### `temp` {#response-temp}
 
@@ -275,20 +160,167 @@ something like this
 
 {% include_relative directives/output.md %}
 
+**Note**: Remote Procedures must return items in a strictly specified
+schema. Look at [RPC Types](#rpc-types) for different types of schemas.
+
 # Pagination (`pagination` directive) {#pagination}
 
 {% include_relative directives/pagination.md %}
 
-# Epoch panel
+# Request-less/Static mode {#static-mode}
 
-![Epoch panel from Google Contacts module](images/epoch-panel.png)
+{% include_relative sections/static_mode.md %}
 
-The Epoch panel is a feature of Trigger Module that lets the user select
-which items are to be processed. The user can select to process **All
-Items**, **Starting from now**, **Starting from a specific date**, and
-**Starting with a specific item**.
+# RPC Types
 
-The Epoch Panel is configured in the Epoch Panel section of the Trigger
-Module configuration. The underlying data for **Select the first item**
-is retrieved via the [Epoch RPC](rpc.md#epoch-rpc).
+There are 4 types of remote procedures available in Integromat:
+- [**Options RPC**](#options-rpc) - This RPC is used to retrieve items
+  for a dynamic select box
+- [**Fields RPC**](#fields-rpc) - This RPC is used to retrieve fields
+  for a dynamic form
+- [**Samples RPC**](#samples-rpc) - This RPC is used to retrieve dynamic
+  sample data
+- [**Epoch RPC**](#epoch-rpc) - This RPC is used to retrieve items for
+  the Epoch Panel. You specify it by overriding specific trigger
+  properties.
 
+## Options RPC
+
+In order to correctly return options from your remote procedure, the
+`output` section of `response` must contain `label` and `value` items.
+
+{% raw %}
+```json
+{
+    "response": {
+        "iterate": "{{body}}",
+        "output": {
+            "label": "{{item.username}}",
+            "value": "{{item.id}}",
+			"default": true
+        }
+    }
+}
+```
+{% endraw %}
+
+`label` is what the user sees when selecting items from the select box,
+and `value` is what this field will get after the user selects an item.
+`default` is optional and when true, option is pre-selected.
+
+**Example usage of a select box with dynamic options:**
+
+```json
+[
+    {
+        "name": "param",
+        "type": "select",
+        "options": "rpc://NameOfMyRemoteProcedure"
+    }
+]
+```
+
+## Fields RPC
+
+Loading fields from a remote server is as easy as adding a couple of
+properties to `output`, namely `name` and `type`, which are required.
+You can also specify any property that is used to specify module
+[Parameters](other/parameters.md), because conceptually they are the
+same. The only difference is that
+[Parameters](other/parameters.md) are static, and 'Field' RPC is
+dynamic.
+
+**Note**: you should properly convert field types between your service
+types and Integromat types. For that you could use
+[Custom IML Functions](other/functions.md)
+
+{% raw %}
+```json
+{
+    "response": {
+        "iterate": "{{body}}",
+        "output": {
+            "name": "{{item.key}}",
+            "label": "{{item.label}}",
+            "type": "text",
+            "required": "{{item.isRequired == 1}}"
+        }
+    }
+}
+```
+{% endraw %}
+
+**Example usage of dynamic parameters:**
+
+```json
+"rpc://NameOfMyRemoteProcedure"
+```
+
+**Example usage of select box with nested dynamic parameters:**
+
+```json
+[
+    {
+        "name": "param",
+        "type": "select",
+        "options": [
+            {
+                "label": "Option 1",
+                "value": 1,
+                "nested": "rpc://NameOfMyRemoteProcedure"
+            }
+        ]
+    }
+]
+```
+
+## Samples RPC
+
+Sample is an object representing one item. If you iterate, don't forget
+to set limit to 1 so only one item is processed for sample data.
+
+```json
+{
+    "response": {
+        "limit": 1,
+        "iterate": "{{body}}",
+        "output": "{{item}}"
+    }
+}
+```
+
+**Example usage of dynamic samples:**
+
+```json
+"rpc://NameOfMyRemoteProcedure"
+```
+
+## Epoch RPC
+
+![Epoch panel items](images/epoch-panel-select-manually.png)
+
+*red - `label` and green - `date`*
+
+To correctly return
+[Epoch Panel](#epoch-panel) items from your remote procedure,
+the `output` section of `response` should contain only 2 items: `label`
+and `date`. The limit is used to limit the number of items displayed to
+the user when using the Epoch panel.
+
+```json
+{
+    "response": {
+        "limit": 500,
+        "iterate": "{{body}}",
+        "output": {
+            "label": "{{item.name}}",
+            "date": "{{item.date_created}}"
+        }
+    }
+}
+```
+
+`label` is what the user sees when selecting items from the select box
+(highlighted in *red* on the screenshot above), and `date` is when
+this item was created (updated), which the user will see in gray
+(highlighted in *green* on the screenshot above).

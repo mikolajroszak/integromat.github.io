@@ -1,37 +1,62 @@
 **Required**: no  
 **Default**: empty
 
-This directive is the first step to processing ang outputting multiple
-items by your module. It specifies the container for your data and a
-filter, ot filter out items that you don't want to be present in the
-module output.
+This directive specifies the container of an array of items that the
+module must process and output. In its simplest form `iterate` directive
+is an [IML String](types.md#iml-string), which points to a container of
+your items (must be an array):
 
-In it's simplest form, the `iterate` directive is just an
-[IML String](types.md#iml-string). You can also specify this directive
-as an object, in which case it will have these directives:
+{% raw %}
+```json
+{
+    "response": {
+        "iterate": "{{body.data}}"
+    }
+}
+```
+{% endraw %}
 
-| Key             | Type                              | Description                                                      |
-| ---             | ---                               | ---                                                              |
-| **`container`** | [IML String](types.md#iml-string) | Specifies the array with the data you want to process            |
-| **`condition`** | [IML String](types.md#iml-string) | Specifies a filter that can be used to filter out unwanted items |
+When you need to filter out some items from processing, you are able to
+specify the `iterate` directive as an object, in which case it will have
+the following properties:
 
-**`container`**  
-Must point to an array of items that are to be processed.
+| Key                                   | Type                              | Description                                                      |
+| ---                                   | ---                               | ---                                                              |
+| [**`container`**](#iterate-container) | [IML String](types.md#iml-string) | Specifies the array with the data you want to process            |
+| [**`condition`**](#iterate-condition) | [IML String](types.md#iml-string) | Specifies a filter that can be used to filter out unwanted items |
 
-**`condition`**  
+### `iterate.container` {#iterate-container}
+
+**Required**: yes  
+**Default**: empty
+
+The `iterate.container` directive must point to an array of items that
+are to be processed.
+
+### `condition` {#iterate-condition}
+
+**Required**: no  
+**Default**: empty
+
 An optional expression to filter out unwanted items.
 Must resolve into a [Boolean](types.md#boolean) value, where `true` will
 pass the item through, and `false` will drop the item from processing.
-The `item` variable is available in this directive.
+The `item` variable is available in this directive, which represents
+the current item being processed.
 
+**Important**:  
 The `iterate` directive changes the behaviour of the `output` directive
 and allows you to use a special variable `item` that represents the
-currently processed item. You are able to use this `item` variable in
-the `output` directive to access properties of iterated objects. {% if
-include.module == "trigger" %} You are also able to access the `item`
-variable in `trigger.id` and `trigger.date` directives to specify item
-id and item date respectively. {% endif %} For example you are iterating
-this response:
+currently processed item. The `output` directive will be executed for
+each item in the container that you have specified in
+`iterate.container`. You are able to use the `item` variable in the
+`output` directive to access properties of iterated objects.
+{% if include.module == "trigger" %}
+You are also able to access the `item` variable in `trigger.id` and
+`trigger.date` directives to specify item id and item date respectively.
+{% endif %}
+
+For example you are iterating this response:
 ```json
 {
     "success": true,

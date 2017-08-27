@@ -1,17 +1,14 @@
 ---
-title: Trigger Module - Reference Documentation
+title: Search Module - Reference Documentation
 layout: apps
 ---
 
-The Trigger Module is a special module that saves the information about
-what was the last item processed and continues the execution from that
-item, if there are some. It can also be configured to:
-- Process all available and wait for new ones, without repeated processing of old item
-- Process items starting from a specific date and time
-- Process items starting with a specific item
+The Search Module is a module that makes a request (or several) and
+returns multiple results. It doesn't have state nor any internal complex
+logic.
 
-Use this module when you need to process items sequentially in order
-they were created/updated.
+Use this module when you need to allow the user to search for items or
+to simply return multiple items.
 
 # Index
 
@@ -25,11 +22,6 @@ they were created/updated.
   - [`temp`](#request-temp)
   - [`condition`](#condition)
 - [Handling responses](#handling-responses)
-  - [`trigger`](#trigger)
-    - [`type`](#trigger-type)
-    - [`order`](#trigger-order)
-    - [`id`](#trigger-id)
-    - [`date`](#trigger-date)
   - [`type`](#response-type)
   - [`valid`](#valid)
   - [`limit`](#limit)
@@ -49,14 +41,14 @@ they were created/updated.
   - [`headers`](#pagination-headers)
   - [`qs`](#pagination-qs)
   - [`body`](#pagination-body)
-- [Epoch panel](#epoch-panel)
+- [Request-less/Static mode](#static-mode)
 
 # Making requests
 
 In order to make the simplest request, the only thing you have to
 specify is a URL in the `url` directive. You can then specify the
 request method via the `method` directive, add query string parameters
-in the `qs` directive and headers in `headers` directive
+in the `qs` directive and headers in `headers` directive.
 
 All Available request-related directives are shown in the table below:
 
@@ -82,7 +74,7 @@ All Available request-related directives are shown in the table below:
 
 ### `url`
 
-{% include_relative directives/url.md module="trigger" %}
+{% include_relative directives/url.md module="action" %}
 
 ### `method`
 
@@ -122,7 +114,6 @@ response. All of them must be placed inside the `response` collection.
 
 | Key                          | Type                                                                       | Description                                                                     |
 | :--------------------------- | :---------------------------------------------------------------           | :------------------------------------------------------------------------------ |
-| [**trigger**](#trigger)      | Trigger Specification                                                      | Collection of directives controlling trigger logic                              |
 | [**type**](#response-type)   | [String](other/types.md#string) or Type Specification                      | Specifies how data are parsed from body.                                        |
 | [**valid**](#valid)          | [IML String](other/types.md#iml-string)                                    | An expression that parses whether the response is valid or not.                 |
 | [**limit**](#limit)          | [IML String](other/types.md#iml-string) or [Number](other/types.md#number) | Controls the maximum number of returned items by the module.                    |
@@ -132,120 +123,6 @@ response. All of them must be placed inside the `response` collection.
 | [**output**](#output)        | Any [IML Type](other/types.md#iml-types)                                   | Describes structure of the output bundle.                                       |
 
 ## Detailed response directive description
-
-### `trigger`
-
-The trigger collection specifies directives that will control how the
-trigger will work and how your data will be processed
-
-| Key                           | Type                                    | Description                                                   |
-| :---------------------------- | :----------------------------------     | :------------------------------------------------------------ |
-| [**type**](#trigger-type)     | `date` or `id`                          | Specifies how the trigger will behave and sort items          |
-| [**order**](#trigger-order)   | `asc` or `desc`                         | Specifies in what order the remote API returns items          |
-| [**id**](#trigger-id)         | [IML String](other/types.md#iml-string) | Must return current item's Id                                 |
-| [**date**](#trigger-date)     | [IML String](other/types.md#iml-string) | When used, must return current item's create/update timestamp |
-
-### `trigger.type` {#trigger-type}
-
-**Required**: yes  
-**Default**: empty  
-**Values**: `id` or `date`
-
-The `trigger.type` directive specifies how the trigger will sort and
-iterate through items.
-
-If the processed item has a create/update timestamp, then `date` should
-be used as a value, and a correct getter should be specified in
-`trigger.date` directive. The trigger will then sort all items by their
-date and id fields and return only unprocessed items.
-
-If the processed item does not have a create/update timestamp, but only
-an id, then `id` should be used as a value, and a correct getter should
-be specified in `trigger.id` directive.
-
-### `trigger.order` {#trigger-order}
-
-**Required**: yes  
-**Default**: empty  
-**Values**: `asc`, `desc` or `unordered`
-
-The `trigger.order` directive specifies in what order the remote API is
-returning items - descending, ascending or unordered. This information
-is needed to correctly determine if there are more pages to be fetched
-or no. It is also needed to correctly sort the incoming items and
-display them to the user in ascending order.
-
-So if the API is returning items in ascending order (low to high), then
-`asc` should be used. If the API is returning items in descending order
-(high to low), then `desc` should be used. If the API is returning items
-in no appernt order, then `unordered` should be used.
-
-### `trigger.id` {#trigger-id}
-
-**Required**: yes  
-**Default**: empty
-
-This directive specifies the item's id. It must always be present. For
-example, if your item looks like this
-
-```json
-{
-    "id": 24,
-    "name": "Fred",
-    "friend_count": 5
-}
-```
-{% raw %}
-Then you should specify your `trigger.id` directive like this:
-`{{item.id}}`
-
-```json
-{
-    "response": {
-        "trigger": {
-            "id": "{{item.id}}"
-        }
-    }
-}
-```
-{% endraw %}
-
-### `trigger.date` {#trigger-date}
-
-**Required**: yes  
-**Default**: empty
-
-This directive specifies the item's date. It must be specified when the
-`trigger.type` is set to `date`. Note that `trigger.id` must always be
-specified.
-
-For example, if your item looks like this
-
-```json
-{
-    "id": 24,
-    "name": "Fred",
-    "friend_count": 5,
-    "created_date": "2017-07-05T13:05"
-}
-```
-
-{% raw %}
-Then you should specify your `trigger.date` directive like this:
-`{{item.created_date}}`, and your trigger collection might look
-something like this
-
-```json
-{
-    "response": {
-        "trigger": {
-            "id": "{{item.id}}",
-            "date": "{{item.created_date}}"
-        }
-    }
-}
-```
-{% endraw %}
 
 ### `type` {#response-type}
 
@@ -257,7 +134,7 @@ something like this
 
 ### `limit`
 
-{% include_relative directives/limit.md module="trigger" %}
+{% include_relative directives/limit.md module="action" %}
 
 ### `error`
 
@@ -265,7 +142,7 @@ something like this
 
 ### `iterate`
 
-{% include_relative directives/iterate.md module="trigger" %}
+{% include_relative directives/iterate.md module="action" %}
 
 ### `temp` {#response-temp}
 
@@ -279,16 +156,7 @@ something like this
 
 {% include_relative directives/pagination.md %}
 
-# Epoch panel
+# Request-less/Static mode {#static-mode}
 
-![Epoch panel from Google Contacts module](images/epoch-panel.png)
-
-The Epoch panel is a feature of Trigger Module that lets the user select
-which items are to be processed. The user can select to process **All
-Items**, **Starting from now**, **Starting from a specific date**, and
-**Starting with a specific item**.
-
-The Epoch Panel is configured in the Epoch Panel section of the Trigger
-Module configuration. The underlying data for **Select the first item**
-is retrieved via the [Epoch RPC](rpc.md#epoch-rpc).
+{% include_relative sections/static_mode.md %}
 

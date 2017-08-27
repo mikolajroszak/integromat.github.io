@@ -2,9 +2,18 @@
 
 **Required**: no  
 **Default**: `automatic` (based on `Content-Type` header)  
-**Values**: `automatic`, `json`, `urlencoded`, `text` (or `string` or `raw`), `binary` and `xml`.
+**Values**: `automatic`, `json`, `urlencoded`, `text` (or `string` or
+`raw`), `binary` and `xml`.
 
-When `automatic` is used for the response type, Integromat tries to parse the response based on it's `Content-Type` header. Currently, Integromat recognizes only `text/plain`, `application/json`, `application/x-www-form-urlencoded` and `application/xml`(or `text/xml`). When specifying other types, Integromat ignores the `Content-Type` header and tries to parse the response in the format that you have specified.
+This directive specifies how to parse the data received from the server.
+
+When `automatic` is used for the response type, Integromat tries to
+parse the response based on it's `Content-Type` header. Currently,
+Integromat recognizes only `text/plain`, `application/json`,
+`application/x-www-form-urlencoded` and `application/xml`(or
+`text/xml`). When specifying other types, Integromat ignores the
+`Content-Type` header and tries to parse the response in the format that
+you have specified.
 
 Simple example:
 ```json
@@ -16,13 +25,28 @@ Simple example:
 ```
 This will parse all responses as JSON.
 
-You can specify the type as a string, in which case every response, no matter the status code, will be processed based on your selected type. You can also specify type as a special object, where keys are status codes, wildcard or status code ranges. This was made because some services return different responses with different status codes: JSON on success and TEXT on error, for example.
+You can specify the type as a string, in which case every response, no
+matter the status code, will be processed based on your selected type.
 
-The `*` (wildcard) represents all responses and should be always present.  
-The `[number]-[number]` represents a status code range  
-The `[number]` represents a status code  
-Note that when specifying ranges, when multiple ranges include the same status code, the smallest range is selected. The `*` has the largest range (1-999) and a number has the smallest range, for example `455` is `455-455` range.  
-Ranges are counted inclusive from both sides, so if you specify a range `401-402`, both the `401` and `402` status codes will be processed by this range.
+##### Custom response types based on status code
+
+You can also specify type as a special object, where keys are status
+codes, wildcard or status code ranges. This was made because some
+services return different responses with different status codes: JSON on
+success and TEXT on error, for example.
+
+**Type object specification**:
+- The `*` (wildcard) represents all responses and should be always
+present.  
+- The `[number]-[number]` represents a status code range
+- The `[number]` represents a status code  
+  Note that when specifying ranges, when multiple ranges include the
+  same status code, the smallest range is selected. The `*` has the
+  largest range (1-999) and a number has the smallest range, for example
+  `455` is `455-455` range.  
+  Ranges are counted inclusive from both sides, so if you specify a
+  range `401-402`, both the `401` and `402` status codes will be
+  processed by this range.
 
 Example:
 ```json
