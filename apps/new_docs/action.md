@@ -8,7 +8,7 @@ and returns a result. It doesn't have state nor any internal complex
 logic.
 
 Use this module when you need to fire a one-shot action against a
-service.
+service, for example to retrieve, update, or delete an item.
 
 # Index
 
@@ -24,7 +24,6 @@ service.
 - [Handling responses](#handling-responses)
   - [`type`](#response-type)
   - [`valid`](#valid)
-  - [`limit`](#limit)
   - [`error`](#error)
     - [`message`](#error-message)
     - [`type`](#error-type)
@@ -34,6 +33,7 @@ service.
     - [`condition`](#iterate-condition)
   - [`temp`](#response-temp)
   - [`output`](#output)
+  - [`wrapper`](#wrapper)
 - [Pagination](#pagination)
   - [`mergeWithParent`](#pagination-merge-with-parent)
   - [`url`](#pagination-url)
@@ -42,13 +42,54 @@ service.
   - [`qs`](#pagination-qs)
   - [`body`](#pagination-body)
 - [Request-less/Static mode](#static-mode)
+- [IML variables](#iml-variables)
+- [Error handling](#error-handling)
+
+# Specification
+
+```
+{
+    "url",
+    "method",
+    "qs",
+    "headers",
+    "body",
+    "type",
+    "ca",
+    "condition",
+    "response": {
+        "type",
+        "type": {
+            "*",
+            "[Number[-Number]]"
+        },
+        "temp",
+        "iterate",
+        "iterate": {
+            "container",
+            "filter"
+        },
+        "output",
+        "wrapper",
+        "valid",
+        "error",
+        "error": {
+            "message",
+            "type",
+            "[Number]": {
+                "message",
+                "type"
+            }
+        }
+    }
+}
+```
+You can make multiple requests by placing above objects in an array.
 
 # Making requests
 
-In order to make the simplest request, the only thing you have to
-specify is a URL in the `url` directive. You can then specify the
-request method via the `method` directive, add query string parameters
-in the `qs` directive and headers in `headers` directive.
+In order to make a request you have to specify at least a `url`.
+All other directives are not required.
 
 All Available request-related directives are shown in the table below:
 
@@ -112,15 +153,15 @@ server.
 Below is the collection of directives controlling processing of the
 response. All of them must be placed inside the `response` collection.
 
-| Key                          | Type                                                                       | Description                                                                     |
-| :--------------------------- | :---------------------------------------------------------------           | :------------------------------------------------------------------------------ |
-| [**type**](#response-type)   | [String](other/types.md#string) or Type Specification                      | Specifies how data are parsed from body.                                        |
-| [**valid**](#valid)          | [IML String](other/types.md#iml-string)                                    | An expression that parses whether the response is valid or not.                 |
-| [**limit**](#limit)          | [IML String](other/types.md#iml-string) or [Number](other/types.md#number) | Controls the maximum number of returned items by the module.                    |
-| [**error**](#error)          | [IML String](other/types.md#iml-string) or Error Specification             | Specifies how the error is shown to the user, if it would occur.                |
-| [**iterate**](#iterate)      | [IML String](other/types.md#iml-string) or Iterate Specification           | Specifies how response items (in case of multiple) are retrieved and processed. |
-| [**temp**](#response-temp)   | [IML Object](other/types.md#iml-object)                                    | Creates/updates variable `temp` which you can access in subsequent requests.    |
-| [**output**](#output)        | Any [IML Type](other/types.md#iml-types)                                   | Describes structure of the output bundle.                                       |
+| Key                          | Type                                                             | Description                                                                     |
+| :--------------------------- | :--------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| [**type**](#response-type)   | [String](other/types.md#string) or Type Specification            | Specifies how data are parsed from body.                                        |
+| [**valid**](#valid)          | [IML String](other/types.md#iml-string)                          | An expression that parses whether the response is valid or not.                 |
+| [**error**](#error)          | [IML String](other/types.md#iml-string) or Error Specification   | Specifies how the error is shown to the user, if it would occur.                |
+| [**iterate**](#iterate)      | [IML String](other/types.md#iml-string) or Iterate Specification | Specifies how response items (in case of multiple) are retrieved and processed. |
+| [**temp**](#response-temp)   | [IML Object](other/types.md#iml-object)                          | Creates/updates variable `temp` which you can access in subsequent requests.    |
+| [**output**](#output)        | Any [IML Type](other/types.md#iml-types)                         | Describes structure of the output bundle.                                       |
+| [**wrapper**](#wrapper)      | Any [IML Type](other/types.md#iml-types)                         | Describes structure of the output bundle.                                       |
 
 ## Detailed response directive description
 
@@ -131,10 +172,6 @@ response. All of them must be placed inside the `response` collection.
 ### `valid`
 
 {% include_relative directives/valid.md %}
-
-### `limit`
-
-{% include_relative directives/limit.md module="action" %}
 
 ### `error`
 
@@ -152,6 +189,10 @@ response. All of them must be placed inside the `response` collection.
 
 {% include_relative directives/output.md %}
 
+### `wrapper`
+
+{% include_relative directives/wrapper.md %}
+
 # Pagination (`pagination` directive) {#pagination}
 
 {% include_relative directives/pagination.md %}
@@ -160,3 +201,10 @@ response. All of them must be placed inside the `response` collection.
 
 {% include_relative sections/static_mode.md %}
 
+# IML variables
+
+{% include_relative sections/iml-variables.md module="action" %}
+
+# Error handling
+
+{% include_relative sections/error-handling.md %}

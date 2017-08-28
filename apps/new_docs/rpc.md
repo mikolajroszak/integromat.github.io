@@ -50,13 +50,13 @@ modules.
   - [Fields RPC](#fields-rpc)
   - [Samples RPC](#samples-rpc)
   - [Epoch RPC](#epoch-rpc)
+- [IML variables](action.md#iml-variables)
+- [Error handling](action.md#error-handling)
 
 # Making requests
 
-In order to make the simplest request, the only thing you have to
-specify is a URL in the `url` directive. You can then specify the
-request method via the `method` directive, add query string parameters
-in the `qs` directive and headers in `headers` directive.
+In order to make a request you have to specify at least a `url`.
+All other directives are not required.
 
 All Available request-related directives are shown in the table below:
 
@@ -324,3 +324,11 @@ the user when using the Epoch panel.
 (highlighted in *red* on the screenshot above), and `date` is when
 this item was created (updated), which the user will see in gray
 (highlighted in *green* on the screenshot above).
+
+# IML variables
+
+{% include_relative sections/iml-variables.md module="rpc" %}
+
+# Error handling
+
+{% include_relative sections/error-handling.md %}

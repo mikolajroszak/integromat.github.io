@@ -42,13 +42,13 @@ to simply return multiple items.
   - [`qs`](#pagination-qs)
   - [`body`](#pagination-body)
 - [Request-less/Static mode](#static-mode)
+- [IML variables](action.md#iml-variables)
+- [Error handling](action.md#error-handling)
 
 # Making requests
 
-In order to make the simplest request, the only thing you have to
-specify is a URL in the `url` directive. You can then specify the
-request method via the `method` directive, add query string parameters
-in the `qs` directive and headers in `headers` directive.
+In order to make a request you have to specify at least a `url`.
+All other directives are not required.
 
 All Available request-related directives are shown in the table below:
 
@@ -160,3 +160,10 @@ response. All of them must be placed inside the `response` collection.
 
 {% include_relative sections/static_mode.md %}
 
+# IML variables
+
+{% include_relative sections/iml-variables.md module="search" %}
+
+# Error handling
+
+{% include_relative sections/error-handling.md %}

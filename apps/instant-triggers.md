@@ -5,7 +5,7 @@ layout: apps
 
 {% raw %}
 
-Instant Trigger is a [Trigger](trigger.html) that is executed immediately when the data arrvies to Integromat. There is nothing to configure in this module except interface. The data processing is handled by selected [Webhook](webhook.html).
+Instant Trigger is a [Trigger](trigger.html) that is executed immediately when the data arrives to Integromat. There is nothing to configure in this module except interface. The data processing is handled by selected [Webhook](webhook.html).
 
 ## Fetch additional data for each bundle
 

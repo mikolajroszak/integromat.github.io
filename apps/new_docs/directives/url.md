@@ -1,9 +1,9 @@
-**Required**: {% if include.module == "trigger" %}yes{% else %}no{% endif %}  
+**Required**: {% if include.module == "trigger" or include.module == "connection" %}yes{% else %}no{% endif %}  
 **Default**: empty
 
 This directive specifies the request URL.
-{% if include.module == "trigger" %}
-It must be always present. The Trigger does not support
+{% if include.module == "trigger" or include.module == "connection" %}
+It must be always present. The {{include.module}} does not support
 request-less/static mode, because it makes no sense for this particular
 module.
 {% else %}

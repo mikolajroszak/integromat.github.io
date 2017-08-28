@@ -50,15 +50,16 @@ they were created/updated.
   - [`qs`](#pagination-qs)
   - [`body`](#pagination-body)
 - [Epoch panel](#epoch-panel)
+- [IML variables](action.md#iml-variables)
+- [Error handling](action.md#error-handling)
 
 # Making requests
 
-In order to make the simplest request, the only thing you have to
-specify is a URL in the `url` directive. You can then specify the
-request method via the `method` directive, add query string parameters
-in the `qs` directive and headers in `headers` directive
+In order to make a request you have to specify at least a `url`.
+All other directives are not required.
 
-All Available request-related directives are shown in the table below:
+All available request-related directives (Request Specification object)
+are shown in the table below:
 
 | Key                                   | Type                                                                         | Description                                                                      |
 | :------------------------------------ | :-----------------------------------------------------------------           | :------------------------------------------------------------------------------- |
@@ -283,12 +284,44 @@ something like this
 
 ![Epoch panel from Google Contacts module](images/epoch-panel.png)
 
-The Epoch panel is a feature of Trigger Module that lets the user select
-which items are to be processed. The user can select to process **All
-Items**, **Starting from now**, **Starting from a specific date**, and
-**Starting with a specific item**.
+The epoch panel is a popup window offered to the user when selecting
+where to start from when configuring a trigger.
 
-The Epoch Panel is configured in the Epoch Panel section of the Trigger
-Module configuration. The underlying data for **Select the first item**
-is retrieved via the [Epoch RPC](rpc.md#epoch-rpc).
+If the `Epoch configuration` is defined, then there will be at least 1
+item available in the Epoch panel: `Select`, which will allow the user
+to select an item the user wants to start with. Other items depend on
+the trigger type. The underlying data is retrieved via the
+[Epoch RPC](rpc.md#epoch-rpc).
 
+If the trigger `type` is `id`, then there will be one more option
+available: `All`, which will allow the user to process all the items
+from the beginning. But, if the `Epoch configuration` was not specified,
+then the Epoch panel will not be available to the user.
+
+On the other hand, if the trigger `type` is `date`, then 3 additional
+options will be available for the user: `All`, `From date` and `From
+now`. `From date` will allow the user to start processing items from a
+specific day forward and from now is the same as `From date`, except the
+date is automatically set to current date and time.
+
+### Retrieving data for the Epoch panel
+
+You can customize how the data for the Epoch panel will be retrieved by
+providing specific request overrides in the `Epoch` section. These
+overrides will then be merged with trigger configuration to retrieve the
+data.
+
+You also have to provide the labels and dates for the returned items.
+You can do that with with the `response.output` directive. Dates are not required, but it
+would be better to provide them for better user experience.
+
+Please see [Epoch RPC](rpc.md#epoch-rpc) on how to specify labels
+and dates for the output.
+
+# IML variables
+
+{% include_relative sections/iml-variables.md module="trigger" %}
+
+# Error handling
+
+{% include_relative sections/error-handling.md %}

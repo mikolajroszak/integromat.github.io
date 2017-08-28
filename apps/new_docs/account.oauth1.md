@@ -1,16 +1,21 @@
 ---
-title: Basic Connection - Reference Documentation
+title: OAuth 1 Connection - Reference Documentation
 layout: apps
 ---
 
 Connection is a link between Integromat and 3rd party service/app.
+OAuth1 connection handles the token exchange automatically.
 
-Use this account when authenticating via an API key, username/password,
-or when your service does not support OAuth 1/2.
+Before you start configuring you OAuth1 connection, you need to create
+an app on a 3rd-party service. When creating an app, use
+`https://www.integromat.com/oauth/cb/app` as a callback URL.
+
 
 # Index
 
-- [Making requests](#making-requests)
+- [Specification](#specification)
+- [OAuth 1 authentication process](#oauth-1-authentication-process)
+- [Request options](#request-options)
   - [`url`](#url)
   - [`method`](#method)
   - [`headers`](#headers)
@@ -19,7 +24,8 @@ or when your service does not support OAuth 1/2.
   - [`type`](#request-type)
   - [`temp`](#request-temp)
   - [`condition`](#condition)
-- [Handling responses](#handling-responses)
+  - [`oauth`](#oauth)
+- [Response options](#response-options)
   - [`type`](#response-type)
   - [`valid`](#valid)
   - [`error`](#error)
@@ -28,12 +34,36 @@ or when your service does not support OAuth 1/2.
     - [`\<status-code>`](#error-status-code)
   - [`temp`](#response-temp)
   - [`data`](#data)
-  - [`metadata`](#metadata)
 - [IML variables](#iml-variables)
 - [Error handling](#error-handling)
 
 # Specification
 
+Specifies token exchange and connection validation process. This
+specification does **not** inherit from Base.
+
+{% raw %}
+```
+{
+    "oauth": {
+        "consumer_key": String,
+        "consumer_secret": String,
+        "private_key": String,
+        "token": String,
+        "token_secret": String,
+        "verifier": String,
+        "signature_method": String,
+        "transport_method": String,
+        "body_hash": String
+    },
+    "requestToken": Request Specification,
+    "authorize": Request Specification,
+    "accessToken": Request Specification,
+    "info": Request Specification
+}
+```
+
+Request Specification:
 ```
 {
     "url": String,
@@ -43,7 +73,17 @@ or when your service does not support OAuth 1/2.
     "body": Object,
     "type": Enum[json, urlencoded, multipart/form-data, binary, text/string/raw]
     "ca": String
-    "condition": String|Boolean,
+    "oauth": {
+        "consumer_key": String,
+        "consumer_secret": String,
+        "private_key": String,
+        "token": String,
+        "token_secret": String,
+        "verifier": String,
+        "signature_method": String,
+        "transport_method": String,
+        "body_hash": String
+    },
     "response": {
         "type": Enum[json, urlencoded, xml, text/string/raw/binary, automatic]
         "type": {
@@ -67,9 +107,35 @@ or when your service does not support OAuth 1/2.
     }
 }
 ```
-You can make multiple requests by placing above objects in an array.
+{% endraw %}
 
-# Making requests
+# OAuth 1 authentication process
+
+OAuth 1 authentication process consist of multiple steps. You are able
+to select the steps you need and ignore the steps that you don't - just
+fill in the needed sections and delete unneeded.
+
+| Key                 | Type                                      | Description                                                                                                                                                                     |
+| ---                 | ---                                       | ---                                                                                                                                                                             |
+| [**oauth**](#oauth) | OAuth 1 Parameters Specification          | Allows you to specify special OAuth1 properties to simplify OAuth1 header generation.                                                                                           |
+| **requestToken**    | [Request Specification](#request-options) | Describes a request that retrieves the request token                                                                                                                            |
+| **authorize**       | [Request Specification](#request-options) | Describes authorization process.                                                                                                                                                |
+| **accessToken**     | [Request Specification](#request-options) | Describes a request that exchanges credentials and the request token for the access token.                                                                                      |
+| **info**            | [Request Specification](#request-options) | Describes a request that validates a connection. The most common way to validate the connection is to call a method to get user's information. Most of the APIs have such a method. |
+
+When using an OAuth1 connection there is a special object available
+globally: the `oauth` object. You can use it in connection specification
+as well as in module specification to avoid generating the OAuth1 header
+yourself. This object is available in the root of the connection
+specification, in the Base and in Request Specification
+
+If the `oauth` object is present in the root of the connection
+specification, it will be merged with each of the directives described
+above. If you wish to override some properties of the root object, you
+can do so in the respective directive by specifying the `oauth` object
+and overriding the properties.
+
+# Request Options
 
 In order to make a request you have to specify at least a `url` and
 `oauth` directives. All other directives are not required.
@@ -87,7 +153,8 @@ All Available request-related directives are shown in the table below:
 | [**type**](#request-type)             | [String](other/types.md#string)                                              | Specifies how data are serialized into body.                                     |
 | [**temp**](#request-temp)             | [IML Object](other/types.md#iml-object)                                      | Creates/updates the `temp` variable                                              |
 | [**condition**](#condition)           | [IML String](other/types.md#iml-string) or [Boolean](other/types.md#boolean) | Determines if to execute current request or never.                               |
-| [**response**](#handling-responses)   | Response Specification                                                       | Collection of directives controlling processing of the response.                 |
+| [**response**](#response-options)     | Response Specification                                                       | Collection of directives controlling processing of the response.                 |
+| [**oauth**](#oauth)                   | OAuth 1 Parameters Specification                                             | Collection of directives containing parameters for the OAuth 1 protocol.         |
 
 ## Multiple Requests
 
@@ -127,7 +194,11 @@ All Available request-related directives are shown in the table below:
 
 {% include_relative directives/condition.md %}
 
-# Handling responses
+### `oauth`
+
+{% include_relative directives/oauth.md module="connection" %}
+
+# Response options
 
 Connections don't have any output. They are used to authenticate the
 user in a remote service and to store data about this authentication,
@@ -143,8 +214,6 @@ response. All of them must be placed inside the `response` collection.
 | [**error**](#error)          | [IML String](other/types.md#iml-string) or Error Specification   | Specifies how the error is shown to the user, if it would occur.                |
 | [**temp**](#response-temp)   | [IML Object](other/types.md#iml-object)                          | Creates/updates variable `temp` which you can access in subsequent requests.    |
 | [**data**](#data)            | [IML Object](other/types.md#iml-object)                          | Updates this connection's data                                                     |
-| [**metadata**](#metadata)    | Metadata Specification                                           | Updates this connection's metadata                                                 |
-| [**uid**](#uid)              | [IML String](other/types.md#iml-string)                          | An expression that parses user's id from response body.                         |
 
 ## Detailed response directive description
 
@@ -164,7 +233,7 @@ response. All of them must be placed inside the `response` collection.
 
 {% include_relative directives/response.temp.md %}
 
-### `data` {#data}
+### `data`
 
 The `data` directive saves data to the connection so that it can be later
 accessed from a module through the `connection` variable. It functions
@@ -192,54 +261,11 @@ connection like so:
     }
 }
 ```
-
-{% endraw %}
-
-
-### `metadata` {#metadata}
-
-The `metadata` directive allows you to save user's name or username (or
-any other text field) so that multiple connections of the same type
-could be easily recognized. A common practice is to save either username
-or email or full name to metadata.
-
-The metadata object has 2 properties: `value` and `type`. `value` is
-used to store the value and `type` is used to specify what the value is.
-Currently there are only 2 types: `email` and `text`.
-
-**Example**:
-{% raw %}
-```json
-{
-    "response": {
-        "metadata": {
-            "value": "{{body.data.username}}",
-            "type": "text"
-        }
-    }
-}
-```
-{% endraw %}
-
-### `uid` {#uid}
-
-This directive allows you to save the user's remote service Id. This is
-required when using Shared Webhooks.
-
-**Example**:
-{% raw %}
-```json
-{
-    "response": {
-        "uid": "{{body.data.id}}"
-    }
-}
-```
 {% endraw %}
 
 # IML variables
 
-{% include_relative sections/iml-variables.md module="connection" type="basic" %}
+{% include_relative sections/iml-variables.md module="connection" type="oauth1" %}
 
 # Error handling
 
