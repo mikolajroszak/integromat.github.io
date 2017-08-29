@@ -54,12 +54,14 @@ Additional variables available to Pagination and Response Objects:
 - **`item`** - When iterating this variable represents the current item
   that is being iterated.
 {% endif %}
-Additional variables available in [Attach](rpc.md#attach-rpc) Remote
+{% if include.module == "rpc" %}
+Additional variables available in [Attach](#attach-rpc) Remote
 Procedure.
 - **`webhook.id`** - Internal webhook ID.
 - **`webhook.url`** - Webhook URL, which you need to register in the
   remote service.
 
-Additional variables available in [Detach](rpc.md#detach-rpc) Remote
+Additional variables available in [Detach](#detach-rpc) Remote
 Procedure.
 - **`webhook`** - Contains webhook's data collection.
+{% endif %}

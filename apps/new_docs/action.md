@@ -12,40 +12,47 @@ service, for example to retrieve, update, or delete an item.
 
 # Index
 
-- [Making requests](#making-requests)
-  - [`url`](#url)
-  - [`method`](#method)
-  - [`headers`](#headers)
-  - [`qs`](#qs)
-  - [`body`](#body)
-  - [`type`](#request-type)
-  - [`temp`](#request-temp)
-  - [`condition`](#condition)
-- [Handling responses](#handling-responses)
-  - [`type`](#response-type)
-  - [`valid`](#valid)
-  - [`error`](#error)
-    - [`message`](#error-message)
-    - [`type`](#error-type)
-    - [`\<status-code>`](#error-status-code)
-  - [`iterate`](#iterate)
-    - [`container`](#iterate-container)
-    - [`condition`](#iterate-condition)
-  - [`temp`](#response-temp)
-  - [`output`](#output)
-  - [`wrapper`](#wrapper)
-- [Pagination](#pagination)
-  - [`mergeWithParent`](#pagination-merge-with-parent)
-  - [`url`](#pagination-url)
-  - [`method`](#pagination-method)
-  - [`headers`](#pagination-headers)
-  - [`qs`](#pagination-qs)
-  - [`body`](#pagination-body)
-- [Request-less/Static mode](#static-mode)
-- [IML variables](#iml-variables)
-- [Error handling](#error-handling)
+- [Communication](#communication)
+  - [Specification](#specification)
+  - [Making requests](#making-requests)
+    - [`url`](#url)
+    - [`method`](#method)
+    - [`headers`](#headers)
+    - [`qs`](#qs)
+    - [`body`](#body)
+    - [`type`](#request-type)
+    - [`temp`](#request-temp)
+    - [`condition`](#condition)
+  - [Multiple requests](#multiple-requests)
+  - [Handling responses](#handling-responses)
+    - [`type`](#response-type)
+    - [`valid`](#valid)
+    - [`error`](#error)
+      - [`message`](#error-message)
+      - [`type`](#error-type)
+      - [`\<status-code>`](#error-status-code)
+    - [`iterate`](#iterate)
+      - [`container`](#iterate-container)
+      - [`condition`](#iterate-condition)
+    - [`temp`](#response-temp)
+      - [`output`](#output)
+      - [`wrapper`](#wrapper)
+  - [Pagination](#pagination)
+    - [`mergeWithParent`](#pagination-merge-with-parent)
+    - [`url`](#pagination-url)
+    - [`method`](#pagination-method)
+    - [`headers`](#pagination-headers)
+    - [`qs`](#pagination-qs)
+    - [`body`](#pagination-body)
+  - [Request-less/Static mode](#static-mode)
+  - [IML variables](#iml-variables)
+  - [Error handling](#error-handling)
+- [Parameters](#parameters)
+- [Interface](#interface)
 
-# Specification
+# Communication
+
+## Specification
 
 ```
 {
@@ -59,12 +66,14 @@ service, for example to retrieve, update, or delete an item.
     "condition",
     "response": {
         "type",
+        or
         "type": {
             "*",
             "[Number[-Number]]"
         },
         "temp",
         "iterate",
+        or
         "iterate": {
             "container",
             "filter"
@@ -73,6 +82,7 @@ service, for example to retrieve, update, or delete an item.
         "wrapper",
         "valid",
         "error",
+        or
         "error": {
             "message",
             "type",
@@ -84,9 +94,8 @@ service, for example to retrieve, update, or delete an item.
     }
 }
 ```
-You can make multiple requests by placing above objects in an array.
 
-# Making requests
+## Making Requests
 
 In order to make a request you have to specify at least a `url`.
 All other directives are not required.
@@ -107,11 +116,6 @@ All Available request-related directives are shown in the table below:
 | [**response**](#handling-responses)   | Response Specification                                                       | Collection of directives controlling processing of the response.                 |
 | [**pagination**](#pagination)         | Pagination Specification                                                     | Collection of directives controlling pagination logic.                           |
 
-## Multiple Requests
-
-{% include_relative sections/multiple_requests.md %}
-
-## Detailed request directive description
 
 ### `url`
 
@@ -145,7 +149,11 @@ All Available request-related directives are shown in the table below:
 
 {% include_relative directives/condition.md %}
 
-# Handling responses
+## Multiple Requests
+
+{% include_relative sections/multiple_requests.md %}
+
+## Handling responses
 
 By default the module will output whatever it got from the remote
 server.
@@ -162,8 +170,6 @@ response. All of them must be placed inside the `response` collection.
 | [**temp**](#response-temp)   | [IML Object](other/types.md#iml-object)                          | Creates/updates variable `temp` which you can access in subsequent requests.    |
 | [**output**](#output)        | Any [IML Type](other/types.md#iml-types)                         | Describes structure of the output bundle.                                       |
 | [**wrapper**](#wrapper)      | Any [IML Type](other/types.md#iml-types)                         | Describes structure of the output bundle.                                       |
-
-## Detailed response directive description
 
 ### `type` {#response-type}
 
@@ -193,18 +199,37 @@ response. All of them must be placed inside the `response` collection.
 
 {% include_relative directives/wrapper.md %}
 
-# Pagination (`pagination` directive) {#pagination}
+## Pagination (`pagination` directive) {#pagination}
 
 {% include_relative directives/pagination.md %}
 
-# Request-less/Static mode {#static-mode}
+## Request-less/Static mode {#static-mode}
 
 {% include_relative sections/static_mode.md %}
 
-# IML variables
+## IML variables
 
 {% include_relative sections/iml-variables.md module="action" %}
 
-# Error handling
+## Error handling
 
 {% include_relative sections/error-handling.md %}
+
+# Parameters
+
+{% include_relative sections/parameters.md %}
+
+# Interface
+
+Describes structure of output bundles. Specification is the same as
+[Parameters](#parameters).
+
+```json
+[
+    {
+        "name": "id",
+        "type": "uinteger",
+        "label": "User ID"
+    }
+]
+```

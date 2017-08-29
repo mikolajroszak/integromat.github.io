@@ -33,7 +33,7 @@ the following properties:
 The `iterate.container` directive must point to an array of items that
 are to be processed.
 
-### `condition` {#iterate-condition}
+### `iterate.condition` {#iterate-condition}
 
 **Required**: no  
 **Default**: empty

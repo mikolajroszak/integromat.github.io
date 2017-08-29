@@ -183,6 +183,10 @@ There are 4 types of remote procedures available in Integromat:
 - [**Epoch RPC**](#epoch-rpc) - This RPC is used to retrieve items for
   the Epoch Panel. You specify it by overriding specific trigger
   properties.
+- [**Attach Hook RPC**](#attach-rpc) - This RPC is used to dynamically
+  create a webhook and attach it to Integromat.
+- [**Detach Hook RPC**](#detach-rpc) - This RPC is used to dynamically
+  delete a webhook and detach it from Integromat.
 
 ## Options RPC
 
@@ -319,6 +323,10 @@ the user when using the Epoch panel.
     }
 }
 ```
+
+## Attach Hook RPC {#attach-rpc}
+
+## Detach Hook RPC {#detach-rpc}
 
 `label` is what the user sees when selecting items from the select box
 (highlighted in *red* on the screenshot above), and `date` is when
