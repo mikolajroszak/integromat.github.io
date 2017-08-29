@@ -46,6 +46,13 @@ Additional variables available to Response Object:
 - **`output`** - When using the `wrapper` directive, the `output`
   variable represents the result of the `output` directive
 
+Additional variables available after using the `iterate` directive, i.e.
+in `wrapper` or `pagination` directives:
+- **`iterate.container.first`** - Represents the first item of the array
+  you iterated
+- **`iterate.container.first`** - Represents the last item of the array
+  you iterated
+
 Additional variables available to Pagination and Response Objects:
 - **`body`** - Contains the body that was retrieved from the last
   request.
