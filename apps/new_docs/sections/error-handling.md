@@ -2,7 +2,7 @@ In every module or connection, you are able to specify 2 directives in
 the `response` section that are responsible for handling errors:
 `valid` and `error`.
 
-## HTTP 4** and 5** error handling
+### HTTP 4** and 5** error handling
 
 When the response is returned with 4** or 5** HTTP Status Code, this is
 automatically considered as an error. If the `error` directive is not
@@ -12,13 +12,13 @@ returned
 But you are able to customize the message, shown to the user with the
 `error` or `error.message` directive.
 
-## HTTP 2** and 3** error handling
+### HTTP 2** and 3** error handling
 
 Some APIs signal about an error with a 200 status code and a flag in the
 body. For this scenario, there is a `valid` directive, which tells that
 the response is valid or not.
 
-## Custom error handling based on status codes
+### Custom error handling based on status codes
 
 You are also able to further customize what error message will be shown
 to the user based on the status code. To do that, just add your status
@@ -41,7 +41,7 @@ code to the `error` directive and fill it in as one:
 }
 ```
 
-## Examples
+### Examples
 
 Simple error message:
 
