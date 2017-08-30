@@ -121,13 +121,13 @@ OAuth 1 authentication process consist of multiple steps. You are able
 to select the steps you need and ignore the steps that you don't - just
 fill in the needed sections and delete unneeded.
 
-| Key                 | Type                                      | Description                                                                                                                                                                     |
-| ---                 | ---                                       | ---                                                                                                                                                                             |
-| [**oauth**](#oauth) | OAuth 1 Parameters Specification          | Allows you to specify special OAuth1 properties to simplify OAuth1 header generation.                                                                                           |
-| **requestToken**    | [Request Specification](#request-options) | Describes a request that retrieves the request token                                                                                                                            |
-| **authorize**       | [Request Specification](#request-options) | Describes authorization process.                                                                                                                                                |
-| **accessToken**     | [Request Specification](#request-options) | Describes a request that exchanges credentials and the request token for the access token.                                                                                      |
-| **info**            | [Request Specification](#request-options) | Describes a request that validates a connection. The most common way to validate the connection is to call a method to get user's information. Most of the APIs have such a method. |
+| Key                   | Type                                      | Description                                                                                                                                                                         |
+| ---                   | ---                                       | ---                                                                                                                                                                                 |
+| [**`oauth`**](#oauth) | OAuth 1 Parameters Specification          | Allows you to specify special OAuth1 properties to simplify OAuth1 header generation.                                                                                               |
+| **`requestToken`**    | [Request Specification](#request-options) | Describes a request that retrieves the request token                                                                                                                                |
+| **`authorize`**       | [Request Specification](#request-options) | Describes authorization process.                                                                                                                                                    |
+| **`accessToken`**     | [Request Specification](#request-options) | Describes a request that exchanges credentials and the request token for the access token.                                                                                          |
+| **`info`**            | [Request Specification](#request-options) | Describes a request that validates a connection. The most common way to validate the connection is to call a method to get user's information. Most of the APIs have such a method. |
 
 When using an OAuth1 connection there is a special object available
 globally: the `oauth` object. You can use it in connection specification
@@ -148,19 +148,19 @@ In order to make a request you have to specify at least a `url` and
 
 All Available request-related directives are shown in the table below:
 
-| Key                                   | Type                                                                         | Description                                                                      |
-| :------------------------------------ | :-----------------------------------------------------------------           | :------------------------------------------------------------------------------- |
-| [**url**](#url)                       | [IML String](articles/types.md#iml-string)                                      | Specifies the URL that should be called.                                         |
-| [**method**](#method)                 | [IML String](articles/types.md#iml-string)                                      | Specifies the HTTP method, that should be used when issuing a request.           |
-| [**headers**](#headers)               | [IML Flat Object](articles/types.md#iml-flat-object)                            | A single level (flat) collection, that specifies request headers.                |
-| [**qs**](#qs)                         | [IML Flat Object](articles/types.md#iml-flat-object)                            | A single level (flat) collection that specifies request query string parameters. |
-| **ca**                                | [IML String](articles/types.md#iml-string)                                      | Custom Certificate Authority                                                     |
-| [**body**](#body)                     | Any [IML Type](articles/types.md#iml-types)                                     | Specifies a request body.                                                        |
-| [**type**](#request-type)             | [String](articles/types.md#string)                                              | Specifies how data are serialized into body.                                     |
-| [**temp**](#request-temp)             | [IML Object](articles/types.md#iml-object)                                      | Creates/updates the `temp` variable                                              |
-| [**condition**](#condition)           | [IML String](articles/types.md#iml-string) or [Boolean](articles/types.md#boolean) | Determines if to execute current request or never.                               |
-| [**response**](#response-options)     | Response Specification                                                       | Collection of directives controlling processing of the response.                 |
-| [**oauth**](#oauth)                   | OAuth 1 Parameters Specification                                             | Collection of directives containing parameters for the OAuth 1 protocol.         |
+| Key                                   | Type                                                                               | Description                                                                      |
+| :------------------------------------ | :-----------------------------------------------------------------                 | :------------------------------------------------------------------------------- |
+| [**`url`**](#url)                     | [IML String](articles/types.md#iml-string)                                         | Specifies the URL that should be called.                                         |
+| [**`method`**](#method)               | [IML String](articles/types.md#iml-string)                                         | Specifies the HTTP method, that should be used when issuing a request.           |
+| [**`headers`**](#headers)             | [IML Flat Object](articles/types.md#iml-flat-object)                               | A single level (flat) collection, that specifies request headers.                |
+| [**`qs`**](#qs)                       | [IML Flat Object](articles/types.md#iml-flat-object)                               | A single level (flat) collection that specifies request query string parameters. |
+| **`ca`**                              | [IML String](articles/types.md#iml-string)                                         | Custom Certificate Authority                                                     |
+| [**`body`**](#body)                   | Any [IML Type](articles/types.md#iml-types)                                        | Specifies a request body.                                                        |
+| [**`type`**](#request-type)           | [String](articles/types.md#string)                                                 | Specifies how data are serialized into body.                                     |
+| [**`temp`**](#request-temp)           | [IML Object](articles/types.md#iml-object)                                         | Creates/updates the `temp` variable                                              |
+| [**`condition`**](#condition)         | [IML String](articles/types.md#iml-string) or [Boolean](articles/types.md#boolean) | Determines if to execute current request or never.                               |
+| [**`response`**](#response-options)   | Response Specification                                                             | Collection of directives controlling processing of the response.                 |
+| [**`oauth`**](#oauth)                 | OAuth 1 Parameters Specification                                                   | Collection of directives containing parameters for the OAuth 1 protocol.         |
 
 ### `url`
 
@@ -211,13 +211,13 @@ like an API key, or access key or anything else.
 Below is the collection of directives controlling processing of the
 response. All of them must be placed inside the `response` collection.
 
-| Key                          | Type                                                             | Description                                                                     |
-| :--------------------------- | :--------------------------------------------------------------- | :------------------------------------------------------------------------------ |
-| [**type**](#response-type)   | [String](articles/types.md#string) or Type Specification            | Specifies how data are parsed from body.                                        |
-| [**valid**](#valid)          | [IML String](articles/types.md#iml-string)                          | An expression that parses whether the response is valid or not.                 |
-| [**error**](#error)          | [IML String](articles/types.md#iml-string) or Error Specification   | Specifies how the error is shown to the user, if it would occur.                |
-| [**temp**](#response-temp)   | [IML Object](articles/types.md#iml-object)                          | Creates/updates variable `temp` which you can access in subsequent requests.    |
-| [**data**](#data)            | [IML Object](articles/types.md#iml-object)                          | Updates this connection's data                                                     |
+| Key                          | Type                                                              | Description                                                                     |
+| :--------------------------- | :---------------------------------------------------------------  | :------------------------------------------------------------------------------ |
+| [**`type`**](#response-type) | [String](articles/types.md#string) or Type Specification          | Specifies how data are parsed from body.                                        |
+| [**`valid`**](#valid)        | [IML String](articles/types.md#iml-string)                        | An expression that parses whether the response is valid or not.                 |
+| [**`error`**](#error)        | [IML String](articles/types.md#iml-string) or Error Specification | Specifies how the error is shown to the user, if it would occur.                |
+| [**`temp`**](#response-temp) | [IML Object](articles/types.md#iml-object)                        | Creates/updates variable `temp` which you can access in subsequent requests.    |
+| [**`data`**](#data)          | [IML Object](articles/types.md#iml-object)                        | Updates this connection's data                                                  |
 
 ### `type` {#response-type}
 
