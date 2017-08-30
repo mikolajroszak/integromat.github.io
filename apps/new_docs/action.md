@@ -64,6 +64,8 @@ service, for example to retrieve, update, or delete an item.
     "type",
     "ca",
     "condition",
+    "temp",
+    "oauth",
     "response": {
         "type",
         or
@@ -91,6 +93,14 @@ service, for example to retrieve, update, or delete an item.
                 "type"
             }
         }
+    },
+    "pagination": {
+        "mergeWithParent",
+        "url",
+        "method",
+        "headers",
+        "qs",
+        "body"
     }
 }
 ```
@@ -102,19 +112,19 @@ All other directives are not required.
 
 All Available request-related directives are shown in the table below:
 
-| Key                                   | Type                                                                         | Description                                                                      |
-| :------------------------------------ | :-----------------------------------------------------------------           | :------------------------------------------------------------------------------- |
-| [**url**](#url)                       | [IML String](other/types.md#iml-string)                                      | Specifies the URL that should be called.                                         |
-| [**method**](#method)                 | [IML String](other/types.md#iml-string)                                      | Specifies the HTTP method, that should be used when issuing a request.           |
-| [**headers**](#headers)               | [IML Flat Object](other/types.md#iml-flat-object)                            | A single level (flat) collection, that specifies request headers.                |
-| [**qs**](#qs)                         | [IML Flat Object](other/types.md#iml-flat-object)                            | A single level (flat) collection that specifies request query string parameters. |
-| **ca**                                | [IML String](other/types.md#iml-string)                                      | Custom Certificate Authority                                                     |
-| [**body**](#body)                     | Any [IML Type](other/types.md#iml-types)                                     | Specifies a request body.                                                        |
-| [**type**](#request-type)             | [String](other/types.md#string)                                              | Specifies how data are serialized into body.                                     |
-| [**temp**](#request-temp)             | [IML Object](other/types.md#iml-object)                                      | Creates/updates the `temp` variable                                              |
-| [**condition**](#condition)           | [IML String](other/types.md#iml-string) or [Boolean](other/types.md#boolean) | Determines if to execute current request or never.                               |
-| [**response**](#handling-responses)   | Response Specification                                                       | Collection of directives controlling processing of the response.                 |
-| [**pagination**](#pagination)         | Pagination Specification                                                     | Collection of directives controlling pagination logic.                           |
+| Key                                   | Type                                                                               | Description                                                                      |
+| :------------------------------------ | :-----------------------------------------------------------------                 | :------------------------------------------------------------------------------- |
+| [**`url`**](#url)                     | [IML String](articles/types.md#iml-string)                                         | Specifies the URL that should be called.                                         |
+| [**`method`**](#method)               | [IML String](articles/types.md#iml-string)                                         | Specifies the HTTP method, that should be used when issuing a request.           |
+| [**`headers`**](#headers)             | [IML Flat Object](articles/types.md#iml-flat-object)                               | A single level (flat) collection, that specifies request headers.                |
+| [**`qs`**](#qs)                       | [IML Flat Object](articles/types.md#iml-flat-object)                               | A single level (flat) collection that specifies request query string parameters. |
+| **`ca`**                              | [IML String](articles/types.md#iml-string)                                         | Custom Certificate Authority                                                     |
+| [**`body`**](#body)                   | Any [IML Type](articles/types.md#iml-types)                                        | Specifies a request body.                                                        |
+| [**`type`**](#request-type)           | [String](articles/types.md#string)                                                 | Specifies how data are serialized into body.                                     |
+| [**`temp`**](#request-temp)           | [IML Object](articles/types.md#iml-object)                                         | Creates/updates the `temp` variable                                              |
+| [**`condition`**](#condition)         | [IML String](articles/types.md#iml-string) or [Boolean](articles/types.md#boolean) | Determines if to execute current request or never.                               |
+| [**`response`**](#handling-responses) | Response Specification                                                             | Collection of directives controlling processing of the response.                 |
+| [**`pagination`**](#pagination)       | Pagination Specification                                                           | Collection of directives controlling pagination logic.                           |
 
 
 ### `url`
@@ -161,15 +171,15 @@ server.
 Below is the collection of directives controlling processing of the
 response. All of them must be placed inside the `response` collection.
 
-| Key                          | Type                                                             | Description                                                                     |
-| :--------------------------- | :--------------------------------------------------------------- | :------------------------------------------------------------------------------ |
-| [**type**](#response-type)   | [String](other/types.md#string) or Type Specification            | Specifies how data are parsed from body.                                        |
-| [**valid**](#valid)          | [IML String](other/types.md#iml-string)                          | An expression that parses whether the response is valid or not.                 |
-| [**error**](#error)          | [IML String](other/types.md#iml-string) or Error Specification   | Specifies how the error is shown to the user, if it would occur.                |
-| [**iterate**](#iterate)      | [IML String](other/types.md#iml-string) or Iterate Specification | Specifies how response items (in case of multiple) are retrieved and processed. |
-| [**temp**](#response-temp)   | [IML Object](other/types.md#iml-object)                          | Creates/updates variable `temp` which you can access in subsequent requests.    |
-| [**output**](#output)        | Any [IML Type](other/types.md#iml-types)                         | Describes structure of the output bundle.                                       |
-| [**wrapper**](#wrapper)      | Any [IML Type](other/types.md#iml-types)                         | Describes structure of the output bundle.                                       |
+| Key                          | Type                                                                | Description                                                                     |
+| :--------------------------- | :---------------------------------------------------------------    | :------------------------------------------------------------------------------ |
+| [**`type`**](#response-type) | [String](articles/types.md#string) or Type Specification            | Specifies how data are parsed from body.                                        |
+| [**`valid`**](#valid)        | [IML String](articles/types.md#iml-string)                          | An expression that parses whether the response is valid or not.                 |
+| [**`error`**](#error)        | [IML String](articles/types.md#iml-string) or Error Specification   | Specifies how the error is shown to the user, if it would occur.                |
+| [**`iterate`**](#iterate)    | [IML String](articles/types.md#iml-string) or Iterate Specification | Specifies how response items (in case of multiple) are retrieved and processed. |
+| [**`temp`**](#response-temp) | [IML Object](articles/types.md#iml-object)                          | Creates/updates variable `temp` which you can access in subsequent requests.    |
+| [**`output`**](#output)      | Any [IML Type](articles/types.md#iml-types)                         | Describes structure of the output bundle.                                       |
+| [**`wrapper`**](#wrapper)    | Any [IML Type](articles/types.md#iml-types)                         | Describes structure of the output bundle.                                       |
 
 ### `type` {#response-type}
 

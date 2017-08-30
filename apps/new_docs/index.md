@@ -12,9 +12,9 @@ layout: apps
 - [OAuth 1 Connection](account.oauth1.md)
 - [OAuth 2 Connection](account.oauth2.md)
 
-## Other
-- [Types](other/types.md)
-- [IML](other/iml.md)
-- [Functions](other/functions.md)
-- [Parameters](other/parameters.md)
-- [Base](other/base.md)
+## Articles
+- [Getting started](articles/getting-started.md)
+- [Types](articles/types.md)
+- [IML](articles/iml.md)
+- [Functions](articles/functions.md)
+- [Base](articles/base.md)

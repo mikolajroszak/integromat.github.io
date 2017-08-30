@@ -11,6 +11,7 @@ immediately after the remote server sends data.
 an Instant Trigger and pair it with a webhook.
 
 # Index
+
 - [Specification](#specification)
   - [`respond`](#respond)
     - [`status`](#respond-status)
@@ -24,6 +25,9 @@ an Instant Trigger and pair it with a webhook.
     - [`container`](#iterate-container)
     - [`condition`](#iterate-condition)
   - [`output`](#output)
+- [Webhook registration](#webhook-registration)
+  - [Attach](#attach)
+  - [Detach](#detach)
 
 # Specification
 
@@ -66,8 +70,8 @@ you do not specify the `output` directive, items will be returned as-is.
 | ---                               | ---                                                              | ---                                                                             |
 | [**respond**](#respond)           | Response Specification                                           | Specifies how to respond to the remote server                                   |
 | [**verification**](#verification) | Verification Specification                                       | Specifies how to reply to the remote server, if it needs a confirmation         |
-| [**iterate**](#iterate)           | [IML String](other/types.md#iml-string) or Iterate Specification | Specifies how response items (in case of multiple) are retrieved and processed. |
-| [**output**](#output)             | Any [IML Type](other/types.md#iml-types)                         | Describes structure of the output bundle.                                       |
+| [**iterate**](#iterate)           | [IML String](articles/types.md#iml-string) or Iterate Specification | Specifies how response items (in case of multiple) are retrieved and processed. |
+| [**output**](#output)             | Any [IML Type](articles/types.md#iml-types)                         | Describes structure of the output bundle.                                       |
 
 ## `respond`
 

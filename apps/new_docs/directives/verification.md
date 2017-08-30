@@ -10,10 +10,10 @@ help you.
 
 | Key                                 | Type                                              | Description                                                       |
 | ---                                 | ---                                               | ---                                                               |
-| [**`condition`**](#verification-condition)    | [IML String](other/types.md#iml-string)                 | Specifies how data are serialized into body.                      |
-| [**`respond`**](#verification-respond)  | [IML String](other/types.md#iml-string)                 | Specifies the response status code.                               |
-| [**`headers`**](#iterate-condition) | [IML Flat Object](other/types.md#iml-flat-object) | A single level (flat) collection, that specifies request headers. |
-| [**`body`**](#iterate-condition)    | Any [IML Type](other/types.md#iml-types)          | Specifies the response body.                                      |
+| [**`condition`**](#verification-condition)    | [IML String](articles/types.md#iml-string)                 | Specifies how data are serialized into body.                      |
+| [**`respond`**](#verification-respond)  | [IML String](articles/types.md#iml-string)                 | Specifies the response status code.                               |
+| [**`headers`**](#iterate-condition) | [IML Flat Object](articles/types.md#iml-flat-object) | A single level (flat) collection, that specifies request headers. |
+| [**`body`**](#iterate-condition)    | Any [IML Type](articles/types.md#iml-types)          | Specifies the response body.                                      |
 
 **Example**:
 ```json

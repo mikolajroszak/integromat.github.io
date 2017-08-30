@@ -6,10 +6,10 @@ or a verification request.
 
 | Key                                 | Type                                              | Description                                                       |
 | ---                                 | ---                                               | ---                                                               |
-| [**`type`**](#iterate-container)    | [IML String](other/types.md#iml-string)                 | Specifies how data are serialized into body.                      |
-| [**`status`**](#iterate-condition)  | [IML String](other/types.md#iml-string)                 | Specifies the response status code.                               |
-| [**`headers`**](#iterate-condition) | [IML Flat Object](other/types.md#iml-flat-object) | A single level (flat) collection, that specifies request headers. |
-| [**`body`**](#iterate-condition)    | Any [IML Type](other/types.md#iml-types)          | Specifies the response body.                                      |
+| [**`type`**](#iterate-container)    | [IML String](articles/types.md#iml-string)                 | Specifies how data are serialized into body.                      |
+| [**`status`**](#iterate-condition)  | [IML String](articles/types.md#iml-string)                 | Specifies the response status code.                               |
+| [**`headers`**](#iterate-condition) | [IML Flat Object](articles/types.md#iml-flat-object) | A single level (flat) collection, that specifies request headers. |
+| [**`body`**](#iterate-condition)    | Any [IML Type](articles/types.md#iml-types)          | Specifies the response body.                                      |
 
 
 ### `respond.type` {#respond-type}

@@ -13,31 +13,37 @@ an app on a 3rd-party service. When creating an app, use
 
 # Index
 
-- [Specification](#specification)
-- [OAuth 1 authentication process](#oauth-1-authentication-process)
-- [Request options](#request-options)
-  - [`url`](#url)
-  - [`method`](#method)
-  - [`headers`](#headers)
-  - [`qs`](#qs)
-  - [`body`](#body)
-  - [`type`](#request-type)
-  - [`temp`](#request-temp)
-  - [`condition`](#condition)
-  - [`oauth`](#oauth)
-- [Response options](#response-options)
-  - [`type`](#response-type)
-  - [`valid`](#valid)
-  - [`error`](#error)
-    - [`message`](#error-message)
-    - [`type`](#error-type)
-    - [`\<status-code>`](#error-status-code)
-  - [`temp`](#response-temp)
-  - [`data`](#data)
-- [IML variables](#iml-variables)
-- [Error handling](#error-handling)
+- [Communication](#communication)
+  - [Specification](#specification)
+  - [OAuth 1 authentication process](#oauth-1-authentication-process)
+  - [Request options](#request-options)
+    - [`url`](#url)
+    - [`method`](#method)
+    - [`headers`](#headers)
+    - [`qs`](#qs)
+    - [`body`](#body)
+    - [`type`](#request-type)
+    - [`temp`](#request-temp)
+    - [`condition`](#condition)
+    - [`oauth`](#oauth)
+  - [Multiple requests](#multiple-requests)
+  - [Response options](#response-options)
+    - [`type`](#response-type)
+    - [`valid`](#valid)
+    - [`error`](#error)
+      - [`message`](#error-message)
+      - [`type`](#error-type)
+      - [`\<status-code>`](#error-status-code)
+    - [`temp`](#response-temp)
+    - [`data`](#data)
+  - [IML variables](#iml-variables)
+  - [Error handling](#error-handling)
+- [Parameters](#parameters)
+- [Common data](#common-data)
 
-# Specification
+# Communication
+
+## Specification
 
 Specifies token exchange and connection validation process. This
 specification does **not** inherit from Base.
@@ -109,7 +115,7 @@ Request Specification:
 ```
 {% endraw %}
 
-# OAuth 1 authentication process
+## OAuth 1 authentication process
 
 OAuth 1 authentication process consist of multiple steps. You are able
 to select the steps you need and ignore the steps that you don't - just
@@ -135,7 +141,7 @@ above. If you wish to override some properties of the root object, you
 can do so in the respective directive by specifying the `oauth` object
 and overriding the properties.
 
-# Request Options
+## Request Options
 
 In order to make a request you have to specify at least a `url` and
 `oauth` directives. All other directives are not required.
@@ -144,23 +150,17 @@ All Available request-related directives are shown in the table below:
 
 | Key                                   | Type                                                                         | Description                                                                      |
 | :------------------------------------ | :-----------------------------------------------------------------           | :------------------------------------------------------------------------------- |
-| [**url**](#url)                       | [IML String](other/types.md#iml-string)                                      | Specifies the URL that should be called.                                         |
-| [**method**](#method)                 | [IML String](other/types.md#iml-string)                                      | Specifies the HTTP method, that should be used when issuing a request.           |
-| [**headers**](#headers)               | [IML Flat Object](other/types.md#iml-flat-object)                            | A single level (flat) collection, that specifies request headers.                |
-| [**qs**](#qs)                         | [IML Flat Object](other/types.md#iml-flat-object)                            | A single level (flat) collection that specifies request query string parameters. |
-| **ca**                                | [IML String](other/types.md#iml-string)                                      | Custom Certificate Authority                                                     |
-| [**body**](#body)                     | Any [IML Type](other/types.md#iml-types)                                     | Specifies a request body.                                                        |
-| [**type**](#request-type)             | [String](other/types.md#string)                                              | Specifies how data are serialized into body.                                     |
-| [**temp**](#request-temp)             | [IML Object](other/types.md#iml-object)                                      | Creates/updates the `temp` variable                                              |
-| [**condition**](#condition)           | [IML String](other/types.md#iml-string) or [Boolean](other/types.md#boolean) | Determines if to execute current request or never.                               |
+| [**url**](#url)                       | [IML String](articles/types.md#iml-string)                                      | Specifies the URL that should be called.                                         |
+| [**method**](#method)                 | [IML String](articles/types.md#iml-string)                                      | Specifies the HTTP method, that should be used when issuing a request.           |
+| [**headers**](#headers)               | [IML Flat Object](articles/types.md#iml-flat-object)                            | A single level (flat) collection, that specifies request headers.                |
+| [**qs**](#qs)                         | [IML Flat Object](articles/types.md#iml-flat-object)                            | A single level (flat) collection that specifies request query string parameters. |
+| **ca**                                | [IML String](articles/types.md#iml-string)                                      | Custom Certificate Authority                                                     |
+| [**body**](#body)                     | Any [IML Type](articles/types.md#iml-types)                                     | Specifies a request body.                                                        |
+| [**type**](#request-type)             | [String](articles/types.md#string)                                              | Specifies how data are serialized into body.                                     |
+| [**temp**](#request-temp)             | [IML Object](articles/types.md#iml-object)                                      | Creates/updates the `temp` variable                                              |
+| [**condition**](#condition)           | [IML String](articles/types.md#iml-string) or [Boolean](articles/types.md#boolean) | Determines if to execute current request or never.                               |
 | [**response**](#response-options)     | Response Specification                                                       | Collection of directives controlling processing of the response.                 |
 | [**oauth**](#oauth)                   | OAuth 1 Parameters Specification                                             | Collection of directives containing parameters for the OAuth 1 protocol.         |
-
-## Multiple Requests
-
-{% include_relative sections/multiple_requests.md %}
-
-## Detailed request directive description
 
 ### `url`
 
@@ -198,7 +198,11 @@ All Available request-related directives are shown in the table below:
 
 {% include_relative directives/oauth.md module="connection" %}
 
-# Response options
+## Multiple Requests
+
+{% include_relative sections/multiple_requests.md %}
+
+## Response options
 
 Connections don't have any output. They are used to authenticate the
 user in a remote service and to store data about this authentication,
@@ -209,13 +213,11 @@ response. All of them must be placed inside the `response` collection.
 
 | Key                          | Type                                                             | Description                                                                     |
 | :--------------------------- | :--------------------------------------------------------------- | :------------------------------------------------------------------------------ |
-| [**type**](#response-type)   | [String](other/types.md#string) or Type Specification            | Specifies how data are parsed from body.                                        |
-| [**valid**](#valid)          | [IML String](other/types.md#iml-string)                          | An expression that parses whether the response is valid or not.                 |
-| [**error**](#error)          | [IML String](other/types.md#iml-string) or Error Specification   | Specifies how the error is shown to the user, if it would occur.                |
-| [**temp**](#response-temp)   | [IML Object](other/types.md#iml-object)                          | Creates/updates variable `temp` which you can access in subsequent requests.    |
-| [**data**](#data)            | [IML Object](other/types.md#iml-object)                          | Updates this connection's data                                                     |
-
-## Detailed response directive description
+| [**type**](#response-type)   | [String](articles/types.md#string) or Type Specification            | Specifies how data are parsed from body.                                        |
+| [**valid**](#valid)          | [IML String](articles/types.md#iml-string)                          | An expression that parses whether the response is valid or not.                 |
+| [**error**](#error)          | [IML String](articles/types.md#iml-string) or Error Specification   | Specifies how the error is shown to the user, if it would occur.                |
+| [**temp**](#response-temp)   | [IML Object](articles/types.md#iml-object)                          | Creates/updates variable `temp` which you can access in subsequent requests.    |
+| [**data**](#data)            | [IML Object](articles/types.md#iml-object)                          | Updates this connection's data                                                     |
 
 ### `type` {#response-type}
 
@@ -263,10 +265,19 @@ connection like so:
 ```
 {% endraw %}
 
-# IML variables
+## IML variables
 
 {% include_relative sections/iml-variables.md module="connection" type="oauth1" %}
 
-# Error handling
+## Error handling
 
 {% include_relative sections/error-handling.md %}
+
+# Parameters
+
+{% include_relative sections/parameters.md %}
+
+# Common data
+
+Common data is a collection to store non-user-specific sensitive values
+like salts or secrets. Only connections can access this collection.
