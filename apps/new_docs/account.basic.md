@@ -40,28 +40,31 @@ or when your service does not support OAuth 1/2.
 
 ## Specification
 
-```
+```text
 {
     "url": String,
     "method": Enum[GET, POST, PUT, DELETE, OPTIONS],
     "qs": Flat Object,
     "headers": Flat Object,
-    "body": Object,
-    "type": Enum[json, urlencoded, multipart/form-data, binary, text/string/raw]
+    "body": Object|String|Array,
+    "type": Enum[json, urlencoded, multipart/form-data, binary, text, string, raw]
     "ca": String
     "condition": String|Boolean,
     "temp": Object,
     "response": {
-        "type": Enum[json, urlencoded, xml, text/string/raw/binary, automatic]
+        "type": Enum[json, urlencoded, xml, text, string, raw, binary, automatic]
         or
         "type": {
-            "*": Enum[json, urlencoded, xml, text/string/raw/binary, automatic],
-            "Number[-Number]": Enum[json, urlencoded, xml, text/string/raw/binary, automatic]
+            "*": Enum[json, urlencoded, xml, text, string, raw, binary, automatic],
+            "[Number[-Number]]": Enum[json, urlencoded, xml, text, string, raw, binary, automatic]
         },
         "temp": Object,
         "data": Object,
-        "uid": String (available only in info section),
-        "metadata": String (available only in info section)
+        "uid": String, // available only in info section
+        "metadata": { // available only in info section
+            "type": Enum[text, email],
+            "value": String
+        },
         "valid": String|Boolean,
         "error": String,
         or

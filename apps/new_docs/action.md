@@ -54,53 +54,63 @@ service, for example to retrieve, update, or delete an item.
 
 ## Specification
 
-```
+```text
 {
-    "url",
-    "method",
-    "qs",
-    "headers",
-    "body",
-    "type",
-    "ca",
-    "condition",
-    "temp",
-    "oauth",
+    "url": String,
+    "method": Enum[GET, POST, PUT, DELETE, OPTIONS],
+    "qs": Flat Object,
+    "headers": Flat Object,
+    "body": Object|String|Array,
+    "type": Enum[json, urlencoded, multipart/form-data, binary, text, string, raw],
+    "ca": String,
+    "condition": String|Boolean,
+    "temp": Object,
+    "oauth": { // available only when using OAuth 1 connection
+        "consumer_key": String,
+        "consumer_secret": String,
+        "private_key": String,
+        "token": String,
+        "token_secret": String,
+        "verifier": String,
+        "signature_method": String,
+        "transport_method": String,
+        "body_hash": String
+    },
     "response": {
-        "type",
+        "type": Enum[json, urlencoded, xml, text, string, raw, binary, automatic]
         or
         "type": {
-            "*",
-            "[Number[-Number]]"
+            "*": Enum[json, urlencoded, xml, text, string, raw, binary, automatic],
+            "[Number[-Number]]": Enum[json, urlencoded, xml, text, string, raw, binary, automatic]
         },
-        "temp",
-        "iterate",
+        "temp": Object,
+        "iterate": String,
         or
         "iterate": {
-            "container",
-            "filter"
+            "container": String|Array,
+            "condition": String|Boolean
         },
-        "output",
-        "wrapper",
-        "valid",
-        "error",
+        "output": String|Object|Array,
+        "wrapper": String|Object|Array,
+        "valid": String|Boolean,
+        "error": String,
         or
         "error": {
-            "message",
-            "type",
+            "message": String,
+            "type": Enum[RuntimeError, DataError, RateLimitError, OutOfSpaceError, ConnectionError, InvalidConfigurationError, InvalidAccessTokenError, IncompleteDataError, DuplicateDataError],
             "[Number]": {
-                "message",
-                "type"
+                "message": String,
+                "type": Enum[RuntimeError, DataError, RateLimitError, OutOfSpaceError, ConnectionError, InvalidConfigurationError, InvalidAccessTokenError, IncompleteDataError, DuplicateDataError]
             }
         }
     },
     "pagination": {
-        "mergeWithParent",
-        "url",
-        "method",
-        "headers",
-        "qs",
-        "body"
+        "mergeWithParent": Boolean,
+        "url": String,
+        "method": Enum[GET, POST, PUT, DELETE, OPTIONS],
+        "headers": Flat Object,
+        "qs": Flat Object,
+        "body": Object|String|Array
     }
 }
 ```

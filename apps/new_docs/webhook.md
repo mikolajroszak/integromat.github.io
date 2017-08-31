@@ -36,26 +36,27 @@ Specifies how to get data from the payload and how to reply to a remote server.
 ```
 {
     "verification": {
-        "condition",
+        "condition": String|Boolean,
         "respond": {
-            "type",
-            "status",
-            "headers"
-            "body",
+            "type": Enum[json, urlencoded, text],
+            "status": String|Number,
+            "headers": Object
+            "body": String|Object,
         }
     },
     "respond": {
-        "type",
-        "status",
-        "headers",
-        "body"
+        "type": Enum[json, urlencoded, text],
+        "status": String|Number,
+        "headers": Object
+        "body": String|Object,
     },
-    "iterate",
+    "iterate": String,
+    or
     "iterate": {
-        "container",
-        "condition"
+        "container": String,
+        "condition": String|Boolean
     },
-    "output"
+    "output": String|Object
 }
 ```
 

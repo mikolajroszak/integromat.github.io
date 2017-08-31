@@ -54,6 +54,67 @@ to simply return multiple items.
 
 ## Specification
 
+```text
+{
+    "url": String,
+    "method": Enum[GET, POST, PUT, DELETE, OPTIONS],
+    "qs": Flat Object,
+    "headers": Flat Object,
+    "body": Object|String|Array,
+    "type": Enum[json, urlencoded, multipart/form-data, binary, text, string, raw],
+    "ca": String,
+    "condition": String|Boolean,
+    "temp": Object,
+    "oauth": { // available only when using OAuth 1 connection
+        "consumer_key": String,
+        "consumer_secret": String,
+        "private_key": String,
+        "token": String,
+        "token_secret": String,
+        "verifier": String,
+        "signature_method": String,
+        "transport_method": String,
+        "body_hash": String
+    },
+    "response": {
+        "type": Enum[json, urlencoded, xml, text, string, raw, binary, automatic]
+        or
+        "type": {
+            "*": Enum[json, urlencoded, xml, text, string, raw, binary, automatic],
+            "[Number[-Number]]": Enum[json, urlencoded, xml, text, string, raw, binary, automatic]
+        },
+        "temp": Object,
+        "iterate": String,
+        or
+        "iterate": {
+            "container": String|Array,
+            "condition": String|Boolean
+        },
+        "output": String|Object|Array,
+        "wrapper": String|Object|Array,
+        "valid": String|Boolean,
+        "error": String,
+        or
+        "error": {
+            "message": String,
+            "type": Enum[RuntimeError, DataError, RateLimitError, OutOfSpaceError, ConnectionError, InvalidConfigurationError, InvalidAccessTokenError, IncompleteDataError, DuplicateDataError],
+            "[Number]": {
+                "message": String,
+                "type": Enum[RuntimeError, DataError, RateLimitError, OutOfSpaceError, ConnectionError, InvalidConfigurationError, InvalidAccessTokenError, IncompleteDataError, DuplicateDataError]
+            }
+        }
+    },
+    "pagination": {
+        "mergeWithParent": Boolean,
+        "url": String,
+        "method": Enum[GET, POST, PUT, DELETE, OPTIONS],
+        "headers": Flat Object,
+        "qs": Flat Object,
+        "body": Object|String|Array
+    }
+}
+```
+
 ## Making requests
 
 In order to make a request you have to specify at least a `url`.

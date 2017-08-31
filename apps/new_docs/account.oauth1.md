@@ -49,7 +49,7 @@ Specifies token exchange and connection validation process. This
 specification does **not** inherit from Base.
 
 {% raw %}
-```
+```text
 {
     "oauth": {
         "consumer_key": String,
@@ -70,15 +70,17 @@ specification does **not** inherit from Base.
 ```
 
 Request Specification:
-```
+```text
 {
     "url": String,
     "method": Enum[GET, POST, PUT, DELETE, OPTIONS],
     "qs": Flat Object,
     "headers": Flat Object,
-    "body": Object,
-    "type": Enum[json, urlencoded, multipart/form-data, binary, text/string/raw]
+    "body": Object|String|Array,
+    "type": Enum[json, urlencoded, multipart/form-data, binary, text, string, raw]
     "ca": String
+    "condition": String|Boolean,
+    "temp": Object,
     "oauth": {
         "consumer_key": String,
         "consumer_secret": String,
@@ -91,21 +93,26 @@ Request Specification:
         "body_hash": String
     },
     "response": {
-        "type": Enum[json, urlencoded, xml, text/string/raw/binary, automatic]
+        "type": Enum[json, urlencoded, xml, text, string, raw, binary, automatic]
+        or
         "type": {
-            "*": Enum[json, urlencoded, xml, text/string/raw/binary, automatic],
-            "Number[-Number]": Enum[json, urlencoded, xml, text/string/raw/binary, automatic]
+            "*": Enum[json, urlencoded, xml, text, string, raw, binary, automatic],
+            "[Number[-Number]]": Enum[json, urlencoded, xml, text, string, raw, binary, automatic]
         },
         "temp": Object,
         "data": Object,
-        "uid": String (available only in info section),
-        "metadata": String (available only in info section)
+        "uid": String, // available only in info section
+        "metadata": { // available only in info section
+            "type": Enum[text, email],
+            "value": String
+        },
         "valid": String|Boolean,
         "error": String,
+        or
         "error": {
             "message": String,
             "type": Enum[RuntimeError, DataError, RateLimitError, OutOfSpaceError, ConnectionError, InvalidConfigurationError, InvalidAccessTokenError, IncompleteDataError, DuplicateDataError]
-            "Number": {
+            "[Number]": {
                 "message": String,
                 "type": Enum[RuntimeError, DataError, RateLimitError, OutOfSpaceError, ConnectionError, InvalidConfigurationError, InvalidAccessTokenError, IncompleteDataError, DuplicateDataError]
             }

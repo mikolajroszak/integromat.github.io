@@ -63,53 +63,53 @@ modules.
 
 ## Specification
 
-```
+```text
 {
-    "url",
-    "method",
-    "qs",
-    "headers",
-    "body",
-    "type",
-    "ca",
-    "condition",
-    "temp",
-    "oauth",
+    "url": String,
+    "method": Enum[GET, POST, PUT, DELETE, OPTIONS],
+    "qs": Flat Object,
+    "headers": Flat Object,
+    "body": Object|String|Array,
+    "type": Enum[json, urlencoded, multipart/form-data, binary, text, string, raw],
+    "ca": String,
+    "condition": String|Boolean,
+    "temp": Object,
+    "oauth": Object,
     "response": {
-        "type",
+        "type": Enum[json, urlencoded, xml, text, string, raw, binary, automatic]
         or
         "type": {
-            "*",
-            "[Number[-Number]]"
+            "*": Enum[json, urlencoded, xml, text, string, raw, binary, automatic],
+            "[Number[-Number]]": Enum[json, urlencoded, xml, text, string, raw, binary, automatic]
         },
-        "temp",
-        "iterate",
+        "temp": Object,
+        "iterate": String,
         or
         "iterate": {
-            "container",
-            "filter"
+            "container": String|Array,
+            "condition": String|Boolean
         },
-        "output",
-        "wrapper",
-        "valid",
-        "error",
+        "output": String|Object|Array,
+        "wrapper": String|Object|Array,
+        "valid": String|Boolean,
+        "error": String,
         or
         "error": {
-            "message",
-            "type",
+            "message": String,
+            "type": Enum[RuntimeError, DataError, RateLimitError, OutOfSpaceError, ConnectionError, InvalidConfigurationError, InvalidAccessTokenError, IncompleteDataError, DuplicateDataError],
             "[Number]": {
-                "message",
-                "type"
+                "message": String,
+                "type": Enum[RuntimeError, DataError, RateLimitError, OutOfSpaceError, ConnectionError, InvalidConfigurationError, InvalidAccessTokenError, IncompleteDataError, DuplicateDataError]
             }
         }
     },
     "pagination": {
-        "mergeWithParent",
-        "url",
-        "method",
-        "headers",
-        "qs",
-        "body"
+        "mergeWithParent": Boolean,
+        "url": String,
+        "method": Enum[GET, POST, PUT, DELETE, OPTIONS],
+        "headers": Flat Object,
+        "qs": Flat Object,
+        "body": Object|String|Array
     }
 }
 ```
@@ -400,4 +400,4 @@ this item was created (updated), which the user will see in gray
 
 # Parameters
 
-{% include_relative sections/parameters.md %}
+{% include_relative sections/parameters.md module="rpc" %}
