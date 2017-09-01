@@ -1,12 +1,12 @@
 ---
-title: OAuth 1 Connection - Reference Documentation
+title: OAuth 2 Connection - Reference Documentation
 layout: apps
 ---
 
 Connection is a link between Integromat and 3rd party service/app.
-OAuth1 connection handles the token exchange automatically.
+OAuth2 connection handles the token exchange automatically.
 
-Before you start configuring you OAuth1 connection, you need to create
+Before you start configuring you OAuth2 connection, you need to create
 an app on a 3rd-party service. When creating an app, use
 `https://www.integromat.com/oauth/cb/app` as a callback URL.
 
@@ -15,7 +15,7 @@ an app on a 3rd-party service. When creating an app, use
 
 - [Communication](#communication)
   - [Specification](#specification)
-  - [OAuth 1 authentication process](#oauth-1-authentication-process)
+  - [OAuth 2 authentication process](#oauth-2-authentication-process)
   - [Request options](#request-options)
     - [`url`](#url)
     - [`method`](#method)
@@ -51,25 +51,16 @@ specification does **not** inherit from Base.
 {% raw %}
 ```text
 {
-    "oauth": {
-        "consumer_key": String,
-        "consumer_secret": String,
-        "private_key": String,
-        "token": String,
-        "token_secret": String,
-        "verifier": String,
-        "signature_method": String,
-        "transport_method": String,
-        "body_hash": String
-    },
-    "requestToken": Request Specification,
-    "authorize": Request Specification,
-    "accessToken": Request Specification,
-    "info": Request Specification
+  "preauthorize": Request Specification or Array of Request Specification,
+  "authorize": Request Specification,
+  "token": Request Specification,
+  "info": Request Specification,
+  "refresh": Request Specification,
+  "invalidate": Request Specification
 }
 ```
 
-Request Specification:
+**Request Specification**:
 ```text
 {
     "url": String,
@@ -81,17 +72,6 @@ Request Specification:
     "ca": String
     "condition": String|Boolean,
     "temp": Object,
-    "oauth": {
-        "consumer_key": String,
-        "consumer_secret": String,
-        "private_key": String,
-        "token": String,
-        "token_secret": String,
-        "verifier": String,
-        "signature_method": String,
-        "transport_method": String,
-        "body_hash": String
-    },
     "response": {
         "type": Enum[json, urlencoded, xml, text, string, raw, binary, automatic]
         or
@@ -122,36 +102,35 @@ Request Specification:
 ```
 {% endraw %}
 
-## OAuth 1 authentication process
+## OAuth 2 authentication process
 
-OAuth 1 authentication process consist of multiple steps. You are able
+OAuth 2 authentication process consist of multiple steps. You are able
 to select the steps you need and ignore the steps that you don't - just
 fill in the needed sections and delete unneeded.
 
-| Key                   | Type                                      | Description                                                                                                                                                                         |
-| ---                   | ---                                       | ---                                                                                                                                                                                 |
-| [**`oauth`**](#oauth) | OAuth 1 Parameters Specification          | Allows you to specify special OAuth1 properties to simplify OAuth1 header generation.                                                                                               |
-| **`requestToken`**    | [Request Specification](#request-options) | Describes a request that retrieves the request token                                                                                                                                |
-| **`authorize`**       | [Request Specification](#request-options) | Describes authorization process.                                                                                                                                                    |
-| **`accessToken`**     | [Request Specification](#request-options) | Describes a request that exchanges credentials and the request token for the access token.                                                                                          |
-| **`info`**            | [Request Specification](#request-options) | Describes a request that validates a connection. The most common way to validate the connection is to call a method to get user's information. Most of the APIs have such a method. |
+| Key                | Type                                      | Description                                                                                                                                                                                |
+| ---                | ---                                       | ---                                                                                                                                                                                        |
+| **`preauthorize`** | [Request Specification](#request-options) | Describes a request that should be executed prior to `authorize` directive.                                                                                                                |
+| **`authorize`**    | [Request Specification](#request-options) | Describes authorization process.                                                                                                                                                           |
+| **`token`**        | [Request Specification](#request-options) | Describes a request that exchanges credentials for tokens.                                                                                                                                 |
+| **`info`**         | [Request Specification](#request-options) | Describes a request that validates a connection. The most common way to validate the connection is to call an API's method to get user's information. Most of the APIs have such a method. |
+| **`refresh`**      | [Request Specification](#request-options) | Describes a request that refreshes an access token.                                                                                                                                        |
+| **`invalidate`**   | [Request Specification](#request-options) | Describes a request that invalidates acquired access token.                                                                                                                                |
 
-When using an OAuth1 connection there is a special object available
-globally: the `oauth` object. You can use it in connection specification
-as well as in module specification to avoid generating the OAuth1 header
-yourself. This object is available in the root of the connection
-specification, in the Base and in Request Specification
+Each section is responsible for executing its part in the OAuth 2 flow.
 
-If the `oauth` object is present in the root of the connection
-specification, it will be merged with each of the directives described
-above. If you wish to override some properties of the root object, you
-can do so in the respective directive by specifying the `oauth` object
-and overriding the properties.
+In short, you can describe the initial OAuth 2 flow as follows:
+```
+preauthorize => authorize => token => info
+```
+with `preauthorize` and `info` sections being optional, and `refresh`
+and `invalidate` not being a part of initial OAuth 2 flow.
+
 
 ## Request Options
 
-In order to make a request you have to specify at least a `url` and
-`oauth` directives. All other directives are not required.
+In order to make a request, you have to specify at least a `url`. All
+other directives are not required.
 
 All Available request-related directives are shown in the table below:
 
@@ -167,47 +146,42 @@ All Available request-related directives are shown in the table below:
 | [**`temp`**](#request-temp)           | [IML Object](articles/types.md#iml-object)                                         | Creates/updates the `temp` variable                                              |
 | [**`condition`**](#condition)         | [IML String](articles/types.md#iml-string) or [Boolean](articles/types.md#boolean) | Determines if to execute current request or never.                               |
 | [**`response`**](#response-options)   | Response Specification                                                             | Collection of directives controlling processing of the response.                 |
-| [**`oauth`**](#oauth)                 | OAuth 1 Parameters Specification                                                   | Collection of directives containing parameters for the OAuth 1 protocol.         |
 
 ### `url`
 
-{% include_relative directives/url.md module="connection" %}
+{% include directives/url.md module="connection" %}
 
 ### `method`
 
-{% include_relative directives/method.md %}
+{% include directives/method.md %}
 
 ### `headers`
 
-{% include_relative directives/headers.md %}
+{% include directives/headers.md %}
 
 ### `qs`
 
-{% include_relative directives/qs.md %}
+{% include directives/qs.md %}
 
 ### `body`
 
-{% include_relative directives/body.md %}
+{% include directives/body.md %}
 
 ### `type` {#request-type}
 
-{% include_relative directives/request.type.md %}
+{% include directives/request.type.md %}
 
 ### `temp` {#request-temp}
 
-{% include_relative directives/request.temp.md %}
+{% include directives/request.temp.md %}
 
 ### `condition`
 
-{% include_relative directives/condition.md %}
-
-### `oauth`
-
-{% include_relative directives/oauth.md module="connection" %}
+{% include directives/condition.md %}
 
 ## Multiple Requests
 
-{% include_relative sections/multiple_requests.md %}
+{% include sections/multiple_requests.md %}
 
 ## Response options
 
@@ -228,19 +202,19 @@ response. All of them must be placed inside the `response` collection.
 
 ### `type` {#response-type}
 
-{% include_relative directives/response.type.md %}
+{% include directives/response.type.md %}
 
 ### `valid`
 
-{% include_relative directives/valid.md %}
+{% include directives/valid.md %}
 
 ### `error`
 
-{% include_relative directives/error.md %}
+{% include directives/error.md %}
 
 ### `temp` {#response-temp}
 
-{% include_relative directives/response.temp.md %}
+{% include directives/response.temp.md %}
 
 ### `data`
 
@@ -274,15 +248,15 @@ connection like so:
 
 ## IML variables
 
-{% include_relative sections/iml-variables.md module="connection" type="oauth1" %}
+{% include sections/iml-variables.md module="connection" type="oauth2" %}
 
 ## Error handling
 
-{% include_relative sections/error-handling.md %}
+{% include sections/error-handling.md %}
 
 # Parameters
 
-{% include_relative sections/parameters.md %}
+{% include sections/parameters.md %}
 
 # Common data
 

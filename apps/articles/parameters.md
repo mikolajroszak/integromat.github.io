@@ -1,3 +1,8 @@
+---
+title: Getting started
+layout: apps
+---
+
 **For Modules and Connections**:  
 Parameters describe what your module will receive as the input from the
 user. It describes the fields that the user has to fill on the module

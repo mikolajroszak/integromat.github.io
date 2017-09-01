@@ -55,4 +55,4 @@ from the user.
 ```
 
 For detailed description of parameters and their types see
-[Parameters](articles/parameters.md)
+[Parameters](articles/parameters.html)

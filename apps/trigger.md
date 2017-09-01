@@ -62,7 +62,7 @@ they were created/updated.
 
 ## Specification
 
-```
+```text
 {
     "url": String,
     "method": Enum[GET, POST, PUT, DELETE, OPTIONS],
@@ -154,39 +154,39 @@ are shown in the table below:
 
 ### `url`
 
-{% include_relative directives/url.md module="trigger" %}
+{% include directives/url.md module="trigger" %}
 
 ### `method`
 
-{% include_relative directives/method.md %}
+{% include directives/method.md %}
 
 ### `headers`
 
-{% include_relative directives/headers.md %}
+{% include directives/headers.md %}
 
 ### `qs`
 
-{% include_relative directives/qs.md %}
+{% include directives/qs.md %}
 
 ### `body`
 
-{% include_relative directives/body.md %}
+{% include directives/body.md %}
 
 ### `type` {#request-type}
 
-{% include_relative directives/request.type.md %}
+{% include directives/request.type.md %}
 
 ### `temp` {#request-temp}
 
-{% include_relative directives/request.temp.md %}
+{% include directives/request.temp.md %}
 
 ### `condition`
 
-{% include_relative directives/condition.md %}
+{% include directives/condition.md %}
 
 ## Multiple Requests
 
-{% include_relative sections/multiple_requests.md %}
+{% include sections/multiple_requests.md %}
 
 ## Handling responses
 
@@ -323,43 +323,43 @@ something like this
 
 ### `type` {#response-type}
 
-{% include_relative directives/response.type.md %}
+{% include directives/response.type.md %}
 
 ### `valid`
 
-{% include_relative directives/valid.md %}
+{% include directives/valid.md %}
 
 ### `limit`
 
-{% include_relative directives/limit.md module="trigger" %}
+{% include directives/limit.md module="trigger" %}
 
 ### `error`
 
-{% include_relative directives/error.md %}
+{% include directives/error.md %}
 
 ### `iterate`
 
-{% include_relative directives/iterate.md module="trigger" %}
+{% include directives/iterate.md module="trigger" %}
 
 ### `temp` {#response-temp}
 
-{% include_relative directives/response.temp.md %}
+{% include directives/response.temp.md %}
 
 ### `output`
 
-{% include_relative directives/output.md %}
+{% include directives/output.md %}
 
 ## Pagination (`pagination` directive) {#pagination}
 
-{% include_relative directives/pagination.md %}
+{% include directives/pagination.md %}
 
 ## IML variables
 
-{% include_relative sections/iml-variables.md module="trigger" %}
+{% include sections/iml-variables.md module="trigger" %}
 
 ## Error handling
 
-{% include_relative sections/error-handling.md %}
+{% include sections/error-handling.md %}
 
 # Epoch panel
 
@@ -401,7 +401,7 @@ and dates for the output.
 
 # Parameters
 
-{% include_relative sections/parameters.md %}
+{% include sections/parameters.md %}
 
 # Interface
 
