@@ -3,13 +3,13 @@ title: Custom IML Functions
 layout: apps
 ---
 
-{% raw %}
+
 
 **IMPORTANT:** IML functions are disabled by default. If you need to
 write you own function, please, contact us.
 
 **NOTE:** Please read about
-[Integromat Markup Language](../iml.md) first.
+[Integromat Markup Language](iml.md) first.
 
 IML Functions is a powerful feature, that allows you to write your own
 JavaScript functions and execute them inside IML expressions to process
@@ -26,7 +26,7 @@ You can use all features of ES 6, like arrow functions, destructuring,
 etc...
 
 ## Example
-
+{% raw %}
 Here we implement a function in JavaScript.
 
 ```javascript
@@ -50,5 +50,4 @@ Now we are able to use it in IML:
     }
 }
 ```
-
 {% endraw %}
