@@ -1,5 +1,5 @@
 ---
-title: Getting started
+title: Parameters
 layout: apps
 ---
 
@@ -83,7 +83,7 @@ fieldset dynamically.
 
 | Key          | Type  | Description                                                                                            |
 | ---          | ---   | ---                                                                                                    |
-| **editable** | array | If `true`, the user can manually edit the value of this parameter (or use mappings). Default: `false`. |
+| **editable** | boolean | If `true`, the user can manually edit the value of this parameter (or use mappings). Default: `false`. |
 
 ## Array
 
