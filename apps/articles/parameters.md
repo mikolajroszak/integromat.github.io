@@ -83,11 +83,11 @@ fieldset dynamically.
 
 ## Boolean
 
-| Key          | Type    | Description                                                                                                                                                                                       |
-| ---          | ---     | ---                                                                                                                                                                                               |
-| **editable** | boolean | If `true`, the user can manually edit the value of this parameter (or use mappings). Default: `false`.                                                                                            |
-| **nested**   | string  | Specifies a [Fields RPC](remote-procedures.html#fields-rpc), that will be called to retrieve nested parameters (fields), that will be shown to the user if this field's checkbox will be checked. |
-| **nested**   | array   | Specifies an array of nested parameters (fields), that will be shown to the user if this field's checkbox will be checked.                                                                        |
+| Key          | Type    | Description                                                                                                                                                                                           |
+| ---          | ---     | ---                                                                                                                                                                                                   |
+| **editable** | boolean | If `true`, the user can manually edit the value of this parameter (or use mappings). Default: `false`.                                                                                                |
+| **nested**   | string  | Specifies a [Fields RPC](remote-procedures.html#fields-rpc) URL, that will be called to retrieve nested parameters (fields), that will be shown to the user if this field's checkbox will be checked. |
+| **nested**   | array   | Specifies an array of nested parameters (fields), that will be shown to the user if this field's checkbox will be checked.                                                                            |
 
 **Example**:
 ```json
@@ -221,12 +221,12 @@ fieldset dynamically.
 if **options** is object, then it specifies options for this select field as well as nested parameters to show when a value has
 been selected.
 
-| **options.store**  | string | Specifies a [Options RPC](remote-procedures.html#options-rpc) URL, that will be called to retrieved dynamic options for this RPC.                                                                  |
-| **options.store**  | array  | Specifies options for this Select field.                                                                                                                                                           |
-| **options.label**  | string | Specifies the name of a property that will be used as the label of an option.                                                                                                                      | 
-| **options.value**  | string | Specifies the name of a property that will be used as the value of an option.                                                                                                                      |
-| **options.nested** | array  | Specifies an array of nested parameters (fields), that will be shown to the user if this field's checkbox will be checked.                                                                         |
-| **options.nested** | string | Specifies an [Fields RPC](remote-procedures.html#fields-rpc), that will be called to retrieve nested parameters (fields), that will be shown to the user if this field's checkbox will be checked. |
+| **options.store**  | string | Specifies an [Options RPC](remote-procedures.html#options-rpc) URL, that will be called to retrieve dynamic options for this RPC.                                                                      |
+| **options.store**  | array  | Specifies options for this Select field.                                                                                                                                                               |
+| **options.label**  | string | Specifies the name of a property that will be used as the label of an option.                                                                                                                          | 
+| **options.value**  | string | Specifies the name of a property that will be used as the value of an option.                                                                                                                          |
+| **options.nested** | array  | Specifies an array of nested parameters (fields), that will be shown to the user if this field's checkbox will be checked.                                                                             |
+| **options.nested** | string | Specifies an [Fields RPC](remote-procedures.html#fields-rpc) URL, that will be called to retrieve nested parameters (fields), that will be shown to the user if this field's checkbox will be checked. |
 
 **Example**
 
