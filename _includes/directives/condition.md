@@ -1,5 +1,5 @@
 **Required**: no  
-**Default**: true
+**Default**: `true`
 
 This directive specifies whether to execute the request or not.
 

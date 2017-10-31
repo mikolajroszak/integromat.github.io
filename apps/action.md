@@ -23,6 +23,8 @@ service, for example to retrieve, update, or delete an item.
     - [`type`](#request-type)
     - [`temp`](#request-temp)
     - [`condition`](#condition)
+    - [`followRedirects`](#follow-redirects)
+    - [`followAllRedirects`](#follow-all-redirects)
   - [Multiple requests](#multiple-requests)
   - [Handling responses](#handling-responses)
     - [`type`](#response-type)
@@ -122,19 +124,21 @@ All other directives are not required.
 
 All Available request-related directives are shown in the table below:
 
-| Key                                   | Type                                                                               | Description                                                                      |
-| :------------------------------------ | :-----------------------------------------------------------------                 | :------------------------------------------------------------------------------- |
-| [**`url`**](#url)                     | [IML String](articles/types.md#iml-string)                                         | Specifies the URL that should be called.                                         |
-| [**`method`**](#method)               | [IML String](articles/types.md#iml-string)                                         | Specifies the HTTP method, that should be used when issuing a request.           |
-| [**`headers`**](#headers)             | [IML Flat Object](articles/types.md#iml-flat-object)                               | A single level (flat) collection, that specifies request headers.                |
-| [**`qs`**](#qs)                       | [IML Flat Object](articles/types.md#iml-flat-object)                               | A single level (flat) collection that specifies request query string parameters. |
-| **`ca`**                              | [IML String](articles/types.md#iml-string)                                         | Custom Certificate Authority                                                     |
-| [**`body`**](#body)                   | Any [IML Type](articles/types.md#iml-types)                                        | Specifies a request body.                                                        |
-| [**`type`**](#request-type)           | [String](articles/types.md#string)                                                 | Specifies how data are serialized into body.                                     |
-| [**`temp`**](#request-temp)           | [IML Object](articles/types.md#iml-object)                                         | Creates/updates the `temp` variable                                              |
-| [**`condition`**](#condition)         | [IML String](articles/types.md#iml-string) or [Boolean](articles/types.md#boolean) | Determines if to execute current request or never.                               |
-| [**`response`**](#handling-responses) | Response Specification                                                             | Collection of directives controlling processing of the response.                 |
-| [**`pagination`**](#pagination)       | Pagination Specification                                                           | Collection of directives controlling pagination logic.                           |
+| Key                                               | Type                                                                               | Description                                                                      |
+| :------------------------------------             | :-----------------------------------------------------------------                 | :------------------------------------------------------------------------------- |
+| [**`url`**](#url)                                 | [IML String](articles/types.md#iml-string)                                         | Specifies the URL that should be called.                                         |
+| [**`method`**](#method)                           | [IML String](articles/types.md#iml-string)                                         | Specifies the HTTP method, that should be used when issuing a request.           |
+| [**`headers`**](#headers)                         | [IML Flat Object](articles/types.md#iml-flat-object)                               | A single level (flat) collection, that specifies request headers.                |
+| [**`qs`**](#qs)                                   | [IML Flat Object](articles/types.md#iml-flat-object)                               | A single level (flat) collection that specifies request query string parameters. |
+| **`ca`**                                          | [IML String](articles/types.md#iml-string)                                         | Custom Certificate Authority                                                     |
+| [**`body`**](#body)                               | Any [IML Type](articles/types.md#iml-types)                                        | Specifies a request body.                                                        |
+| [**`type`**](#request-type)                       | [String](articles/types.md#string)                                                 | Specifies how data are serialized into body.                                     |
+| [**`temp`**](#request-temp)                       | [IML Object](articles/types.md#iml-object)                                         | Creates/updates the `temp` variable                                              |
+| [**`condition`**](#condition)                     | [IML String](articles/types.md#iml-string) or [Boolean](articles/types.md#boolean) | Determines if to execute current request or never.                               |
+| [**`followRedirects`**](#follow-redirects)        | [Boolean](articles/types.md#boolean)                                               | **Default:** true. Follow HTTP 3xx responses as redirects                        |
+| [**`followAllRedirects`**](#follow-all-redirects) | [Boolean](articles/types.md#boolean)                                               | **Default:** true. Follow non-GET HTTP 3xx responses as redirects                |
+| [**`response`**](#handling-responses)             | Response Specification                                                             | Collection of directives controlling processing of the response.                 |
+| [**`pagination`**](#pagination)                   | Pagination Specification                                                           | Collection of directives controlling pagination logic.                           |
 
 
 ### `url`
@@ -168,6 +172,14 @@ All Available request-related directives are shown in the table below:
 ### `condition`
 
 {% include directives/condition.md %}
+
+### `followRedirects` {#follow-redirects}
+
+{% include directives/followRedirects.md %}
+
+### `followAllRedirects` {#follow-all-redirects}
+
+{% include directives/followAllRedirects.md %}
 
 ## Multiple Requests
 

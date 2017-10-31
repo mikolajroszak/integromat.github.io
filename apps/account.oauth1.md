@@ -26,6 +26,8 @@ an app on a 3rd-party service. When creating an app, use
     - [`temp`](#request-temp)
     - [`condition`](#condition)
     - [`oauth`](#oauth)
+    - [`followRedirects`](#follow-redirects)
+    - [`followAllRedirects`](#follow-all-redirects)
   - [Multiple requests](#multiple-requests)
   - [Response options](#response-options)
     - [`type`](#response-type)
@@ -155,19 +157,21 @@ In order to make a request you have to specify at least a `url` and
 
 All Available request-related directives are shown in the table below:
 
-| Key                                   | Type                                                                               | Description                                                                      |
-| :------------------------------------ | :-----------------------------------------------------------------                 | :------------------------------------------------------------------------------- |
-| [**`url`**](#url)                     | [IML String](articles/types.md#iml-string)                                         | Specifies the URL that should be called.                                         |
-| [**`method`**](#method)               | [IML String](articles/types.md#iml-string)                                         | Specifies the HTTP method, that should be used when issuing a request.           |
-| [**`headers`**](#headers)             | [IML Flat Object](articles/types.md#iml-flat-object)                               | A single level (flat) collection, that specifies request headers.                |
-| [**`qs`**](#qs)                       | [IML Flat Object](articles/types.md#iml-flat-object)                               | A single level (flat) collection that specifies request query string parameters. |
-| **`ca`**                              | [IML String](articles/types.md#iml-string)                                         | Custom Certificate Authority                                                     |
-| [**`body`**](#body)                   | Any [IML Type](articles/types.md#iml-types)                                        | Specifies a request body.                                                        |
-| [**`type`**](#request-type)           | [String](articles/types.md#string)                                                 | Specifies how data are serialized into body.                                     |
-| [**`temp`**](#request-temp)           | [IML Object](articles/types.md#iml-object)                                         | Creates/updates the `temp` variable                                              |
-| [**`condition`**](#condition)         | [IML String](articles/types.md#iml-string) or [Boolean](articles/types.md#boolean) | Determines if to execute current request or never.                               |
-| [**`response`**](#response-options)   | Response Specification                                                             | Collection of directives controlling processing of the response.                 |
-| [**`oauth`**](#oauth)                 | OAuth 1 Parameters Specification                                                   | Collection of directives containing parameters for the OAuth 1 protocol.         |
+| Key                                               | Type                                                                               | Description                                                                      |
+| :------------------------------------             | :-----------------------------------------------------------------                 | :------------------------------------------------------------------------------- |
+| [**`url`**](#url)                                 | [IML String](articles/types.md#iml-string)                                         | Specifies the URL that should be called.                                         |
+| [**`method`**](#method)                           | [IML String](articles/types.md#iml-string)                                         | Specifies the HTTP method, that should be used when issuing a request.           |
+| [**`headers`**](#headers)                         | [IML Flat Object](articles/types.md#iml-flat-object)                               | A single level (flat) collection, that specifies request headers.                |
+| [**`qs`**](#qs)                                   | [IML Flat Object](articles/types.md#iml-flat-object)                               | A single level (flat) collection that specifies request query string parameters. |
+| **`ca`**                                          | [IML String](articles/types.md#iml-string)                                         | Custom Certificate Authority                                                     |
+| [**`body`**](#body)                               | Any [IML Type](articles/types.md#iml-types)                                        | Specifies a request body.                                                        |
+| [**`type`**](#request-type)                       | [String](articles/types.md#string)                                                 | Specifies how data are serialized into body.                                     |
+| [**`temp`**](#request-temp)                       | [IML Object](articles/types.md#iml-object)                                         | Creates/updates the `temp` variable                                              |
+| [**`condition`**](#condition)                     | [IML String](articles/types.md#iml-string) or [Boolean](articles/types.md#boolean) | Determines if to execute current request or never.                               |
+| [**`response`**](#response-options)               | Response Specification                                                             | Collection of directives controlling processing of the response.                 |
+| [**`oauth`**](#oauth)                             | OAuth 1 Parameters Specification                                                   | Collection of directives containing parameters for the OAuth 1 protocol.         |
+| [**`followRedirects`**](#follow-redirects)        | [Boolean](articles/types.md#boolean)                                               | **Default:** true. Follow HTTP 3xx responses as redirects                        |
+| [**`followAllRedirects`**](#follow-all-redirects) | [Boolean](articles/types.md#boolean)                                               | **Default:** true. Follow non-GET HTTP 3xx responses as redirects                |
 
 ### `url`
 
@@ -204,6 +208,14 @@ All Available request-related directives are shown in the table below:
 ### `oauth`
 
 {% include directives/oauth.md module="connection" %}
+
+### `followRedirects` {#follow-redirects}
+
+{% include directives/followRedirects.md %}
+
+### `followAllRedirects` {#follow-all-redirects}
+
+{% include directives/followAllRedirects.md %}
 
 ## Multiple Requests
 
