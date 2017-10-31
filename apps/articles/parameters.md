@@ -86,7 +86,7 @@ fieldset dynamically.
 | Key          | Type    | Description                                                                                                                                                                                           |
 | ---          | ---     | ---                                                                                                                                                                                                   |
 | **editable** | boolean | If `true`, the user can manually edit the value of this parameter (or use mappings). Default: `false`.                                                                                                |
-| **nested**   | string  | Specifies a [Fields RPC](remote-procedures.html#fields-rpc) URL, that will be called to retrieve nested parameters (fields), that will be shown to the user if this field's checkbox will be checked. |
+| **nested**   | string  | Specifies a [Fields RPC](../rpc.md#fields-rpc) URL, that will be called to retrieve nested parameters (fields), that will be shown to the user if this field's checkbox will be checked. |
 | **nested**   | array   | Specifies an array of nested parameters (fields), that will be shown to the user if this field's checkbox will be checked.                                                                            |
 
 **Example**:
@@ -214,19 +214,19 @@ fieldset dynamically.
 | ---          | ---     | ---                                                                                                                               |
 | **multiple** | boolean | If `true`, multiple selection is allowed. Default: `false`.                                                                       |
 | **editable** | boolean | If `true`, the user can manually edit the value of this parameter (or use mappings). Default: `false`.                            |
-| **options**  | string  | Specifies an [Options RPC](remote-procedures.html#options-rpc) URL, that will be called to retrieve dynamic options for this RPC. |
+| **options**  | string  | Specifies an [Options RPC](../rpc.md#options-rpc) URL, that will be called to retrieve dynamic options for this RPC. |
 | **options**  | array   | An array of options for this Select. See example for structure definition.                                                        | 
 | **options**  | object  | Allows to specify options and nested parameters for this Select field. See below for details.                                     |
 
 if **options** is object, then it specifies options for this select field as well as nested parameters to show when a value has
 been selected.
 
-| **options.store**  | string | Specifies an [Options RPC](remote-procedures.html#options-rpc) URL, that will be called to retrieve dynamic options for this RPC.                                                                      |
+| **options.store**  | string | Specifies an [Options RPC](../rpc.md#options-rpc) URL, that will be called to retrieve dynamic options for this RPC.                                                                      |
 | **options.store**  | array  | Specifies options for this Select field.                                                                                                                                                               |
 | **options.label**  | string | Specifies the name of a property that will be used as the label of an option.                                                                                                                          | 
 | **options.value**  | string | Specifies the name of a property that will be used as the value of an option.                                                                                                                          |
 | **options.nested** | array  | Specifies an array of nested parameters (fields), that will be shown to the user if this field's checkbox will be checked.                                                                             |
-| **options.nested** | string | Specifies an [Fields RPC](remote-procedures.html#fields-rpc) URL, that will be called to retrieve nested parameters (fields), that will be shown to the user if this field's checkbox will be checked. |
+| **options.nested** | string | Specifies an [Fields RPC](../rpc.md#fields-rpc) URL, that will be called to retrieve nested parameters (fields), that will be shown to the user if this field's checkbox will be checked. |
 
 **Example**
 
