@@ -5,7 +5,7 @@ layout: apps
 
 **For Modules and Connections**:  
 Parameters describe what your module will receive as the input from the
-user. It describes the fields that the user has to fill on the module
+user. They describes the fields that the user has to fill on the module
 form in order to configure the module.
 
 ___
@@ -14,11 +14,11 @@ ___
 Parameters describe what your remote procedure expects to receive in
 order to function correctly. The parameters that you specify will be
 seen while testing this remote procedure, but when you will be actually
-using it - you have to pass the parameters explicitly.
+using them, you will have to pass the parameters explicitly.
 
 **Important**: All module parameters are passed to the RPC
 automatically. E.g. you have a `firstName` parameter in your module
-configuration; it will be available in your RPC as
+configuration, it will be available in your RPC as
 `parameters.firstName`, just like other parameters passed to the RPC via
 the query string.
 
@@ -41,6 +41,8 @@ ___
 
 **PRO TIP:** You can mix parameters with RPC URLs to load parts of a
 fieldset dynamically.
+
+**PRO TIP 2:** Nested parameters are available for `boolean` and `select` field types.
 
 | Key          | Type    | Description                                                                                                               |
 | ---          | ---     | ---                                                                                                                       |
@@ -81,9 +83,31 @@ fieldset dynamically.
 
 ## Boolean
 
-| Key          | Type  | Description                                                                                            |
-| ---          | ---   | ---                                                                                                    |
-| **editable** | boolean | If `true`, the user can manually edit the value of this parameter (or use mappings). Default: `false`. |
+| Key          | Type    | Description                                                                                                                                                                                       |
+| ---          | ---     | ---                                                                                                                                                                                               |
+| **editable** | boolean | If `true`, the user can manually edit the value of this parameter (or use mappings). Default: `false`.                                                                                            |
+| **nested**   | string  | Specifies a [Fields RPC](remote-procedures.html#fields-rpc), that will be called to retrieve nested parameters (fields), that will be shown to the user if this field's checkbox will be checked. |
+| **nested**   | array   | Specifies an array of nested parameters (fields), that will be shown to the user if this field's checkbox will be checked.                                                                        |
+
+**Example**:
+```json
+{
+    "name": "myBoolean",
+    "label": "My Boolean",
+    "type": "boolean",
+    "nested": [
+        {
+            "name": "nestedField1",
+            "type": "text"
+        },
+        {
+            "name": "nestedField2",
+            "label": "Nested Field",
+            "type": "text"
+        }
+    ]
+}
+```
 
 ## Array
 
@@ -186,11 +210,23 @@ fieldset dynamically.
 
 ## Select
 
-| Key          | Type         | Description                                                                                                                              |
-| ---          | ---          | ---                                                                                                                                      |
-| **multiple** | boolean      | If `true`, multiple selection is allowed. Default: `false`.                                                                              |
-| **editable** | boolean      | If `true`, the user can manually edit the value of this parameter (or use mappings). Default: `false`.                                   |
-| **options**  | array/string | An array of items. See example for structure definition. May be a [Options RPC](remote-procedures.html) URL for dynamic content loading. |
+| Key          | Type    | Description                                                                                                                       |
+| ---          | ---     | ---                                                                                                                               |
+| **multiple** | boolean | If `true`, multiple selection is allowed. Default: `false`.                                                                       |
+| **editable** | boolean | If `true`, the user can manually edit the value of this parameter (or use mappings). Default: `false`.                            |
+| **options**  | string  | Specifies an [Options RPC](remote-procedures.html#options-rpc) URL, that will be called to retrieve dynamic options for this RPC. |
+| **options**  | array   | An array of options for this Select. See example for structure definition.                                                        | 
+| **options**  | object  | Allows to specify options and nested parameters for this Select field. See below for details.                                     |
+
+if **options** is object, then it specifies options for this select field as well as nested parameters to show when a value has
+been selected.
+
+| **options.store**  | string | Specifies a [Options RPC](remote-procedures.html#options-rpc) URL, that will be called to retrieved dynamic options for this RPC.                                                                  |
+| **options.store**  | array  | Specifies options for this Select field.                                                                                                                                                           |
+| **options.label**  | string | Specifies the name of a property that will be used as the label of an option.                                                                                                                      | 
+| **options.value**  | string | Specifies the name of a property that will be used as the value of an option.                                                                                                                      |
+| **options.nested** | array  | Specifies an array of nested parameters (fields), that will be shown to the user if this field's checkbox will be checked.                                                                         |
+| **options.nested** | string | Specifies an [Fields RPC](remote-procedures.html#fields-rpc), that will be called to retrieve nested parameters (fields), that will be shown to the user if this field's checkbox will be checked. |
 
 **Example**
 
@@ -208,6 +244,37 @@ fieldset dynamically.
             "value": "b"
         }
     ]
+}
+```
+
+
+```json
+{
+    "name": "field",
+    "type": "select",
+    "options": {
+        "store": [
+            {
+                 "label": "Option A",
+                 "value": "a"
+            },
+            {
+                 "label": "Option B",
+                 "value": "b"
+            }
+        ],
+        "nested": [
+            {
+                "name": "nestedField1",
+                "type": "text"
+            },
+            {
+                "name": "nestedField2",
+                "label": "Nested Field",
+                "type": "text"
+            }
+        ] 
+    }
 }
 ```
 
