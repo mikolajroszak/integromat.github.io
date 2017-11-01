@@ -42,7 +42,7 @@ the query string.
         "help": "Some help for the parameter.",
         "default": "default-value",
         "advanced": "false",
-        "required": true,
+        "required": true
     }
 ]
 ```
