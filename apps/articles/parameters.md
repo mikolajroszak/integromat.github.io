@@ -5,7 +5,7 @@ layout: apps
 
 **For Modules and Connections**:  
 Parameters describe what your module will receive as the input from the
-user. They describes the fields that the user has to fill on the module
+user. They describe the fields that the user has to fill on the module
 form in order to configure the module.
 
 ___
