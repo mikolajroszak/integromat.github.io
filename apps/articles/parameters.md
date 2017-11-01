@@ -41,7 +41,7 @@ the query string.
         "label": "My Parameter",
         "help": "Some help for the parameter.",
         "default": "default-value",
-        "advanced": "false",
+        "advanced": false,
         "required": true
     }
 ]
