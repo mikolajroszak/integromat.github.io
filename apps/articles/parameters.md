@@ -8,8 +8,6 @@ Parameters describe what your module will receive as the input from the
 user. They describe the fields that the user has to fill on the module
 form in order to configure the module.
 
-___
-
 **For Remote Procedures (RPCs)**:  
 Parameters describe what your remote procedure expects to receive in
 order to function correctly. The parameters that you specify will be
@@ -22,28 +20,6 @@ configuration, it will be available in your RPC as
 `parameters.firstName`, just like other parameters passed to the RPC via
 the query string.
 
-___
-
-{% raw %}
-
-```json
-[
-    {
-        "name": "param",
-        "label": "My Parameter",
-        "help": "Some help for the parameter.",
-        "type": "text",
-        "required": true,
-        "default": "default-value"
-    }
-]
-```
-
-**PRO TIP:** You can mix parameters with RPC URLs to load parts of a
-fieldset dynamically.
-
-**PRO TIP 2:** Nested parameters are available for `boolean` and `select` field types.
-
 | Key          | Type    | Description                                                                                                               |
 | ---          | ---     | ---                                                                                                                       |
 | **name**     | String  | **Required.** Internal parameter name. This is they key in the resulting object.                                          |
@@ -53,6 +29,28 @@ fieldset dynamically.
 | **default**  | Any     | Specifies the default value of the parameter.                                                                             |
 | **advanced** | Boolean | Specifies if the parameter is advanced or not. Advanced parameters are hidden behind a checkbox in GUI. Default: `false`. |
 | **required** | Boolean | Specifies if the parameter is required. Default: `false`.                                                                 |
+
+{% raw %}
+
+**Example**:
+```json
+[
+    {
+        "name": "param",
+        "type": "text",
+        "label": "My Parameter",
+        "help": "Some help for the parameter.",
+        "default": "default-value",
+        "advanced": "false",
+        "required": true,
+    }
+]
+```
+
+**PRO TIP 1:** You can mix parameters with RPC URLs to load parts of a
+fieldset dynamically.
+
+**PRO TIP 2:** Nested parameters are available for `boolean` and `select` field types.
 
 ## Types
 
