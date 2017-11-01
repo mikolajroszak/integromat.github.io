@@ -96,12 +96,13 @@ fieldset dynamically.
     "nested": [
         {
             "name": "nestedField1",
-            "type": "text"
+            "type": "text",
+            "label": "Nested Field 1"
         },
         {
             "name": "nestedField2",
-            "label": "Nested Field",
-            "type": "text"
+            "type": "text",
+            "label": "Nested Field 2"
         }
     ]
 }
