@@ -91,8 +91,8 @@ fieldset dynamically.
 ```json
 {
     "name": "myBoolean",
-    "label": "My Boolean",
     "type": "boolean",
+    "label": "My Boolean",
     "nested": [
         {
             "name": "nestedField1",
@@ -122,8 +122,8 @@ fieldset dynamically.
 ```json
 {
     "name": "myArray",
-    "label": "My Array",
     "type": "array",
+    "label": "My Array",
     "spec": {
         "label": "Numeric value",
         "type": "number"
@@ -136,8 +136,8 @@ fieldset dynamically.
 ```json
 {
     "name": "myArray",
-    "label": "My Array",
     "type": "array",
+    "label": "My Array",
     "spec": [
         {
             "name": "email",
