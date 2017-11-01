@@ -163,6 +163,7 @@ fieldset dynamically.
 ```json
 {
     "name": "myCollection",
+    "type": "collection",
     "label": "My Collection",
     "spec": [
         {
