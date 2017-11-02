@@ -207,9 +207,15 @@ module's output:
 
 We have covered the basics about creating a simple module. Now, let's
 see how to update our search module with a variable API token for each
-user. Create a new [Connection](basic-connection.html) and choose **API
-Key** as a connection type. A pre-configured communication will look
-like this:
+user.
+
+Click the tab `Connections`. The (probably still empty) list of all your Connections will be shown. Click the large button with plus sign in the right top corner and choose `Create a new Connection` from the dropdown menu. A dialog will pop up, where you can name your Connection and choose its type. Fill the dialog as shown and click `Save`.
+
+![Create a new Connection](images/create-a-connection.png)
+
+The new Connection will appear in the list. Click the new Connection. A page with two tabs will be shown: `Communication` and `Parameters`.
+
+A pre-configured communication will look like this:
 
 ```json
 {
