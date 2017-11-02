@@ -3,15 +3,13 @@ title: Getting started
 layout: apps
 ---
 
-## Creating you first App
+## Creating you first Integromat App
 
-If you have searched through all the <a href="https://www.integromat.com/cs/integrations" target="_blank">apps/services</a> that Integromat already supports and did not find the one you would like to employ in your scenario, you are in the right place. This DIY guide will help you to create an Integromat App for the app/service yourself without writing a piece of code. The only requirement is that the app/service provides an API. Then all you need to do is put together a few declarations in a simple JSON format.
-
-In case you would like to try to create your new Integromat App without any particular app/service in mind, we provide a Virtual Library Demo API that you can freely experiment with and that we use throughout this guide in various examples.
+If you have searched through all the <a href="https://www.integromat.com/cs/integrations" target="_blank">apps/services</a> that Integromat already supports and did not find the one you would like to employ in your scenario, you are in the right place. This DIY guide will help you to create an Integromat App for the app/service yourself without writing a piece of code. The only requirement is that the app/service provides an API. Then all you need to do is put together a few declarations in a simple JSON format. Throughout this guide we will use our **Virtual Library Demo API** that you can freely experiment with.
 
 **TIP** To see if there is an API provided by the app/service you would like to integrate, google this: `API site:www.app-or-service.com`, for example: <a href="https://www.google.cz/search?q=API+site%3Awww.eventbrite.com" target="_blank">`API site:www.eventbrite.com`</a>
 
-In the left main menu choose `My Apps`. The (probably still empty) list of all your Apps will be shown. Click the button `Create a new App` in the right top corner. A dialog will pop up, where you can set some basic properties of your new App like its name etc. For the moment leave default values and click `Save`.
+In the left main menu choose `My Apps`. The list of all your Apps will be shown (empty for now). Click the button `Create a new App` in the right top corner. A dialog will pop up, where you can set some basic properties of your new App like its name etc. For the moment leave default values and click `Save`.
 
 ![Create a new App](images/create-an-app.png)
 
@@ -27,7 +25,7 @@ The `Base` tab contains basic setting used by the other components of the module
 }
 ```
 
-Replace the url address https://www.example.com with the API url. In case you would like to use our Demo API, use http://demo-api.integrokit.com/api/
+Replace the url address https://www.example.com with the Demo API base url: http://demo-api.integrokit.com/api/ and press Ctrl+S to save changes.
 
 ```json
 {
@@ -42,28 +40,26 @@ Modules are the key component of your App. They are basically wrappers around sp
 | Type | Description |
 | --- | --- |
 | **[Action](../action.html)** | Use if the API endpoint returns a single response. Examples are Insert a book, Remove a book or Get book info. |
-| **[Search](../searche.html)** | Use if the API endpoint returns multiple items. An example is List books that will find specific books according to search criteria. |
+| **[Search](../search.html)** | Use if the API endpoint returns multiple items. An example is List books that will find specific books according to search criteria. |
 | **[Trigger](../trigger.html)** | Use if you wish to watch for any changes in your app/service. Examples are Watch new book, which will be triggered whenever a new book has been added to the library |
 
-In this example we will start with a simple [Action](actions.html), that
-returns a single item.
+Let us start with a simple “Hello world” module that will call our Demo API /helloworld endpoint without any parameters and simply pass the response: text “Hello, World!”.
 
-## Making a request to a service and retrieving a response
+Click the tab `Modules`. The list of all Modules your App consist of will be shown (empty for now). Click the large button with plus sign in the right top corner and choose `Create a new Module` from the dropdown menu. A dialog will pop up, where you can name your Module, choose its type and provide some description. Fill the dialog as shown and click `Save`.
 
-In order to make a simplest request to a remote server, only 1 parameter
-is enough: the `url`. Suppose you have a web service, that allows to
-retrieve information about the API on the `/info` path. The web service
-is available on `http://yourservice.com` and it's API is available on
-sub-path `/api`.
+![Create a new Module](images/create-a-module.png)
+
+The new Module will appear in the list. Click the module and a page with several tabs will be shown. Make sure the tab `Communication` is active and replace the content with the following JSON snippet and press Ctrl+S to save changes:
 
 ```json
 {
-    "url": "http://yourservice.com/api/info"
+    "url": "/helloworld"
 }
 ```
 
-This will issue a request to `http://yourservice.com/api/info` and
-return the entire body, that was returned.
+Congratulations, you have just created your first Integromat App! The App consists of one Action module “Hello World” that calls the Demo API endpoint `/helloworld` and returns a Bundle containing the returned data, which is in our case the text “Hello, World!“.
+
+You can test your new App right away. Open a new browser tab, login to integromat.com, in the left main menu choose `Scenarios` and create a new scenario. Click the yet undefined “questionnaire” Module to bring up a list of all the Apps. Search for your new App by typing its name in the “Search” field: “My App”. Click your App and a list of all its Modules will be shown, currently just the newly created „Hello World” Module. Click the module to select it and run the scenario.
 
 ## Customizing a request
 
