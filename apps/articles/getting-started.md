@@ -43,13 +43,13 @@ Modules are the key component of your App. They are basically wrappers around sp
 | **[Search](../search.html)** | Use if the API endpoint returns multiple items. An example is List books that will find specific books according to search criteria. |
 | **[Trigger](../trigger.html)** | Use if you wish to watch for any changes in your app/service. Examples are Watch new book, which will be triggered whenever a new book has been added to the library |
 
-Let us start with a simple “Hello world” module that will call our Demo API `/helloworld` endpoint without any parameters and simply pass the response: text `Hello, World!`.
+Let us start with a simple `Hello world` Module that will call our Demo API `/helloworld` endpoint without any parameters and simply pass the response: text `Hello, World!`.
 
 Click the tab `Modules`. The list of all Modules your App consist of will be shown (empty for now). Click the large button with plus sign in the right top corner and choose `Create a new Module` from the dropdown menu. A dialog will pop up, where you can name your Module, choose its type and provide some description. Fill the dialog as shown and click `Save`.
 
 ![Create a new Module](images/create-a-module.png)
 
-The new Module will appear in the list. Click the module and a page with several tabs will be shown. Make sure the tab `Communication` is active and replace the content with the following JSON snippet (do not forgot to press Ctrl+S to save changes):
+The new Module will appear in the list. Click the Module and a page with several tabs will be shown. Make sure the tab `Communication` is active and replace the content of the text area with the following JSON snippet (do not forgot to press Ctrl+S to save changes):
 
 ```json
 {
@@ -57,7 +57,9 @@ The new Module will appear in the list. Click the module and a page with several
 }
 ```
 
-Congratulations, you have just created your first Integromat App! The App consists of one Action Module `Hello World` that calls the Demo API endpoint `/helloworld` and returns a Bundle containing the returned data, which is in our case the text `Hello, World!`.
+**Congratulations, you have just created your first Integromat App!**
+
+The App consists of one Action Module `Hello World` that calls the Demo API endpoint `/helloworld` and returns a Bundle containing the returned data, which is in our case the text `Hello, World!`.
 
 You can test your new App right away. Open a new browser tab, login to integromat.com, in the left main menu choose `Scenarios` and create a new scenario. Click the yet undefined “questionnaire” Module to bring up a list of all the Apps. Search for your new App by typing its name in the `Search` field: `My App`. Click your App and a list of all its Modules will be shown, currently just the newly created `Hello World` Module. Click the Module to select it and run the scenario.
 
