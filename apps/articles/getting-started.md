@@ -6,17 +6,11 @@ layout: apps
 
 ## Creating you first App
 
-If you have searched through all the <a href="https://www.integromat.com/cs/integrations" target="_blank">Apps & Services</a> that Integromat offers and did not find the one you would like to integrate in your scenario, you are in the right place. This DIY guide will help you to create the App yourself without writing a piece of code, the only requirement is that the App/Service provides an API. Then all you need to do is just to put together a few declarations in a very simple JSON format.
-
-:information_source: To see if there is an API provided by the App/Service you would like to integrate, google this: `API site:www.app-or-service.com`, for example: <a href="https://www.google.cz/search?q=API+site%3Awww.eventbrite.com" target="_blank">`API site:www.eventbrite.com`</a>
+If you have searched through all the <a href="https://www.integromat.com/cs/integrations" target="_blank">Apps & Services</a> that Integromat offers and did not find the one you would like to integrate in your scenario, you are in the right place. This DIY guide will help you to create the App yourself without writing a piece of code. All you need is to put together a few declarations in a very simple JSON format.
 
 In the left main menu choose `My Apps`. The (probably still empty) list of all your Apps will appear. Click the button `Create a new App` in the right top corner. A dialog will pop up, where you can set some basic properties of your new App like its name etc. For the moment leave default values and click `Save`. Your new App will be shown in the list.
 
 Click on your new App. A page with five tabs will appear: `Base`, `Connections`, `Webhooks`, `Modules` and `Remote Procedures`.
-
-First of all, you usually need to make a connection to the App/Service. Click the large button with plus sign in the right top corner and choose `Create a new Connection` from the dropdown menu. A dialog will pop up, where you can name your Connection and choose its type. Fill the dialog as shown and click `Save`.
-
-![Create a new Connection](images/epoch-panel.png)
 
 If your endpoint returns a single response, you have to use the
 [Action](actions.html). Otherwise, if your endpoint returns multiple
