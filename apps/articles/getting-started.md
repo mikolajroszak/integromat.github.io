@@ -12,6 +12,8 @@ In the left main menu choose `My Apps`. The (probably still empty) list of all y
 
 Click on your new App. A page with five tabs will appear: `Base`, `Connections`, `Webhooks`, `Modules` and `Remote Procedures`.
 
+:information_source: To see if there is an API provided by the App/Service you would like to integrate, google this: `API site:www.app-or-service.com`, for example: <a href="https://www.google.cz/search?q=API+site%3Awww.eventbrite.com" target="_blank">API site:www.eventbrite.com</a>`
+
 If your endpoint returns a single response, you have to use the
 [Action](actions.html). Otherwise, if your endpoint returns multiple
 items, you have to use the [Search](searches.html).
