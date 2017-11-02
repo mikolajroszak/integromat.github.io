@@ -1,5 +1,5 @@
 ---
-title: Index
+title: Integromat Apps Developer Platform
 layout: apps
 ---
 
