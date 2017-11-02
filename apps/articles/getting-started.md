@@ -18,7 +18,7 @@ Click on your new App. A page with five tabs will appear: `Base`, `Connections`,
 
 First of all, you usually need to make a connection to the App/Service. Click the large button with plus sign in the right top corner and choose `Create a new Connection` from the dropdown menu. A dialog will pop up, where you can name your Connection and choose its type. Fill the dialog as shown and click `Save`.
 
-![Create a new Connection](images/epoch-panel.png)
+![Create a new Connection](images/create-a-connection.png)
 
 ---
 
