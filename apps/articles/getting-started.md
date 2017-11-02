@@ -6,7 +6,7 @@ layout: apps
 
 ## Creating you first App
 
-If you have searched through all the [Apps & Services](/en/integrations){:target="_blank"} that Integromat offers and did not find the one you would like to integrate in your scenario, you are in the right place. This DIY guide will help you to create the App yourself without writing a piece of code. All you need is to put together a few declarations in a very simple JSON format.
+If you have searched through all the <a href="https://www.integromat.com/cs/integrations" target="_blank">Apps & Services</a> that Integromat offers and did not find the one you would like to integrate in your scenario, you are in the right place. This DIY guide will help you to create the App yourself without writing a piece of code. All you need is to put together a few declarations in a very simple JSON format.
 
 In the left main menu choose `My Apps`. The (probably still empty) list of all your Apps will appear. Click the button `Create a new App` in the right top corner. A dialog will pop up, where you can set some basic properties of your new App like its name etc. For the moment leave default values and click `Save`. Your new App will be shown in the list.
 
