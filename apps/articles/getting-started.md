@@ -37,13 +37,13 @@ Replace the url address https://www.example.com with the API url. In case you wo
 
 ## Creating a module
 
-Modules are the key component of your App. They are basically wrappers around specific app/service functionality, which is exposed via an API endpoint. There are three basic types of modules: `Actions`, `Searches` and `Triggers`. 
+Modules are the key component of your App. They are basically wrappers around specific app/service functionality, which is exposed via an API endpoint. There are three basic types of modules: `Action`, `Search` and `Trigger`. 
 
 | Type | Description |
 | --- | --- |
-| **[Actions](../action.html)** | Use if the API endpoint returns a single response. Examples are Insert a book, Remove a book or Get book info. |
-| **[Searches](../searche.html)** | Use if the API endpoint returns multiple items. An example is List books that will find specific books according to search criteria. |
-| **[Triggers](../trigger.html)** | Use if you wish to watch for any changes in your app/service. Examples are Watch new book, which will be triggered whenever a new book has been added to the library |
+| **[Action](../action.html)** | Use if the API endpoint returns a single response. Examples are Insert a book, Remove a book or Get book info. |
+| **[Search](../searche.html)** | Use if the API endpoint returns multiple items. An example is List books that will find specific books according to search criteria. |
+| **[Trigger](../trigger.html)** | Use if you wish to watch for any changes in your app/service. Examples are Watch new book, which will be triggered whenever a new book has been added to the library |
 
 In this example we will start with a simple [Action](actions.html), that
 returns a single item.
