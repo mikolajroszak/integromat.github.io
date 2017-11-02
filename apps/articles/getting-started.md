@@ -3,22 +3,25 @@ title: Getting started
 layout: apps
 ---
 
-
 ## Creating you first App
 
 If you have searched through all the <a href="https://www.integromat.com/cs/integrations" target="_blank">Apps & Services</a> that Integromat offers and did not find the one you would like to integrate in your scenario, you are in the right place. This DIY guide will help you to create the App yourself without writing a piece of code, the only requirement is that the App/Service provides an API. Then all you need to do is just to put together a few declarations in a very simple JSON format.
 
 :information_source: To see if there is an API provided by the App/Service you would like to integrate, google this: `API site:www.app-or-service.com`, for example: <a href="https://www.google.cz/search?q=API+site%3Awww.eventbrite.com" target="_blank">`API site:www.eventbrite.com`</a>
 
-In the left main menu choose `My Apps`. The (probably still empty) list of all your Apps will appear. Click the button `Create a new App` in the right top corner. A dialog will pop up, where you can set some basic properties of your new App like its name etc. For the moment leave default values and click `Save`. Your new App will be shown in the list.
+In the left main menu choose `My Apps`. The (probably still empty) list of all your Apps will be shown. Click the button `Create a new App` in the right top corner. A dialog will pop up, where you can set some basic properties of your new App like its name etc. For the moment leave default values and click `Save`.
 
-Click on your new App. A page with five tabs will appear: `Base`, `Connections`, `Webhooks`, `Modules` and `Remote Procedures`.
+![Create a new App](images/create-an-app.png)
+
+Your new App will appear in the list. Click on your new App. A page with five tabs will be shown: `Base`, `Connections`, `Webhooks`, `Modules` and `Remote Procedures`.
 
 ## Creating a new Connection
 
-First of all, you usually need to make a connection to the App/Service. Click the large button with plus sign in the right top corner and choose `Create a new Connection` from the dropdown menu. A dialog will pop up, where you can name your Connection and choose its type. Fill the dialog as shown and click `Save`.
+First of all, you usually need to make a connection to the App/Service. Clikc the tab `Connections’. The (probably still empty) list of all your Connections will be shown. Click the large button with plus sign in the right top corner and choose `Create a new Connection` from the dropdown menu. A dialog will pop up, where you can name your Connection and choose its type. Fill the dialog as shown and click `Save`.
 
 ![Create a new Connection](images/create-a-connection.png)
+
+The new Connection will appear in the list. Click the new Connection. A page with two tabs will be shown: `Communication` and `Parameters`.
 
 ---
 
