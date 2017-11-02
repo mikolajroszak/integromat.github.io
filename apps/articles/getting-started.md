@@ -5,9 +5,9 @@ layout: apps
 
 ## Creating you first App
 
-If you have searched through all the <a href="https://www.integromat.com/cs/integrations" target="_blank">Apps & Services</a> that Integromat offers and did not find the one you would like to integrate in your scenario, you are in the right place. This DIY guide will help you to create the App yourself without writing a piece of code, the only requirement is that the App/Service provides an API. Then all you need to do is just to put together a few declarations in a very simple JSON format.
+If you have searched through all the <a href="https://www.integromat.com/cs/integrations" target="_blank">apps/services</a> that Integromat integrates and did not find the one you would like to integrate in your scenario, you are in the right place. This DIY guide will help you to create the App for the app/service yourself without writing a piece of code, the only requirement is that the app/service provides an API. Then all you need to do is just to put together a few declarations in a very simple JSON format.
 
-**TIP** To see if there is an API provided by the App/Service you would like to integrate, google this: `API site:www.app-or-service.com`, for example: <a href="https://www.google.cz/search?q=API+site%3Awww.eventbrite.com" target="_blank">`API site:www.eventbrite.com`</a>
+**TIP** To see if there is an API provided by the app/service you would like to integrate, google this: `API site:www.app-or-service.com`, for example: <a href="https://www.google.cz/search?q=API+site%3Awww.eventbrite.com" target="_blank">`API site:www.eventbrite.com`</a>
 
 In the left main menu choose `My Apps`. The (probably still empty) list of all your Apps will be shown. Click the button `Create a new App` in the right top corner. A dialog will pop up, where you can set some basic properties of your new App like its name etc. For the moment leave default values and click `Save`.
 
@@ -33,7 +33,9 @@ Replace the url address https://www.example.com with the API url. If you wish to
 }
 ```
 
----
+## Creating a module
+
+Modules are the key component of your App. They are basically wrappers around specific app/service functionality exposed via respective API endpoint.
 
 If your endpoint returns a single response, you have to use the
 [Action](actions.html). Otherwise, if your endpoint returns multiple
