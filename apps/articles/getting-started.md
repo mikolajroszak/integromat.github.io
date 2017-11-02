@@ -41,9 +41,9 @@ Modules are the key component of your App. They are basically wrappers around sp
 
 | Type | Description |
 | --- | --- |
-| **[Actions](../actions.html)** | Use if the API endpoint returns a single response. Examples are Insert a book, Remove a book or Get book info. |
-| **[Searches](../searches.html)** | Use if the API endpoint returns multiple items. An example is List books that will find specific books according to search criteria. |
-| **[Triggers](../triggers.html)** | Use if you wish to watch for any changes in your app/service. Examples are Watch new book, which will be triggered whenever a new book has been added to the library |
+| **[Actions](../action.html)** | Use if the API endpoint returns a single response. Examples are Insert a book, Remove a book or Get book info. |
+| **[Searches](../searche.html)** | Use if the API endpoint returns multiple items. An example is List books that will find specific books according to search criteria. |
+| **[Triggers](../trigger.html)** | Use if you wish to watch for any changes in your app/service. Examples are Watch new book, which will be triggered whenever a new book has been added to the library |
 
 In this example we will start with a simple [Action](actions.html), that
 returns a single item.
