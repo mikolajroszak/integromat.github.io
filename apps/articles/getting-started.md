@@ -5,7 +5,7 @@ layout: apps
 
 ## Creating you first App
 
-If you have searched through all the <a href="https://www.integromat.com/cs/integrations" target="_blank">apps/services</a> that Integromat already supports and did not find the one you would like to employ in your scenario, you are in the right place. This DIY guide will help you to create an Integromat App for the app/service yourself without writing a piece of code. The only requirement is that the app/service provides an API. Then all you need to do is to put together a few declarations in a simple JSON format.
+If you have searched through all the <a href="https://www.integromat.com/cs/integrations" target="_blank">apps/services</a> that Integromat already supports and did not find the one you would like to employ in your scenario, you are in the right place. This DIY guide will help you to create an Integromat App for the app/service yourself without writing a piece of code. The only requirement is that the app/service provides an API. Then all you need to do is put together a few declarations in a simple JSON format.
 
 **TIP** To see if there is an API provided by the app/service you would like to integrate, google this: `API site:www.app-or-service.com`, for example: <a href="https://www.google.cz/search?q=API+site%3Awww.eventbrite.com" target="_blank">`API site:www.eventbrite.com`</a>
 
