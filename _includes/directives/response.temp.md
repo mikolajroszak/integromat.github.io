@@ -17,6 +17,7 @@ passing values between requests.
 **Note**: When specifying `temp` directives in different requests and in
 the `response` section, the contents of the `temp` collection is not
 overwritten, but instead merged. Example:
+{% raw %}
 ```json
 [
     {
@@ -36,7 +37,7 @@ overwritten, but instead merged. Example:
             "param2": "hello, {{temp.hello}}" // will be "hello, world"
         },
         "response": {
-            "temp": {} // will have the foillowing properties:
+            "temp": {} // will have the following properties:
                        // temp.foo == "baz"
                        // temp.hello == "world"
                        // temp.param1 == "bar-baz"
@@ -45,3 +46,4 @@ overwritten, but instead merged. Example:
     }
 ]
 ```
+{% endraw %}
