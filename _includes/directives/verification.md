@@ -16,6 +16,7 @@ help you.
 | [**`body`**](#iterate-condition)    | Any [IML Type](articles/types.md#iml-types)          | Specifies the response body.                                      |
 
 **Example**:
+{% raw %}
 ```json
 {
     "verification": {
@@ -30,6 +31,7 @@ help you.
     }
 }
 ```
+{% endraw %}
 
 ### `verification.condition` {#verification-condition}
 

@@ -6,6 +6,7 @@ All header names are case insensitive, so `x-requested-with` is the same
 as `X-Requested-With`.
 
 Example:
+{% raw %}
 ```json
 {
     "url": "http://example.com/data",
@@ -14,3 +15,4 @@ Example:
     }
 }
 ```
+{% endraw %}

@@ -16,6 +16,7 @@ passing values between requests.
 **Note**: When specifying `temp` directives in different requests and in
 the `response` section (`response.temp` directive), the contents of the
 `temp` collection is not overwritten, but instead merged. Example:
+{% raw %}
 ```json
 [
     {
@@ -44,3 +45,4 @@ the `response` section (`response.temp` directive), the contents of the
     }
 ]
 ```
+{% endraw %}
