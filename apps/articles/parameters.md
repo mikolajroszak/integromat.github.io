@@ -119,7 +119,7 @@ If you prefer a simple checkbox, add `"required" : true` to the parameter descri
     "type": "boolean",
     "label": "My Boolean",
     "required": true,
-    ]
+    ...
 }
 ```
 
