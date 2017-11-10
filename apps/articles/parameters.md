@@ -109,6 +109,7 @@ fieldset dynamically.
 ```
 
 **TIP:** Boolean parameter will be show as three radiobuttons:
+
 ![Boolean parameter - radiobuttons](images/boolean-radiobuttons.png)
 
 If you prefer a simple checkbox, add `"required" : true` to the parameter description:
