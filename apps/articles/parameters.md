@@ -119,10 +119,10 @@ If you prefer a simple checkbox, add `"required" : true` to the parameter descri
     "label": "My Boolean",
     "required": true,
     ]
-}```
+}
+```
+
 ![Boolean parameter - checkbox](images/boolean-checkbox.png)
-
-
 
 ## Array
 
