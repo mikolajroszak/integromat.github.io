@@ -8,7 +8,7 @@ OAuth1 connection handles the token exchange automatically.
 
 Before you start configuring you OAuth1 connection, you need to create
 an app on a 3rd-party service. When creating an app, use
-`https://www.integromat.com/oauth/cb/app` as a callback URL.
+`https://www.integromat.com/oauth/cb/app-oauth1` as a callback URL.
 
 
 # Index
