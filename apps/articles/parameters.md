@@ -108,6 +108,23 @@ fieldset dynamically.
 }
 ```
 
+**TIP:** Boolean parameter will be show as three radiobuttons:
+
+![Boolean parameter - radiobuttons](images/boolean-radiobuttons.png)
+
+If you prefer a simple checkbox, add `"required" : true` to the parameter description:
+```json
+{
+    "name": "myBoolean",
+    "type": "boolean",
+    "label": "My Boolean",
+    "required": true,
+    ...
+}
+```
+
+![Boolean parameter - checkbox](images/boolean-checkbox.png)
+
 ## Array
 
 | Key                     | Type         | Description                                                                                            |
