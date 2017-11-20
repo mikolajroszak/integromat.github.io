@@ -9,6 +9,17 @@ If you have searched through all the <a href="https://www.integromat.com/cs/inte
 
 ## Creating you first Integromat App
 
+Let us start with a simple `Hello world` Module that will call our Demo API `/helloworld` endpoint without any parameters and simply pass the response: text `Hello, World!`. You can test the API simply by clicking the following link:
+
+<a href="http://demo-api.integrokit.com/api/v1/helloworld" target="_blank">http://demo-api.integrokit.com/api/v1/helloworld</a>
+
+The API response containing the following JSON will open in your browser:  
+
+```json
+{"result":"Hello, World!"}
+
+```
+
 In the left main menu choose `My Apps`. The list of all your Apps will be shown containing few sample apps (`MailerLite`, `Slack` and `Tumblr`) that you can later explore. Click the button `Create a new App` in the right top corner. A dialog will pop up, where you can set some basic properties of your new App like its name etc. For the moment leave default values and click `Save`.
 
 ![Create a new App](images/create-an-app.png)
@@ -23,17 +34,6 @@ The `Base` tab contains basic setting used by the other components of the module
 {
     "baseUrl": "https://www.example.com"
 }
-```
-
-Let us start with a simple `Hello world` Module that will call our Demo API `/helloworld` endpoint without any parameters and simply pass the response: text `Hello, World!`. You can test the API simply by clicking the following link:
-
-<a href="http://demo-api.integrokit.com/api/v1/helloworld" target="_blank">http://demo-api.integrokit.com/api/v1/helloworld</a>
-
-The API response containing the following JSON will open in your browser:  
-
-```json
-{"result":"Hello, World!"}
-
 ```
 
 Replace the url address `https://www.example.com` with the Demo API base url: `http://demo-api.integrokit.com/api/v1` and press <kbd>Ctrl</kbd>+<kbd>S</kbd> to save changes.
