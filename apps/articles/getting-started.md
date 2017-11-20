@@ -20,11 +20,11 @@ The API response containing the following JSON will open in your browser:
 
 ```
 
-In the left main menu choose `My Apps`. The list of all your Apps will be shown containing few sample apps (`MailerLite`, `Slack` and `Tumblr`) that you can later explore. Click the button `Create a new App` in the right top corner. A dialog will pop up, where you can set some basic properties of your new App like its name etc. For the moment leave default values and click `Save`.
+To create a new App, in the left main menu choose `My Apps`. The list of all your Apps will be shown containing few sample Apps (`MailerLite`, `Slack` and `Tumblr`) that you can later explore. Click the button `Create a new App` in the right top corner. A dialog will pop up, where you can set some basic properties of your new App like its name etc. For the moment leave default values and click `Save`.
 
 ![Create a new App](images/create-an-app.png)
 
-Your new App will appear in the list. Click on your new App. A page with five tabs will be shown: `Base`, `Connections`, `Webhooks`, `Modules` and `Remote Procedures` these are the main components your App will be composed of.
+Your new App will appear in the list. Click on your new App. A page with five tabs will be shown: `Base`, `Connections`, `Webhooks`, `Modules` and `Remote Procedures` - these are the main components your App will be composed of.
 
 ## Basic settings
 
@@ -61,13 +61,15 @@ To create a new Module, click the tab `Modules`. The list of all Modules your Ap
 
 ![Create a new Module](images/create-a-module.png)
 
-The new Module will appear in the list. Click the Module and a page with several tabs will be shown. Make sure the tab `Communication` is active and replace the content of the text area with the following JSON. The `url` key specifies the endpoint path. It will be joined with `baseUrl` specified earlier to produce the full url of the API endpoint: http://demo-api.integrokit.com/api/v1/helloworld (again, press <kbd>Ctrl</kbd>+<kbd>S</kbd> to save changes:
+The new Module will appear in the list. Click the Module and a page with several tabs will be shown. Make sure the tab `Communication` is active and replace the content of the text area with the following JSON (again, press <kbd>Ctrl</kbd>+<kbd>S</kbd> to save changes.
 
 ```json
 {
     "url": "/helloworld"
 }
 ```
+
+The `url` key specifies the API endpoint path. The url will be joined with `baseUrl` specified earlier to produce the full url of the API endpoint: `http://demo-api.integrokit.com/api/v1/helloworld`.
 
 Click the tab `Mappable parameters`. The JSON on this tab enables you to specify parameters of your module that will appear in the <a href="https://www.integromat.com/en/kb/module.html" target="_blank">module settings panel</a>. Our module does not require any parameters, so erase the content between the square brackets, leaving just empty square brackets (<kbd>Ctrl</kbd>+<kbd>S</kbd>): 
 
@@ -123,7 +125,7 @@ You can either add the parameter to the `url` key:
 ```
 {% endraw %}
 
-Or you can create a new key `qs` (query string) and add the parameter there:
+Or you can create add a new key `qs` (query string) and add the parameter there:
 
 {% raw %}
 ```json
@@ -135,6 +137,10 @@ Or you can create a new key `qs` (query string) and add the parameter there:
 }
 ```
 {% endraw %}
+
+Save the changes (<kbd>Ctrl</kbd>+<kbd>S</kbd>), switch to your scenario, refresh the browser window and run the scenario. Click the bubbles above the module to pop up the panel with information about processed bundles. In case you have successfully followed this tutorial, you should see the following output of your new Module:
+
+![Hello World](images/hello-world-hi-done.png) 
 
 ## Customizing a request
 
