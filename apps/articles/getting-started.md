@@ -25,7 +25,7 @@ The `Base` tab contains basic setting used by the other components of the module
 }
 ```
 
-Replace the url address `https://www.example.com` with the Demo API base url: `http://demo-api.integrokit.com/api/` and press Ctrl+S to save changes.
+Replace the url address `https://www.example.com` with the Demo API base url: `http://demo-api.integrokit.com/api/` and press <kbd>Ctrl</kbd>+<kbd>S</kbd> to save changes.
 
 ```json
 {
@@ -57,7 +57,7 @@ The new Module will appear in the list. Click the Module and a page with several
 }
 ```
 
-Click the tab `Mappable parameters`. The JSON on this tab enables you to specify parameters of your module that will appear in the ![module settings panel](https://www.integromat.com/en/kb/module.html). Our module does not require any parameters, so erase the content between the square brackets, leaving just empty square brackets (Ctrl+S): 
+Click the tab `Mappable parameters`. The JSON on this tab enables you to specify parameters of your module that will appear in the <a href="https://www.integromat.com/en/kb/module.html" target="_blank">module settings panel</a>. Our module does not require any parameters, so erase the content between the square brackets, leaving just empty square brackets (<kbd>Ctrl</kbd>+<kbd>S</kbd>): 
 
 ```json
 []
