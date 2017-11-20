@@ -43,7 +43,16 @@ Modules are the key component of your App. They are basically wrappers around sp
 | **[Search](../search.html)** | Use if the API endpoint returns multiple items. An example is List books that will find specific books according to search criteria. |
 | **[Trigger](../trigger.html)** | Use if you wish to watch for any changes in your app/service. Examples are Watch new book, which will be triggered whenever a new book has been added to the library |
 
-Let us start with a simple `Hello world` Module that will call our Demo API `/helloworld` endpoint without any parameters and simply pass the response: text `Hello, World!`.
+Let us start with a simple `Hello world` Module that will call our Demo API `/helloworld` endpoint without any parameters and simply pass the response: text `Hello, World!`. Click the following link to open the API response your browser:
+
+<a href="http://demo-api.integrokit.com/api/v1/helloworld" target="_blank">http://demo-api.integrokit.com/api/v1/helloworld</a>
+
+The API should return the following JSON response:
+
+```json
+{"result":"Hello, World!"}
+
+```
 
 Click the tab `Modules`. The list of all Modules your App consist of will be shown (empty for now). Click the large button with plus sign in the right top corner and choose `Create a new Module` from the dropdown menu. A dialog will pop up, where you can name your Module, choose its type and provide some description. Fill the dialog as shown and click `Save`.
 
@@ -73,7 +82,7 @@ You can test your new App right away. Open a new browser tab, login to integroma
 
 ## Adding parameters
 
-In the documentation of the **Virtual Library Demo API** we can find out that the API endpoint `/helloworld` can take two parameters `greeting` and `name`. Click on the following url in your browser:
+In the documentation of the Demo API we can find out that the API endpoint `/helloworld` takes two parameters `greeting` and `name`. Click the following link to open the API response your browser:
 
 <a href="http://demo-api.integrokit.com/api/v1/helloworld?greeting=Hi&name=Johny" target="_blank">http://demo-api.integrokit.com/api/v1/helloworld?greeting=Hi&name=Johny</a>
 
