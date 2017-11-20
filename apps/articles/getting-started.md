@@ -57,11 +57,11 @@ Modules are the key component of your App. They are basically wrappers around sp
 | **[Trigger](../trigger.html)** | Use if you wish to watch for any changes in your app/service. Examples are Watch new book, which will be triggered whenever a new book has been added to the library |
 
 
-Let's start Click the tab `Modules`. The list of all Modules your App consist of will be shown (empty for now). Click the large button with plus sign in the right top corner and choose `Create a new Module` from the dropdown menu. A dialog will pop up, where you can name your Module, choose its type and provide some description. Fill the dialog as shown and click `Save`.
+To create a new Module, click the tab `Modules`. The list of all Modules your App consist of will be shown (empty for now). Click the large button with plus sign in the right top corner and choose `Create a new Module` from the dropdown menu. A dialog will pop up, where you can name your Module, choose its type and provide some description. Fill the dialog as shown and click `Save`.
 
 ![Create a new Module](images/create-a-module.png)
 
-The new Module will appear in the list. Click the Module and a page with several tabs will be shown. Make sure the tab `Communication` is active and replace the content of the text area with the following JSON snippet (again, press <kbd>Ctrl</kbd>+<kbd>S</kbd> to save changes):
+The new Module will appear in the list. Click the Module and a page with several tabs will be shown. Make sure the tab `Communication` is active and replace the content of the text area with the following JSON. The `url` key specifies the endpoint path. It will be joined with `baseUrl` specified earlier to produce the full url of the API endpoint: http://demo-api.integrokit.com/api/v1/helloworld (again, press <kbd>Ctrl</kbd>+<kbd>S</kbd> to save changes:
 
 ```json
 {
