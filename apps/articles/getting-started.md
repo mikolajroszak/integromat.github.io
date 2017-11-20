@@ -44,7 +44,9 @@ Replace the url address `https://www.example.com` with the Demo API base url: `h
 }
 ```
 
-Note that the `baseUrl` key contains the API url without the `/helloworld` endpoint path that will be specified later in the Module settings. More about the `Base` tab can be found in the [Base](base.html) documentation.   
+Note that the `baseUrl` key contains the API url without the `/helloworld` endpoint path that will be specified later in the Module settings.
+
+More about the `Base` tab can be found in the [Base](base.html) documentation.   
 
 ## Creating a module
 
@@ -87,7 +89,7 @@ You can test your new App right away. Open a new browser tab, login to integroma
 
 ## Adding parameters
 
-In the documentation of the Demo API we can find out that the API endpoint `/helloworld` takes two parameters `greeting` and `name`. Click the following link to open the API response your browser:
+The Demo API endpoint `/helloworld` takes two parameters `greeting` and `name`. Click the following link to open the API response your browser:
 
 <a href="http://demo-api.integrokit.com/api/v1/helloworld?greeting=Hi&name=Johny" target="_blank">http://demo-api.integrokit.com/api/v1/helloworld?greeting=Hi&name=Johny</a>
 
@@ -109,11 +111,13 @@ So let's make our `Hello World` Module configurable by adding the parameter `gre
 ]
 ```
 
-This JSON specifies that the module will have one parameter called `greeting` of type `text`. Switch to your scenario and refresh the browser window (<kbd>F5</kbd>). Click the Module to pop up its settings panel. The panel now contains one text field labeled `greeting`. Fill `Hi!`:
+This JSON specifies that the module will have one parameter called `greeting` of type `text`. More about parameters can be found in the [Parameters](parameters.html) documentation.
+
+Switch to your scenario and refresh the browser window (<kbd>F5</kbd>). Click the Module to pop up its settings panel. The panel now contains one text field labeled `greeting`. Fill `Hi!`:
 
 ![Hello World](images/hello-world-hi.png)
 
-Press `OK` and run the scenario. Though, if you click the bubbles above the Module to pop up the panel with information about processed bundles, the module's output will be identical as in the previous run. To change the output of the module, we have to pass the content of the `greeting` parameter to the API. Switch back to the `Mappable parameters` tab and click the `Communication` tab. To pass the parameter `greetings` to the API, you have two options:
+Press `OK` and run the scenario. Though, if you click the bubbles above the Module to pop up the panel with information about processed bundles, the module's output will be identical as in the previous run. To change the output of the module, you have to pass the content of the `greeting` parameter to the API. Switch back to the `Mappable parameters` tab and click the `Communication` tab. To pass the parameter `greetings` to the API, you have two options:
 
 You can either add the parameter to the `url` key:
 
@@ -138,13 +142,98 @@ Or you can add a new key `qs` (query string) and add the parameter there:
 ```
 {% endraw %}
 
-Save the changes (<kbd>Ctrl</kbd>+<kbd>S</kbd>), switch to your scenario, refresh the browser window and run the scenario. Click the bubbles above the module to pop up the panel with information about processed bundles. In case you have successfully followed this tutorial, you should see the following output of your new Module:
+Save the changes (<kbd>Ctrl</kbd>+<kbd>S</kbd>), switch to your scenario, refresh the browser window and run the scenario. Click the bubbles above the module to pop up the panel with information about processed bundles, where you should see the modifed Module's output:
 
 ![Hello World](images/hello-world-hi-done.png)
 
-You can now try to add parameter `name` to your `Hello World` module on your own.
+You can now practise your skills and try to add parameter `name` to your `Hello World` module.
 
-More about parameters can be found in the [Parameters](parameters.html) documentation.
+## Creating a new Connection
+
+APIs usually employ some sort of authentication/authorization to limit access to their endpoints. While the `/helloworld` endpoint was accessible without any authentication/authorization, the other endpoints of the Demo API will require an API key.
+
+Let's try to call endpoint `/books` that should respond with a list of books in the library:
+
+<a href="http://demo-api.integrokit.com/api/v1/books" target="_blank">http://demo-api.integrokit.com/api/v1/books</a>
+
+Without providing the API key, the response will contain the following error:
+
+```json
+{"error":"Invalid or missing API key"}
+```json
+
+To enable the user of your Module to specify her/his own API key (assuming each user has got her/his own API key to access the API), you need to create a Connection.
+
+Click the tab `Connections`. The (probably still empty) list of all your Connections will be shown. Click the large button with plus sign in the right top corner and choose `Create a new Connection` from the dropdown menu. A dialog will pop up, where you can name your Connection and choose its type. Fill the dialog as shown and click `Save`.
+
+![Create a new Connection](images/create-a-connection.png)
+
+The new Connection will appear in the list. Click the new Connection. A page with two tabs will be shown: `Communication` and `Parameters`.
+
+A pre-configured communication will look like this:
+
+{% raw %}
+```json
+{
+    "qs": {},
+    "url": "https://www.example.com/api/whoami",
+    "body": {},
+    "method": "GET",
+    "headers": {
+        "API-TOKEN": "{{parameters.apiKey}}"
+    }
+}
+```
+{% endraw %}
+
+  
+We have covered the basics about creating a simple module. Now, let's
+see how to update our search module with a variable API token for each
+user.
+
+Click the tab `Connections`. The (probably still empty) list of all your Connections will be shown. Click the large button with plus sign in the right top corner and choose `Create a new Connection` from the dropdown menu. A dialog will pop up, where you can name your Connection and choose its type. Fill the dialog as shown and click `Save`.
+
+![Create a new Connection](images/create-a-connection.png)
+
+The new Connection will appear in the list. Click the new Connection. A page with two tabs will be shown: `Communication` and `Parameters`.
+
+A pre-configured communication will look like this:
+
+{% raw %}
+```json
+{
+    "qs": {},
+    "url": "https://www.example.com/api/whoami",
+    "body": {},
+    "method": "GET",
+    "headers": {
+        "API-TOKEN": "{{parameters.apiKey}}"
+    }
+}
+```
+{% endraw %}
+
+This section specifies a simple request to determine whether the
+credentials entered by the user are valid or not. The most common way to
+validate the credentials is to call an API to get user's information.
+Most of the APIs have such an API.
+
+Once you finish communication configuration, you can go back to your
+Search module and click *Attach connection*. Once you select a
+connection, you can update your Search's communication headers to
+execute request with variable API token like this:
+
+{% raw %}
+```json
+{
+    "headers": {
+        "API-TOKEN": "{{connection.apiKey}}"
+    }
+}
+```
+{% endraw %}
+
+---
 
 ## Customizing a request
 
@@ -317,28 +406,6 @@ module's output:
 We have covered the basics about creating a simple module. Now, let's
 see how to update our search module with a variable API token for each
 user.
-
-Click the tab `Connections`. The (probably still empty) list of all your Connections will be shown. Click the large button with plus sign in the right top corner and choose `Create a new Connection` from the dropdown menu. A dialog will pop up, where you can name your Connection and choose its type. Fill the dialog as shown and click `Save`.
-
-![Create a new Connection](images/create-a-connection.png)
-
-The new Connection will appear in the list. Click the new Connection. A page with two tabs will be shown: `Communication` and `Parameters`.
-
-A pre-configured communication will look like this:
-
-{% raw %}
-```json
-{
-    "qs": {},
-    "url": "https://www.example.com/api/whoami",
-    "body": {},
-    "method": "GET",
-    "headers": {
-        "API-TOKEN": "{{parameters.apiKey}}"
-    }
-}
-```
-{% endraw %}
 
 This section specifies a simple request to determine whether the
 credentials entered by the user are valid or not. The most common way to
