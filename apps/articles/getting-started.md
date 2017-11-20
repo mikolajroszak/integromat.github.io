@@ -25,11 +25,11 @@ The `Base` tab contains basic setting used by the other components of the module
 }
 ```
 
-Replace the url address `https://www.example.com` with the Demo API base url: `http://demo-api.integrokit.com/api/` and press <kbd>Ctrl</kbd>+<kbd>S</kbd> to save changes.
+Replace the url address `https://www.example.com` with the Demo API base url: `http://demo-api.integrokit.com/api/v1` and press <kbd>Ctrl</kbd>+<kbd>S</kbd> to save changes.
 
 ```json
 {
-    "baseUrl": "http://demo-api.integrokit.com/api/"
+    "baseUrl": "http://demo-api.integrokit.com/api/v1"
 }
 ```
 
@@ -67,7 +67,7 @@ Click the tab `Mappable parameters`. The JSON on this tab enables you to specify
 
 The App consists of one Action Module `Hello World` that calls the Demo API endpoint `/helloworld` and returns a Bundle containing the returned data, which is in our case the text `Hello, World!`.
 
-You can test your new App right away. Open a new browser tab, login to integromat.com, in the left main menu choose `Scenarios` and create a new scenario. Click the yet undefined “questionnaire” Module to bring up a list of all the Apps. Search for your new App by typing its name in the `Search` field: `My App`. Click your App and a list of all its Modules will be shown, currently just the newly created `Hello World` Module. Click the Module to select it and run the scenario.
+You can test your new App right away. Open a new browser tab, login to integromat.com, in the left main menu choose `Scenarios` and create a new scenario. Click the yet undefined “questionnaire” Module to bring up a list of all the Apps. Search for your new App by typing its name in the `Search` field: `My App`. Click your App and a list of all its Modules will be shown, currently just the newly created `Hello World` Module. Click the Module to select it. An empty module settings panel will pop up saying "There are no configurable options for this module.". Close the panel and run the scenario.
 
 ## Customizing a request
 
