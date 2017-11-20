@@ -73,13 +73,11 @@ You can test your new App right away. Open a new browser tab, login to integroma
 
 ## Adding parameters
 
-In the documentation of the **Virtual Library Demo API** we can find out that the API endpoint `/helloworld` can take two parameters `greeting` and `name`. Try to copy and paste the following url in your browser:
+In the documentation of the **Virtual Library Demo API** we can find out that the API endpoint `/helloworld` can take two parameters `greeting` and `name`. Click on the following url in your browser:
 
-```
-http://demo-api.integrokit.com/api/v1/helloworld?greeting=Hi&name=Johny
-```
+<a href="http://demo-api.integrokit.com/api/v1/helloworld?greeting=Hi&name=Johny" target="_blank">http://demo-api.integrokit.com/api/v1/helloworld?greeting=Hi&name=Johny</a>
 
-The API will return the following JSON response:
+The API should return the following JSON response:
 
 ```json
 {"result":"Hi, Johny!"}
