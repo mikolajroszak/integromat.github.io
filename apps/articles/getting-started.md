@@ -103,14 +103,17 @@ Press `OK` and run the scenario. Though, if you click the bubbles above the Modu
 
 You can either add the parameter to the `url` key:
 
+{% raw %}
 ```json
 {
     "url": "/helloworld?greeting={{parameters.greeting}}"
 }
 ```
+{% endraw %}
 
 Or you can create a new key `qs` (query string) and add the parameter there:
 
+{% raw %}
 ```json
 {
     "url": "/helloworld",
@@ -119,6 +122,7 @@ Or you can create a new key `qs` (query string) and add the parameter there:
     }
 }
 ```
+{% endraw %}
 
 ## Customizing a request
 
@@ -126,11 +130,13 @@ Now, suppose that you want to retrieve a user. In order to do that, you
 need to call the `/users/:id` method and specify the ID of the user you
 want to retrieve. Here is how you would do that:
 
+{% raw %}
 ```json
 {
     "url": "http://yourservice.com/api/users/{{parameters.userId}}"
 }
 ```
+{% endraw %}
 
 To let user choose the parameter, add this to parameters:
 
@@ -147,11 +153,13 @@ To let user choose the parameter, add this to parameters:
 
 If you need to specify a query string parameter, you can do:
 
+{% raw %}
 ```json
 {
     "url": "http://yourservice.com/api/users/{{parameters.userId}}?includeAdvanced={{parameters.advanced}}"
 }
 ```
+{% endraw %}
 
 But a better way is to use a special `qs` collection.
 
@@ -162,6 +170,7 @@ escape values inside those collections.
 
 The above request can be rewritten as:
 
+{% raw %}
 ```json
 {
     "url": "http://yourservice.com/api/users/{{parameters.userId}}",
@@ -170,6 +179,7 @@ The above request can be rewritten as:
     }
 }
 ```
+{% endraw %}
 
 ### Headers
 
@@ -177,6 +187,7 @@ Now, lets say that your server wants only logged in users to view all
 other users and it wants an `API-TOKEN` header with a correct value. We
 can use the `headers` collection to specify this header:
 
+{% raw %}
 ```json
 {
     "url": "http://yourservice.com/api/users/{{parameters.userId}}",
@@ -188,6 +199,7 @@ can use the `headers` collection to specify this header:
     }
 }
 ```
+{% endraw %}
 
 Cool, now we can make a request to a protected endpoint and retrieve a
 list of users.
@@ -235,6 +247,7 @@ directive, that specifies where are the items located inside the body.
 For the next example, suppose that when you call `/users` on your
 service, you will get a list of users in `body.data`.
 
+{% raw %}
 ```json
 {
     "url": "http://yourservice.com/api/users",
@@ -249,12 +262,14 @@ service, you will get a list of users in `body.data`.
     }
 }
 ```
+{% endraw %}
 
 This example will correctly output each user that was returned. But what
 if you don't want to output all parameters? You can use the
 [`output`](response-object.html) section to manually map response to
 module's output:
 
+{% raw %}
 ```json
 {
     "url": "http://yourservice.com/api/users",
@@ -273,6 +288,7 @@ module's output:
     }
 }
 ```
+{% endraw %}
 
 ## Creating a new Connection
 
@@ -288,6 +304,7 @@ The new Connection will appear in the list. Click the new Connection. A page wit
 
 A pre-configured communication will look like this:
 
+{% raw %}
 ```json
 {
     "qs": {},
@@ -299,6 +316,7 @@ A pre-configured communication will look like this:
     }
 }
 ```
+{% endraw %}
 
 This section specifies a simple request to determine whether the
 credentials entered by the user are valid or not. The most common way to
@@ -310,6 +328,7 @@ Search module and click *Attach connection*. Once you select a
 connection, you can update your Search's communication headers to
 execute request with variable API token like this:
 
+{% raw %}
 ```json
 {
     "headers": {
@@ -317,4 +336,4 @@ execute request with variable API token like this:
     }
 }
 ```
-
+{% endraw %}
