@@ -9,7 +9,7 @@ If you have searched through all the <a href="https://www.integromat.com/cs/inte
 
 ## Creating you first Integromat App
 
-In the left main menu choose `My Apps`. The list of all your Apps will be shown (empty for now). Click the button `Create a new App` in the right top corner. A dialog will pop up, where you can set some basic properties of your new App like its name etc. For the moment leave default values and click `Save`.
+In the left main menu choose `My Apps`. The list of all your Apps will be shown containing few sample apps (`MailerLite`, `Slack` and `Tumblr`) that you can later explore. Click the button `Create a new App` in the right top corner. A dialog will pop up, where you can set some basic properties of your new App like its name etc. For the moment leave default values and click `Save`.
 
 ![Create a new App](images/create-an-app.png)
 
