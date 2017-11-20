@@ -84,7 +84,7 @@ Let's enhance our simple app a bit by adding some parameters to its module setti
 ]
 ```
 
-This JSON specifies that the module will have one parameter called `greeting` of type `text`. Press <kbd>Ctrl</kbd>+<kbd>S</kbd>, switch to your scenario and refresh the browser window (<kbd>F5/kbd>). Click the Module to pop up its settings panel. The panel now contains one text field labeled `greeting`. Fill `Hi!`:
+This JSON specifies that the module will have one parameter called `greeting` of type `text`. Press <kbd>Ctrl</kbd>+<kbd>S</kbd>, switch to your scenario and refresh the browser window (<kbd>F5</kbd>). Click the Module to pop up its settings panel. The panel now contains one text field labeled `greeting`. Fill `Hi!`:
 
 ![Hello World](images/hello-world-hi.png)
 
