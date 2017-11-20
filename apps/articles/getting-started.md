@@ -71,6 +71,23 @@ You can test your new App right away. Open a new browser tab, login to integroma
 
 ![Hello World](images/hello-world.png)
 
+## Adding parametrs
+
+Let's enhance our simple app a bit by adding some parameters to its module settings panel. Get back to the `Mappable parameters` tab and replace the empty square brackets with the following JSON:
+
+```json
+[
+	{
+		"name": "greeting",
+		"type": "text"
+	}
+]
+```
+
+This JSON specifies that the module will have one parameter called `greeting` of type `text`. Press <kbd>Ctrl</kbd>+<kbd>S</kbd>, switch to your scenario and refresh the browser window (<kbd>F5/kbd>). Click the Module to pop up its settings panel. The panel now contains one text field labeled `greeting`. Fill `Hi!`:
+
+![Hello World](images/hello-world-hi.png)
+
 ## Customizing a request
 
 Now, suppose that you want to retrieve a user. In order to do that, you
