@@ -49,7 +49,7 @@ Click the tab `Modules`. The list of all Modules your App consist of will be sho
 
 ![Create a new Module](images/create-a-module.png)
 
-The new Module will appear in the list. Click the Module and a page with several tabs will be shown. Make sure the tab `Communication` is active and replace the content of the text area with the following JSON snippet (again, press Ctrl+S to save changes):
+The new Module will appear in the list. Click the Module and a page with several tabs will be shown. Make sure the tab `Communication` is active and replace the content of the text area with the following JSON snippet (again, press <kbd>Ctrl</kbd>+<kbd>S</kbd> to save changes):
 
 ```json
 {
