@@ -57,6 +57,12 @@ The new Module will appear in the list. Click the Module and a page with several
 }
 ```
 
+Click the tab `Mappable parameters`. The JSON on this tab enables you to specify parameters of your module that will appear in the ![module settings panel](https://www.integromat.com/en/kb/module.html). Our module does not require any parameters, so erase the content between the square brackets, leaving just empty square brackets:
+
+```json
+[]
+```
+
 **Congratulations, you have just created your first Integromat App!**
 
 The App consists of one Action Module `Hello World` that calls the Demo API endpoint `/helloworld` and returns a Bundle containing the returned data, which is in our case the text `Hello, World!`.
