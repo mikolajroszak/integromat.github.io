@@ -49,7 +49,7 @@ Click the tab `Modules`. The list of all Modules your App consist of will be sho
 
 ![Create a new Module](images/create-a-module.png)
 
-The new Module will appear in the list. Click the Module and a page with several tabs will be shown. Make sure the tab `Communication` is active and replace the content of the text area with the following JSON snippet (do not forgot to press Ctrl+S to save changes):
+The new Module will appear in the list. Click the Module and a page with several tabs will be shown. Make sure the tab `Communication` is active and replace the content of the text area with the following JSON snippet (again, press Ctrl+S to save changes):
 
 ```json
 {
@@ -57,7 +57,7 @@ The new Module will appear in the list. Click the Module and a page with several
 }
 ```
 
-Click the tab `Mappable parameters`. The JSON on this tab enables you to specify parameters of your module that will appear in the ![module settings panel](https://www.integromat.com/en/kb/module.html). Our module does not require any parameters, so erase the content between the square brackets, leaving just empty square brackets:
+Click the tab `Mappable parameters`. The JSON on this tab enables you to specify parameters of your module that will appear in the ![module settings panel](https://www.integromat.com/en/kb/module.html). Our module does not require any parameters, so erase the content between the square brackets, leaving just empty square brackets (Ctrl+S): 
 
 ```json
 []
