@@ -160,7 +160,7 @@ Without providing the API key, the response will contain the following error:
 
 ```json
 {"error":"Invalid or missing API key"}
-```json
+```
 
 To enable the user of your Module to specify her/his own API key (assuming each user has got her/his own API key to access the API), you need to create a Connection.
 
@@ -186,6 +186,7 @@ A pre-configured communication will look like this:
 ```
 {% endraw %}
 
+---
   
 We have covered the basics about creating a simple module. Now, let's
 see how to update our search module with a variable API token for each
