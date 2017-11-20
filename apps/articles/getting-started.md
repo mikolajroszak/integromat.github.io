@@ -73,7 +73,20 @@ You can test your new App right away. Open a new browser tab, login to integroma
 
 ## Adding parameters
 
-Let's enhance our simple `Hello World` module by adding some parameters to its settings panel. Switch back to the `Mappable parameters` tab and replace the empty square brackets with the following JSON:
+In the documentation of the **Virtual Library Demo API** we can find out that the API endpoint `/helloworld` can take two parameters `greeting` and `name`. Try to copy and paste the following url in your browser:
+
+```
+http://demo-api.integrokit.com/api/v1/helloworld?greeting=Hi&name=Johny
+```
+
+The API will return the following JSON response:
+
+```json
+{"result":"Hi, Johny!"}
+
+```
+
+So let's make our `Hello World` Module configurable by adding the parameter `greeting`. Switch back to the `Mappable parameters` tab and replace the empty square brackets with the following JSON:
 
 ```json
 [
@@ -88,7 +101,7 @@ This JSON specifies that the module will have one parameter called `greeting` of
 
 ![Hello World](images/hello-world-hi.png)
 
-Press `OK` and run the scenario. Though, if you click the bubbles above the Module to pop up the panel with information about processed bundles, there will be no change in the outpit from the previous run. To change the output of the module, we have to pass the content of the `greeting` parameter to the API. Switch back to the `Mappable parameters` tab and click the `Communication` tab. To pass the parameter `greetings` to the API, you have two options.
+Press `OK` and run the scenario. Though, if you click the bubbles above the Module to pop up the panel with information about processed bundles, the module's output will be identical as in the previous run. To change the output of the module, we have to pass the content of the `greeting` parameter to the API. Switch back to the `Mappable parameters` tab and click the `Communication` tab. To pass the parameter `greetings` to the API, you have two options.
 
 You can either add the parameter to the `url` key:
 
