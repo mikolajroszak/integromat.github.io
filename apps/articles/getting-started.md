@@ -71,22 +71,43 @@ You can test your new App right away. Open a new browser tab, login to integroma
 
 ![Hello World](images/hello-world.png)
 
-## Adding parametrs
+## Adding parameters
 
-Let's enhance our simple app a bit by adding some parameters to its module settings panel. Get back to the `Mappable parameters` tab and replace the empty square brackets with the following JSON:
+Let's enhance our simple `Hello World` module by adding some parameters to its settings panel. Switch back to the `Mappable parameters` tab and replace the empty square brackets with the following JSON:
 
 ```json
 [
-	{
-		"name": "greeting",
-		"type": "text"
-	}
+    {
+        "name": "greeting",
+        "type": "text"
+    }
 ]
 ```
 
 This JSON specifies that the module will have one parameter called `greeting` of type `text`. Press <kbd>Ctrl</kbd>+<kbd>S</kbd>, switch to your scenario and refresh the browser window (<kbd>F5</kbd>). Click the Module to pop up its settings panel. The panel now contains one text field labeled `greeting`. Fill `Hi!`:
 
 ![Hello World](images/hello-world-hi.png)
+
+Press `OK` and run the scenario. Though, if you click the bubbles above the Module to pop up the panel with information about processed bundles, there will be no change in the outpit from the previous run. To change the output of the module, we have to pass the content of the `greeting` parameter to the API. Switch back to the `Mappable parameters` tab and click the `Communication` tab. To pass the parameter `greetings` to the API, you have two options.
+
+You can either add the parameter to the `url` key:
+
+```json
+{
+    "url": "/helloworld?greeting={{parameters.greeting}}"
+}
+```
+
+Or you can create a new key `qs` (query string) and add the parameter there:
+
+```json
+{
+    "url": "/helloworld",
+    "qs" : {
+        "greeting": "{{parameters.greeting}}"
+    }
+}
+```
 
 ## Customizing a request
 
