@@ -44,7 +44,7 @@ Replace the url address `https://www.example.com` with the Demo API base url: `h
 }
 ```
 
-Note that the `baseUrl` key contains the API url without the `/helloworld` endpoint path that will be specified later in the Module settings. 
+Note that the `baseUrl` key contains the API url without the `/helloworld` endpoint path that will be specified later in the Module settings. More about the `Base` tab can be found in the [Base](base.html) documentation.   
 
 ## Creating a module
 
@@ -61,7 +61,7 @@ To create a new Module, click the tab `Modules`. The list of all Modules your Ap
 
 ![Create a new Module](images/create-a-module.png)
 
-The new Module will appear in the list. Click the Module and a page with several tabs will be shown. Make sure the tab `Communication` is active and replace the content of the text area with the following JSON (again, press <kbd>Ctrl</kbd>+<kbd>S</kbd> to save changes.
+The new Module will appear in the list. Click the Module and a page with several tabs will be shown. Make sure the tab `Communication` is active and replace the content of the text area with the following JSON and save the changes(<kbd>Ctrl</kbd>+<kbd>S</kbd>):
 
 ```json
 {
@@ -71,7 +71,7 @@ The new Module will appear in the list. Click the Module and a page with several
 
 The `url` key specifies the API endpoint path. The url will be joined with `baseUrl` specified earlier to produce the full url of the API endpoint: `http://demo-api.integrokit.com/api/v1/helloworld`.
 
-Click the tab `Mappable parameters`. The JSON on this tab enables you to specify parameters of your module that will appear in the <a href="https://www.integromat.com/en/kb/module.html" target="_blank">module settings panel</a>. Our module does not require any parameters, so erase the content between the square brackets, leaving just empty square brackets (<kbd>Ctrl</kbd>+<kbd>S</kbd>): 
+Click the tab `Mappable parameters`. The JSON on this tab enables you to specify parameters of your module that will appear in the <a href="https://www.integromat.com/en/kb/module.html" target="_blank">module settings panel</a>. Our module does not require any parameters, so erase the content between the square brackets, leaving just empty square brackets and save the changes(<kbd>Ctrl</kbd>+<kbd>S</kbd>): 
 
 ```json
 []
@@ -98,7 +98,7 @@ The API should return the following JSON response:
 
 ```
 
-So let's make our `Hello World` Module configurable by adding the parameter `greeting`. Switch back to the `Mappable parameters` tab and replace the empty square brackets with the following JSON:
+So let's make our `Hello World` Module configurable by adding the parameter `greeting`. Switch back to the `Mappable parameters` tab, replace the empty square brackets with the following JSON and save the changes(<kbd>Ctrl</kbd>+<kbd>S</kbd>): 
 
 ```json
 [
@@ -109,11 +109,11 @@ So let's make our `Hello World` Module configurable by adding the parameter `gre
 ]
 ```
 
-This JSON specifies that the module will have one parameter called `greeting` of type `text`. Press <kbd>Ctrl</kbd>+<kbd>S</kbd>, switch to your scenario and refresh the browser window (<kbd>F5</kbd>). Click the Module to pop up its settings panel. The panel now contains one text field labeled `greeting`. Fill `Hi!`:
+This JSON specifies that the module will have one parameter called `greeting` of type `text`. Switch to your scenario and refresh the browser window (<kbd>F5</kbd>). Click the Module to pop up its settings panel. The panel now contains one text field labeled `greeting`. Fill `Hi!`:
 
 ![Hello World](images/hello-world-hi.png)
 
-Press `OK` and run the scenario. Though, if you click the bubbles above the Module to pop up the panel with information about processed bundles, the module's output will be identical as in the previous run. To change the output of the module, we have to pass the content of the `greeting` parameter to the API. Switch back to the `Mappable parameters` tab and click the `Communication` tab. To pass the parameter `greetings` to the API, you have two options.
+Press `OK` and run the scenario. Though, if you click the bubbles above the Module to pop up the panel with information about processed bundles, the module's output will be identical as in the previous run. To change the output of the module, we have to pass the content of the `greeting` parameter to the API. Switch back to the `Mappable parameters` tab and click the `Communication` tab. To pass the parameter `greetings` to the API, you have two options:
 
 You can either add the parameter to the `url` key:
 
@@ -125,7 +125,7 @@ You can either add the parameter to the `url` key:
 ```
 {% endraw %}
 
-Or you can create add a new key `qs` (query string) and add the parameter there:
+Or you can add a new key `qs` (query string) and add the parameter there:
 
 {% raw %}
 ```json
@@ -140,7 +140,11 @@ Or you can create add a new key `qs` (query string) and add the parameter there:
 
 Save the changes (<kbd>Ctrl</kbd>+<kbd>S</kbd>), switch to your scenario, refresh the browser window and run the scenario. Click the bubbles above the module to pop up the panel with information about processed bundles. In case you have successfully followed this tutorial, you should see the following output of your new Module:
 
-![Hello World](images/hello-world-hi-done.png) 
+![Hello World](images/hello-world-hi-done.png)
+
+You can now try to add parameter `name` to your `Hello World` module on your own.
+
+More about parameters can be found in the [Parameters](parameters.html) documentation.
 
 ## Customizing a request
 
