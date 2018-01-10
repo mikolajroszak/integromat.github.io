@@ -9,12 +9,12 @@ is OAuth 1. Otherwise it will generate Invalid Headers which might lead
 to invalid requests being made.
 {% endif %}
 
-| Key                  | Type                                     | Description                                                                                                                                              |
-| ---                  | ---                                      | ---                                                                                                                                                      |
+| Key                  | Type                                        | Description                                                                                                                                              |
+| ---                  | ---                                         | ---                                                                                                                                                      |
 | **consumer_key**     | [IML String](articles/types.md#iml-string)  | You consumer key                                                                                                                                         |
 | **consumer_secret**  | [IML String](articles/types.md#iml-string)  | Your consumer secret                                                                                                                                     |
 | **private_key**      | [IML String](articles/types.md#iml-string)  | Instead of `consumer_secret` you can specify a `private_key` string in [PEM format](http://how2ssl.com/articles/working_with_pem_files/)                 |
-| **token**            | [IML String](articles/types.md#iml-string)) | An expression that parses the `oauth_token` string.                                                                                                      |
+| **token**            | [IML String](articles/types.md#iml-string)  | An expression that parses the `oauth_token` string.                                                                                                      |
 | **token_secret**     | [IML String](articles/types.md#iml-string)  | An expression that parses the `oauth_token_secret` string.                                                                                               |
 | **verifier**         | [IML String](articles/types.md#iml-string)  | An expression that parses the `oauth_verifier` string.                                                                                                   |
 | **signature_method** | [String](articles/types.md#string)          | Specifies the desired method to use when calculating the signature. Can be either `HMAC-SHA1`, `RSA-SHA1`, `PLAINTEXT`. Default is `HMAC-SHA1`.          |

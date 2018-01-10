@@ -23,6 +23,7 @@ service, for example to retrieve, update, or delete an item.
     - [`type`](#request-type)
     - [`temp`](#request-temp)
     - [`condition`](#condition)
+    - [`aws`](#aws)
     - [`followRedirects`](#follow-redirects)
     - [`followAllRedirects`](#follow-all-redirects)
   - [Multiple requests](#multiple-requests)
@@ -77,6 +78,13 @@ service, for example to retrieve, update, or delete an item.
         "signature_method": String,
         "transport_method": String,
         "body_hash": String
+    },
+    "aws": {
+        "key": String,
+        "secret": String,
+        "session": String,
+        "bucket": String,
+        "sign_version": 2|4        
     },
     "response": {
         "type": Enum[json, urlencoded, xml, text, string, raw, binary, automatic]
@@ -135,6 +143,7 @@ All Available request-related directives are shown in the table below:
 | [**`type`**](#request-type)                       | [String](articles/types.md#string)                                                 | Specifies how data are serialized into body.                                     |
 | [**`temp`**](#request-temp)                       | [IML Object](articles/types.md#iml-object)                                         | Creates/updates the `temp` variable                                              |
 | [**`condition`**](#condition)                     | [IML String](articles/types.md#iml-string) or [Boolean](articles/types.md#boolean) | Determines if to execute current request or never.                               |
+| [**`aws`**](#aws)                                 | AWS Parameters Specification                                                       | Collection of parameters for AWS signing                                         |
 | [**`followRedirects`**](#follow-redirects)        | [Boolean](articles/types.md#boolean)                                               | **Default:** true. Follow HTTP 3xx responses as redirects                        |
 | [**`followAllRedirects`**](#follow-all-redirects) | [Boolean](articles/types.md#boolean)                                               | **Default:** true. Follow non-GET HTTP 3xx responses as redirects                |
 | [**`response`**](#handling-responses)             | Response Specification                                                             | Collection of directives controlling processing of the response.                 |
@@ -172,6 +181,10 @@ All Available request-related directives are shown in the table below:
 ### `condition`
 
 {% include directives/condition.md %}
+
+### `aws`
+
+{% include directives/aws.md %}
 
 ### `followRedirects` {#follow-redirects}
 
