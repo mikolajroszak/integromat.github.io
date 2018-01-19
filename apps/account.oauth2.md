@@ -18,6 +18,7 @@ an app on a 3rd-party service. When creating an app, use
   - [OAuth 2 authentication process](#oauth-2-authentication-process)
   - [Request options](#request-options)
     - [`url`](#url)
+    - [`encodeUrl`](#encode-url)
     - [`method`](#method)
     - [`headers`](#headers)
     - [`qs`](#qs)
@@ -66,6 +67,7 @@ specification does **not** inherit from Base.
 ```text
 {
     "url": String,
+    "encodeUrl": Boolean,
     "method": Enum[GET, POST, PUT, DELETE, OPTIONS],
     "qs": Flat Object,
     "headers": Flat Object,
@@ -139,6 +141,7 @@ All Available request-related directives are shown in the table below:
 | Key                                               | Type                                                                               | Description                                                                      |
 | :------------------------------------             | :-----------------------------------------------------------------                 | :------------------------------------------------------------------------------- |
 | [**`url`**](#url)                                 | [IML String](articles/types.md#iml-string)                                         | Specifies the URL that should be called.                                         |
+| [**`encodeUrl`**](#encode-url)                    | [Boolean](articles/types.md#boolean)                                               | **Default:** true. Specifies if the URL should be auto encoded or not.           |
 | [**`method`**](#method)                           | [IML String](articles/types.md#iml-string)                                         | Specifies the HTTP method, that should be used when issuing a request.           |
 | [**`headers`**](#headers)                         | [IML Flat Object](articles/types.md#iml-flat-object)                               | A single level (flat) collection, that specifies request headers.                |
 | [**`qs`**](#qs)                                   | [IML Flat Object](articles/types.md#iml-flat-object)                               | A single level (flat) collection that specifies request query string parameters. |
@@ -154,6 +157,10 @@ All Available request-related directives are shown in the table below:
 ### `url`
 
 {% include directives/url.md module="connection" %}
+
+### `encodeUrl` {#encode-url}
+
+{% include directives/encodeUrl.md %}
 
 ### `method`
 
