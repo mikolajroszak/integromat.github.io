@@ -1,4 +1,4 @@
-**Required**: no
+**Required**: no  
 **Default**: true
 
 This directive controls the encoding of URLs. 
