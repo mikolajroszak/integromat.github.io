@@ -231,7 +231,7 @@ If you prefer a simple checkbox, add `"required" : true` to the parameter descri
 | ---          | ---     | ---                                                                                                                                |
 | **multiple** | boolean | If `true`, multiple selection is allowed. Default: `false`.                                                                        |
 | **editable** | boolean | If `true`, the user can manually edit the value of this parameter (or use mappings). Default: `false`.                             |
-| **mode**     | string  | Specifies the editting mode when **editable** set to `true`. If `"edit"`, the field will be set to manual edit. Default: `???`.    |
+| **mode**     | string  | Specifies the editing mode when **editable** set to `true`. If `"edit"`, the field will be set to manual edit. Default: `???`.    |
 | **options**  | string  | Specifies an [Options RPC](../rpc.md#options-rpc) URL, that will be called to retrieve dynamic options for this RPC.               |
 | **options**  | array   | An array of options for this Select. See example for structure definition.                                                         | 
 | **options**  | object  | Allows to specify options and nested parameters for this Select field. See below for details.                                      |
