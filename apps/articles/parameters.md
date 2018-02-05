@@ -232,6 +232,7 @@ If you prefer a simple checkbox, add `"required" : true` to the parameter descri
 | **multiple** | boolean | If `true`, multiple selection is allowed. Default: `false`.                                                                        |
 | **editable** | boolean | If `true`, the user can manually edit the value of this parameter (or use mappings). Default: `false`.                             |
 | **mode**     | string  | Specifies the initial editing mode when **editable** set to `true`. If `"edit"`, the field will be initially set to **mapping mode**. If `"choose"`, the field will be initially set to **select mode**. Default: `"choose"`. |
+| **grouped**  | boolean | If `true`, options can be groupped. Replace **value** with **options** to change the option to a group (see the example below). |
 | **options**  | string  | Specifies an [Options RPC](../rpc.md#options-rpc) URL, that will be called to retrieve dynamic options for this RPC.               |
 | **options**  | array   | An array of options for this Select. See example for structure definition.                                                         | 
 | **options**  | object  | Allows to specify options and nested parameters for this Select field. See below for details.                                      |
@@ -246,55 +247,129 @@ been selected.
 | **options.nested** | array  | Specifies an array of nested parameters (fields), that will be shown to the user if this field's checkbox will be checked.                                                                             |
 | **options.nested** | string | Specifies an [Fields RPC](../rpc.md#fields-rpc) URL, that will be called to retrieve nested parameters (fields), that will be shown to the user if this field's checkbox will be checked. |
 
-**Example**
+**Examples**
+
+Select with two options:
 
 ```json
 {
-    "name": "field",
-    "type": "select",
-    "options": [
+  "label": "Options AB",
+  "name": "optionsAB",
+  "type": "select",
+  "options": [
+    {
+      "label": "Option A",
+      "value": "a"
+    },
+    {
+      "label": "Option B",
+      "value": "b"
+    }
+  ]
+}
+```
+
+Select with two options. The nested fields "Field A1" and "Field A2" will be shown only if the Option A has been selected:  
+
+```json
+{
+  "label": "Options AB",
+  "name": "optionsAB",
+  "type": "select",
+  "options": [
+    {
+      "label": "Option A",
+      "value": "a",
+      "nested": [
         {
-            "label": "Option A",
-            "value": "a"
+          "name": "fieldA1",
+          "label": "Field A1",
+          "type": "text"
         },
         {
-            "label": "Option B",
-            "value": "b"
+          "name": "fieldA2",
+          "label": "Field A1",
+          "type": "text"
         }
-    ]
+      ]
+
+    },
+    {
+      "label": "Option B",
+      "value": "b"
+    }
+  ]
 }
 ```
 
+Select with two options. The nested field "Sub Options" will be shown after one of the options has been selected and its content will be fetched dynamically via the RPC call.  
 
 ```json
 {
-    "name": "field",
-    "type": "select",
-    "options": {
-        "store": [
-            {
-                 "label": "Option A",
-                 "value": "a"
-            },
-            {
-                 "label": "Option B",
-                 "value": "b"
-            }
-        ],
-        "nested": [
-            {
-                "name": "nestedField1",
-                "type": "text"
-            },
-            {
-                "name": "nestedField2",
-                "label": "Nested Field",
-                "type": "text"
-            }
-        ] 
-    }
+  "label": "Options AB",
+  "name": "optionsAB",
+  "type": "select",
+  "options": {
+    "store": [
+      {
+        "label": "Option A",
+        "value": "a"
+      },
+      {
+        "label": "Option B",
+        "value": "b"
+      }
+    ],
+    "nested": [
+      {
+        "name": "suboptions",
+        "name": "Sub Options",
+        "type": "select",
+        "options": "rpc://FetchSubOptions"
+      }
+    ]
+  }
 }
 ```
+
+Select with two groups, each with two options:
+ 
+```json
+{
+  "type": "select",
+  "grouped": true,
+  "options": [
+    {
+      "label": "Group A",
+      "options": [
+        {
+          "label": "Option A1",
+          "value": "A1"
+        },
+        {
+          "label": "Option A2",
+          "value": "A2"
+        }
+      ]
+    },
+    {
+      "label": "Group B",
+      "options": [
+        {
+          "label": "Option B1",
+          "value": "B1"
+        },
+        {
+          "label": "Option A2",
+          "value": "B2"
+        }
+      ]
+    }
+  ]
+}
+```
+
+![Select with groups](images/select-group.png)
 
 ## Text
 
