@@ -269,7 +269,7 @@ Select with two options:
 }
 ```
 
-Select with two options. The nested fields "Field A1" and "Field A2" will be shown only if the Option A has been selected:  
+Select with two options. The nested fields "Field A1" and "Field A2" will be shown only if the "Option A" has been selected:  
 
 ```json
 {
@@ -360,7 +360,7 @@ Select with two groups, each with two options:
           "value": "B1"
         },
         {
-          "label": "Option A2",
+          "label": "Option B2",
           "value": "B2"
         }
       ]
