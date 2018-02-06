@@ -73,7 +73,7 @@ fieldset dynamically.
 - `number` - Decimal number
 ///- `password` - Like `text`, just replacing each character with asterisk ("*")
 - `path` - A path to a file or a folder
-- `pkey`- Primary key in PEM format
+- `pkey`- Private key in PEM format
 - `port` - A number in range from 0 to 65535
 - `select` - A selection from predefined values
 - `text` - Text value
