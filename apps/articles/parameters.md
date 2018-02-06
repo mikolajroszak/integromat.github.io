@@ -71,7 +71,7 @@ fieldset dynamically.
 - `integer` - Whole number
 - `keychain:<type>` - Key
 - `number` - Decimal number
-- `password` - Like `text`, just replacing each character with asterisk ("*")
+///- `password` - Like `text`, just replacing each character with asterisk ("*")
 - `path` - A path to a file or a folder
 - `pkey`- Primary key in PEM format
 - `port` - A number in range from 0 to 65535
@@ -82,7 +82,7 @@ fieldset dynamically.
 - `timezone` - Time zone name (e.g. `Europe/Prague`)
 - `uinteger` - Positive whole number
 - `url` - URL address
-- `uuid` - UUID (e.g. `123e4567-e89b-12d3-a456-426655440000`)
+///- `uuid` - UUID (e.g. `123e4567-e89b-12d3-a456-426655440000`)
 
 ## Boolean
 
@@ -395,7 +395,7 @@ Select with two groups, each with two options:
 | **options**           | string  | Specifies an [Options RPC](../rpc.md#options-rpc) URL, that will be called to dynamically retrieve list of left-side operands |
 | **options**           | object  | Detailed configuration for retrieveing left-side operands |
 
-if **options** is an object, it contains detailed configuration for retrieveing left-side operands.
+If **options** is an object, it contains detailed configuration for retrieveing left-side operands.
 
 | **options.store**     | array   | Array of left-side operands. Structure is identical to [Select](#select)'s **options** |
 | **options.store**     | string  | Specifies an [Options RPC](../rpc.md#options-rpc) URL, that will be called to dynamically retrieve a list of left-side operands |
