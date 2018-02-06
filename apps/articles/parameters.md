@@ -69,7 +69,6 @@ fieldset dynamically.
   should always be of type `text`. If the `default` is not `text` then
   it will be converted to `text`.
 - `integer` - Whole number
-- `keychain:<type>` - Key
 - `number` - Decimal number
 ///- `password` - Like `text`, just replacing each character with asterisk ("*")
 - `path` - A path to a file or a folder
@@ -82,7 +81,6 @@ fieldset dynamically.
 - `timezone` - Time zone name (e.g. `Europe/Prague`)
 - `uinteger` - Positive whole number
 - `url` - URL address
-///- `uuid` - UUID (e.g. `123e4567-e89b-12d3-a456-426655440000`)
 
 ## Boolean
 
