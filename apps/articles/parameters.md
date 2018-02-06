@@ -391,13 +391,13 @@ Select with two groups, each with two options:
 
 | Key                   | Type    | Description                                                                |
 | ---                   | ---     | ---                                                                        |
-| **options**           | array   | Array of left-side operands (see Option Specification) |
+| **options**           | array   | Array of left-side operands. Structure is identical to options in a [Select](#select) |
 | **options**           | string  | Specifies an [Options RPC](../rpc.md#options-rpc) URL, that will be called to dynamically retrieve list of left-side operands |
 | **options**           | object  | Detailed configuration for retrieveing left-side operands |
-| **options.store**     | array   | Array of left-side operands (see Option Specification) |
+| **options.store**     | array   | Array of left-side operands. Structure is identical to options in a [Select](#select) |
 | **options.store**     | string  | Specifies an [Options RPC](../rpc.md#options-rpc) URL, that will be called to dynamically retrieve a list of left-side operands |
 | **options.logic**     | string  | If `and`, filters can be combined only with **AND** operator. If `or`, filters can be combined only with **OR** operator. If `both`, both **AND** and **OR** can be used to combine filter. Default: `both`. |
-| **options.operators** | array   | Array of operators. Structure is identical to grouped select (see Select, option `grouped`). |
+| **options.operators** | array   | Array of operators. Structure is identical to options in a grouped [Select](#select) (see option `grouped`). |
 
 Note: If the left-side operands field is not filled, it can be filled manually.
 
