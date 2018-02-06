@@ -57,19 +57,23 @@ fieldset dynamically.
 - `array` - Array of items of equal type
 - `boolean` - `true` or `false`
 - `buffer` - Binary data
+- `cert` - Certifcate in PEM format
 - `collection` - Key-value collection
 - `color` - Hex color
 - `date` - Date with time
 - `email` - Email address
-- `file` - File selection
 - `filename` - file name
+- `filter` - Filtering
 - `folder` - Folder selection
 - `hidden` - Parameter of this type is hidden from the user. The value
   should always be of type `text`. If the `default` is not `text` then
   it will be converted to `text`.
 - `integer` - Whole number
+- `keychain:<type>` - Key
 - `number` - Decimal number
+- `password` - Like `text`, just replacing each character with asterisk ("*")
 - `path` - A path to a file or a folder
+- `pkey`- Primary key in PEM format
 - `port` - A number in range from 0 to 65535
 - `select` - A selection from predefined values
 - `text` - Text value
@@ -78,6 +82,7 @@ fieldset dynamically.
 - `timezone` - Time zone name (e.g. `Europe/Prague`)
 - `uinteger` - Positive whole number
 - `url` - URL address
+- `uuid` - UUID (e.g. `123e4567-e89b-12d3-a456-426655440000`)
 
 ## Boolean
 
@@ -217,7 +222,7 @@ If you prefer a simple checkbox, add `"required" : true` to the parameter descri
 }
 ```
 
-## Number
+## Number, Integer, UInteger, Port
 
 | Key              | Type   | Description                      |
 | ---              | ---    | ---                              |
@@ -381,5 +386,37 @@ Select with two groups, each with two options:
 | **validate.min**     | number  | Specifies minumum length.                                                  |
 | **validate.enum**    | array   | Specifies an array of items that this parameter can contain.               |
 | **validate.pattern** | string  | Specifies a RegExp pattern that a text parameter should conform to.        |
+
+## Filter
+
+| Key                   | Type    | Description                                                                |
+| ---                   | ---     | ---                                                                        |
+| **options**           | array   | Array of left-side operands (see Option Specification) |
+| **options**           | string  | Specifies an [Options RPC](../rpc.md#options-rpc) URL, that will be called to dynamically retrieve list of left-side operands |
+| **options**           | object  | Detailed configuration for retrieveing left-side operands |
+| **options.store**     | array   | Array of left-side operands (see Option Specification) |
+| **options.store**     | string  | Specifies an [Options RPC](../rpc.md#options-rpc) URL, that will be called to dynamically retrieve a list of left-side operands |
+| **options.logic**     | string  | If `and`, filters can be combined only with **AND** operator. If `or`, filters can be combined only with **OR** operator. If `both`, both **AND** and **OR** can be used to combine filter. Default: `both`. |
+| **options.operators** | array   | Array of operators. Structure is identical to grouped select (see Select, option `grouped`). |
+
+Note: If the left-side operands field is not filled, it can be filled manually.
+
+**Examples**
+
+Filter with one left-side operand `email`:
+
+```json
+{
+  "type": "filter",
+  "options": [
+    {
+      "label": "Email",
+      "value": "email"
+    }
+  ]
+}
+```
+
+![Filter](images/filter.png)
 
 {% endraw %}
