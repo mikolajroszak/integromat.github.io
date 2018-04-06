@@ -26,6 +26,8 @@ an app on a 3rd-party service. When creating an app, use
     - [`type`](#request-type)
     - [`temp`](#request-temp)
     - [`condition`](#condition)
+      - [`condition`](#condition-condition)
+      - [`default`](#condition-default)
     - [`oauth`](#oauth)
     - [`followRedirects`](#follow-redirects)
     - [`followAllRedirects`](#follow-all-redirects)

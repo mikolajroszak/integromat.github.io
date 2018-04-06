@@ -20,6 +20,8 @@ an Instant Trigger and pair it with a webhook.
     - [`body`](#respond-body)
   - [`verification`](#verification)
     - [`condition`](#verification-condition)
+      - [`condition`](#condition-condition)
+      - [`default`](#condition-default)
     - [`respond`](#verification-respond)
   - [`iterate`](#iterate)
     - [`container`](#iterate-container)

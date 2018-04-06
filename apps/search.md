@@ -24,6 +24,8 @@ to simply return multiple items.
     - [`type`](#request-type)
     - [`temp`](#request-temp)
     - [`condition`](#condition)
+      - [`condition`](#condition-condition)
+      - [`default`](#condition-default)
     - [`aws`](#aws)
     - [`followRedirects`](#follow-redirects)
     - [`followAllRedirects`](#follow-all-redirects)

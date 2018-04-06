@@ -22,6 +22,8 @@ or when your service does not support OAuth 1/2.
     - [`type`](#request-type)
     - [`temp`](#request-temp)
     - [`condition`](#condition)
+      - [`condition`](#condition-condition)
+      - [`default`](#condition-default)
     - [`followRedirects`](#follow-redirects)
     - [`followAllRedirects`](#follow-all-redirects)
   - [Handling responses](#handling-responses)

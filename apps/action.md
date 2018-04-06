@@ -24,6 +24,8 @@ service, for example to retrieve, update, or delete an item.
     - [`type`](#request-type)
     - [`temp`](#request-temp)
     - [`condition`](#condition)
+      - [`condition`](#condition-condition)
+      - [`default`](#condition-default)
     - [`aws`](#aws)
     - [`followRedirects`](#follow-redirects)
     - [`followAllRedirects`](#follow-all-redirects)

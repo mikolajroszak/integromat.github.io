@@ -68,7 +68,7 @@ types in the list below.
   is interrupted and the state is stored. User is able to repair the
   data and resume execution.
 
-### `error.\<status-code> {#error-status-code}
+### `error.<status-code>` {#error-status-code}
 
 **Required**: no  
 **Default**: empty
