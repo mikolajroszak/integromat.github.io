@@ -21,14 +21,14 @@ the following properties:
 
 ### `condition.condition` {#condition-condition}
 
-**Required**: no
+**Required**: no  
 **Default**: empty
 
 The original `condition` directive. If the condition is not specified, the request is always executed.
 
 ### `condition.default` {#condition-default}
 
-**Required**: no
+**Required**: no  
 **Default**: empty
 
 An optional module output when the condition is false.
