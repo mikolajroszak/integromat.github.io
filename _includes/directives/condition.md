@@ -11,7 +11,7 @@ executed, and the flow will go to next request, if present, or return
 nothing.
 
 When you need to return some data when the condition is false, you are able to
-specify the `output` directive as an object, in which case it will have
+specify the `condition` directive as an object, in which case it will have
 the following properties:
 
 | Key                                     | Type                                        | Description                                             |
@@ -26,7 +26,7 @@ the following properties:
 
 The original `condition` directive. If the condition is not specified, the request is always executed.
 
-### `condition-default` {#condition-default}
+### `condition.default` {#condition-default}
 
 **Required**: no
 **Default**: empty
