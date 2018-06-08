@@ -1,6 +1,11 @@
 **Required**: no  
 **Default**: `true`
 
+{% if include.module == "webhook" %}
+This directive specifies if the Web Hook should be processed or not.
+
+If this directive is not specified - the Web Hook will always pe processed.
+{% else %}
 This directive specifies whether to execute the request or not.
 
 If this directive is not specified - the request will always be
@@ -9,6 +14,7 @@ executed.
 If the value of this directive is `false`, then the request will not be
 executed, and the flow will go to next request, if present, or return
 nothing.
+{% endif %}
 
 When you need to return some data when the condition is false, you are able to
 specify the `condition` directive as an object, in which case it will have

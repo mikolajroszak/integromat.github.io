@@ -27,6 +27,7 @@ an Instant Trigger and pair it with a webhook.
     - [`container`](#iterate-container)
     - [`condition`](#iterate-condition)
   - [`output`](#output)
+  - [`condition`](#condition)
 - [Webhook registration](#webhook-registration)
   - [Attach](#attach)
   - [Detach](#detach)
@@ -58,7 +59,8 @@ Specifies how to get data from the payload and how to reply to a remote server.
         "container": String,
         "condition": String|Boolean
     },
-    "output": String|Object
+    "output": String|Object,
+    "condition": String|Boolean
 }
 ```
 
@@ -69,12 +71,14 @@ might want to specify the `output` directive to map items to output. If
 you do not specify the `output` directive, items will be returned as-is.
 
 
-| Key                                 | Type                                                                | Description                                                                     |
-| ---                                 | ---                                                                 | ---                                                                             |
-| [**`respond`**](#respond)           | Response Specification                                              | Specifies how to respond to the remote server                                   |
-| [**`verification`**](#verification) | Verification Specification                                          | Specifies how to reply to the remote server, if it needs a confirmation         |
-| [**`iterate`**](#iterate)           | [IML String](articles/types.md#iml-string) or Iterate Specification | Specifies how response items (in case of multiple) are retrieved and processed. |
-| [**`output`**](#output)             | Any [IML Type](articles/types.md#iml-types)                         | Describes structure of the output bundle.                                       |
+| Key                                 | Type                                                                               | Description                                                                     |
+| ---                                 | ---                                                                                | ---                                                                             |
+| [**`respond`**](#respond)           | Response Specification                                                             | Specifies how to respond to the remote server                                   |
+| [**`verification`**](#verification) | Verification Specification                                                         | Specifies how to reply to the remote server, if it needs a confirmation         |
+| [**`iterate`**](#iterate)           | [IML String](articles/types.md#iml-string) or Iterate Specification                | Specifies how response items (in case of multiple) are retrieved and processed. |
+| [**`output`**](#output)             | Any [IML Type](articles/types.md#iml-types)                                        | Describes structure of the output bundle.                                       |
+| [**`condition`**](#condition)       | [IML String](articles/types.md#iml-string) or [Boolean](articles/types.md#boolean) | Determines if to execute current request or never.                              |
+
 
 ## `respond`
 
@@ -91,6 +95,10 @@ you do not specify the `output` directive, items will be returned as-is.
 ## `output`
 
 {% include directives/output.md module="webhook" %}
+
+## `condition`
+
+{% include directives/condition.md module="webhook" %}
 
 # Webhook registration
 
