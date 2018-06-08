@@ -2,9 +2,9 @@
 **Default**: `true`
 
 {% if include.module == "webhook" %}
-This directive specifies if the Web Hook should be processed or not.
+This directive specifies if the webhook should be processed or not.
 
-If this directive is not specified - the Web Hook will always pe processed.
+If this directive is not specified - the webhook will always pe processed.
 {% else %}
 This directive specifies whether to execute the request or not.
 
