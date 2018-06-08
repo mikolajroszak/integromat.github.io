@@ -6,6 +6,15 @@ module must process and output. In its simplest form `iterate` directive
 is an [IML String](types.md#iml-string), which points to a container of
 your items (must be an array):
 
+{% if include.module == "webhook" %}
+{% raw %}
+```json
+{
+    "iterate": "{{body.data}}"
+}
+```
+{% endraw %}
+{% else %}
 {% raw %}
 ```json
 {
@@ -15,6 +24,7 @@ your items (must be an array):
 }
 ```
 {% endraw %}
+{% endif %}
 
 When you need to filter out some items from processing, you are able to
 specify the `iterate` directive as an object, in which case it will have
@@ -74,6 +84,19 @@ For example you are iterating this response:
 ```
 Then, in order to process all items contained in the `data` array, you
 would specify your `iterate` directive like so:
+{% if include.module == "webhook" %}
+{% raw %}
+```json
+{
+    "iterate": "body.data",
+    "output": {
+        "id": "{{item.id}}",
+        "text": "{{item.foo}}"
+    }
+}
+```
+{% endraw %}
+{% else %}
 {% raw %}
 ```json
 {
@@ -87,6 +110,8 @@ would specify your `iterate` directive like so:
 }
 ```
 {% endraw %}
+{% endif %}
+
 Here, in the `output` directive, you specify how you wish your output to
 look. The `item` variable represents the currently processed item
 from the `data` array. The output of this module will then be:
