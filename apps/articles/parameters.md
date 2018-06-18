@@ -220,6 +220,29 @@ If you prefer a simple checkbox, add `"required" : true` to the parameter descri
 }
 ```
 
+To display the Source file set of fields in your module's setup:
+
+![Filename parameter](images/filename.png)
+
+use the following definition:
+
+```json
+[
+  {
+    "name": "fileName",
+    "type": "filename",
+    "label": "File name",
+    "semantic": "file:name"
+  },
+  {
+    "name": "data",
+    "type": "buffer",
+    "label": "Data",
+    "semantic": "file:data"
+  }
+]
+```
+
 ## Number, Integer, UInteger, Port
 
 | Key              | Type   | Description                      |
