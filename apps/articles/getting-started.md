@@ -348,12 +348,12 @@ This will create a query string that looks like this:
 ## Retrieving an array of items
 
 Suppose you want to retrieve all users, that are registered on your
-service. You can't use [Action](actions.html), because it returns only
-single result. You will have to create a [Search](searches.html) module
+service. You can't use [Action](../action.html), because it returns only
+single result. You will have to create a [Search](../searches.html) module
 for this.
 
-The communication for [Search](searches.html) is the same as for
-`Action`, except `Search` has an [`iterate`](response-object.html)
+The communication for [Search](../search.html) is the same as for
+`Action`, except `Search` has an [`iterate`](../search.html#iterate)
 directive, that specifies where are the items located inside the body.
 
 For the next example, suppose that when you call `/users` on your
@@ -378,7 +378,7 @@ service, you will get a list of users in `body.data`.
 
 This example will correctly output each user that was returned. But what
 if you don't want to output all parameters? You can use the
-[`output`](response-object.html) section to manually map response to
+[`output`](../search.html#output) section to manually map response to
 module's output:
 
 {% raw %}
