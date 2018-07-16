@@ -72,7 +72,7 @@ An Object is a collection of key-value pairs, where key is a
 ### Array
 
 An Array is a collection of [Primitive](#primitive-types) and
-[Complex](../types.md#complex-types) types.
+[Complex](#complex-types) types.
 
 ## IML Types
 
