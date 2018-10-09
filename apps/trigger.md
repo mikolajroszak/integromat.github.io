@@ -1,6 +1,7 @@
 ---
 title: Trigger Module - Reference Documentation
 layout: apps
+redirect: https://docs.integromat.com/apps/app-structure/modules/trigger
 ---
 
 The Trigger Module is a special module that saves the information about

@@ -1,6 +1,7 @@
 ---
 title: OAuth 1 Connection - Reference Documentation
 layout: apps
+redirect: https://docs.integromat.com/apps/app-structure/connections/oauth1
 ---
 
 Connection is a link between Integromat and 3rd party service/app.

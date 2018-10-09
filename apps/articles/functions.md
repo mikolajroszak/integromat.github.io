@@ -1,6 +1,7 @@
 ---
 title: Custom IML Functions
 layout: apps
+redirect: https://docs.integromat.com/apps/app-structure/iml-functions
 ---
 
 

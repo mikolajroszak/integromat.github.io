@@ -1,6 +1,7 @@
 ---
 title: Basic Connection - Reference Documentation
 layout: apps
+redirect: https://docs.integromat.com/apps/app-structure/connections/basic-connection
 ---
 
 Connection is a link between Integromat and 3rd party service/app.

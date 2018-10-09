@@ -1,6 +1,7 @@
 ---
 title: Webhook - Reference Documentation
 layout: apps
+redirect: https://docs.integromat.com/apps/app-structure/webhooks
 ---
 
 Wehooks power up

@@ -1,6 +1,7 @@
 ---
 title: Instant Trigger Module - Reference Documentation
 layout: apps
+redirect: https://docs.integromat.com/apps/app-structure/modules/instant-trigger
 ---
 
 {% raw %}

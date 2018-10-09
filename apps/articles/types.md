@@ -1,6 +1,7 @@
 ---
 title: Object Types
 layout: apps
+redirect: https://docs.integromat.com/apps/types
 ---
 
 {% raw %}

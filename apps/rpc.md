@@ -1,6 +1,7 @@
 ---
 title: RPC Module - Reference Documentation
 layout: apps
+redirect: https://docs.integromat.com/apps/app-structure/rpcs
 ---
 
 The RPC Module is a module that is used to fetch additional data for

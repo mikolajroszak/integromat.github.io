@@ -1,6 +1,7 @@
 ---
 title: Search Module - Reference Documentation
 layout: apps
+redirect: https://docs.integromat.com/apps/app-structure/modules/search
 ---
 
 The Search Module is a module that makes a request (or several) and

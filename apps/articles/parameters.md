@@ -1,6 +1,7 @@
 ---
 title: Parameters
 layout: apps
+redirect: https://docs.integromat.com/apps/parameters
 ---
 
 **For Modules and Connections**:  

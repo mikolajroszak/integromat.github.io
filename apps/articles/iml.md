@@ -1,6 +1,7 @@
 ---
 title: Integromat Markup Language
 layout: apps
+redirect: https://docs.integromat.com/apps/iml
 ---
 
 {% raw %}

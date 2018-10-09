@@ -1,6 +1,7 @@
 ---
 title: Integromat Apps Developer Platform
 layout: apps
+redirect: https://docs.integromat.com/apps/
 ---
 
 ## Important Notes:

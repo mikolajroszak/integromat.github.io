@@ -1,6 +1,7 @@
 ---
 title: Action Module - Reference Documentation
 layout: apps
+redirect: https://docs.integromat.com/apps/app-structure/modules/action
 ---
 
 The Action Module is a simple module that makes a request (or several)

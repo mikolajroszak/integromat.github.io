@@ -1,6 +1,7 @@
 ---
 title: Getting started
 layout: apps
+redirect: https://docs.integromat.com/apps/
 ---
 
 If you have searched through all the <a href="https://www.integromat.com/cs/integrations" target="_blank">apps/services</a> that Integromat already supports and did not find the one you would like to employ in your scenario, you are in the right place. This DIY guide will help you to create an Integromat App for the app/service without writing a piece of code. If the app/service provides an API then all you need to do is put together a few declarations in a simple JSON format. Throughout this guide we will use our **Virtual Library Demo API** that you can freely experiment with.

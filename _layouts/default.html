@@ -9,6 +9,10 @@
 	<link rel="stylesheet" href="//static.integromat.com/css/font-awesome.min.css">
 	<link rel="stylesheet" href="//static.integromat.com/css/public.css">
 	<link rel="stylesheet" href="/css/theme.css">
+	{% if page.redirect %}
+	<meta http-equiv="refresh" content="0; url={{page.redirect}}">
+	<link rel="canonical" href="{{page.redirect}}" />
+	{% endif %}
 </head>
 <body>
 	<header class="navbar navbar-static-top">

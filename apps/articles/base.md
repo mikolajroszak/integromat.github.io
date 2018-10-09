@@ -1,6 +1,7 @@
 ---
 title: Base
 layout: apps
+redirect: https://docs.integromat.com/apps/app-structure/general/base
 ---
 
 {% raw %}
